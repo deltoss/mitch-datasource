@@ -1,0 +1,4 @@
+{
+    "parser": "babel-eslint", /* To allow for ES6 syntax, such as spread operators */
+    "extends": "plugin:jest/recommended"
+}

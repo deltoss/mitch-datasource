@@ -1,0 +1,32 @@
+{
+  "name": "mitch-datasource",
+  "version": "1.0.0",
+  "description": "Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc.",
+  "main": "./dest/js/index.min.js",
+  "scripts": {
+    "dev": "npm run lint && npm run build-dev",
+    "prd": "npm run lint && npm run build-prd",
+    "watch": "webpack --config webpack.config.js --mode=development --watch",
+    "build-dev": "webpack --config webpack.config.js --mode=development",
+    "build-prd": "webpack --config webpack.config.js --mode=production",
+    "lint": "eslint .",
+    "lint-fix": "npm run lint -- --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "query-string": "^6.8.1"
+  }
+}
