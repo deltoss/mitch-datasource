@@ -1,11 +1,10 @@
 import { AjaxDatasource } from 'mitch-datasource';
-import mockData from '../../mocks/data-array';
-import mockAjaxCall from '../../mocks/ajax-call';
+import { stubDataArray, mockAjaxCall } from 'mitch-datasource-test-utilities';
 
 const dsOptions = {
   size: 10,
   ajax: async function() {
-    return await mockAjaxCall(this, mockData);
+    return await mockAjaxCall(this, stubDataArray);
   }
 };
 

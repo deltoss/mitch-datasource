@@ -22,6 +22,7 @@
     "jest": "^24.9.0"
   },
   "dependencies": {
-    "mitch-datasource": "file:../mitch-datasource"
+    "mitch-datasource": "file:../mitch-datasource",
+    "mitch-datasource-test-utilities": "file:../mitch-datasource-test-utilities"
   }
 }

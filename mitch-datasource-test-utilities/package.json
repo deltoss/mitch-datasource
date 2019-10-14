@@ -1,8 +1,8 @@
 {
-  "name": "mitch-datasource",
+  "name": "mitch-datasource-test-utilities",
   "version": "1.0.0",
-  "description": "Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc.",
-  "main": "./lib/index.js",
+  "description": "Utilities for tests for mitch-datasource",
+  "main": "lib/index.js",
   "scripts": {
     "dev": "npm run lint && npm run build-dev",
     "prd": "npm run lint && npm run build-prd",
@@ -12,21 +12,17 @@
     "lint": "eslint .",
     "lint-fix": "npm run lint -- --fix"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-loader": "^8.0.5",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "babel-loader": "^8.0.5",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6"
-  },
-  "dependencies": {
-    "axios": "^0.19.0",
-    "query-string": "^6.8.1"
   }
 }

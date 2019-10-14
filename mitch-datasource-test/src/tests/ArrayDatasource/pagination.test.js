@@ -1,9 +1,9 @@
 import { ArrayDatasource } from 'mitch-datasource';
-import mockData from '../../mocks/data-array';
+import { stubDataArray } from 'mitch-datasource-test-utilities';
 
 const dsOptions = {
   size: 10,
-  data: mockData
+  data: stubDataArray
 };
 
 test("Pagination Next Page", async () => {
@@ -38,6 +38,6 @@ test("Total Page Count", async () => {
   let datasource = new ArrayDatasource(dsOptions);
   await datasource.update();
   let totalPages = datasource.totalPages;
-  let trueTotalPages = Math.ceil(mockData.length / datasource.size);
+  let trueTotalPages = Math.ceil(stubDataArray.length / datasource.size);
   expect(totalPages == trueTotalPages).toBeTruthy();
 });

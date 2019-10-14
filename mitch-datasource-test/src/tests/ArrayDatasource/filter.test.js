@@ -1,10 +1,9 @@
 import { ArrayDatasource } from 'mitch-datasource';
-import mockData from '../../mocks/data-array';
-import mockFilterLogic from '../../mocks/filter-logic';
+import { stubDataArray, mockFilterLogic } from 'mitch-datasource-test-utilities';
 
 const dsOptions = {
   size: 10,
-  data: mockData,
+  data: stubDataArray,
   search: mockFilterLogic
 };
 

@@ -1,10 +1,9 @@
 import { ArrayDatasource } from 'mitch-datasource';
-import mockData from '../../mocks/data-array';
-import mockSortLogic from '../../mocks/sort-logic';
+import { stubDataArray, mockSortLogic } from 'mitch-datasource-test-utilities';
 
 const dsOptions = {
   size: 10,
-  data: mockData,
+  data: stubDataArray,
   sortDirection: 'asc',
   sort: (data, fieldName, direction) => {
     fieldName = fieldName || "firstName"; // Defaults to sorting by first name
