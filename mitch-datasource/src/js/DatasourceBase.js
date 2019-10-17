@@ -85,7 +85,7 @@ class DatasourceBase {
   goToPage(pageNum) {
     return new Promise((resolve, reject) => {
       try {
-        if (pageNum >= 0 && pageNum <= this.totalPages) {
+        if (pageNum > 0 && pageNum <= this.totalPages) {
           this.page = pageNum;
           this.update().then(() => {
             resolve(true);
@@ -187,6 +187,7 @@ class DatasourceBase {
      */
   search(newSearchText) {
     this.searchText = newSearchText;
+    this.offset = 0;
     return this.update();
   }
 
@@ -197,11 +198,8 @@ class DatasourceBase {
      * @return {Promise} A promise object, resolved when the sorting is completed.
      */
   sort(fieldName, direction) {
-    if (!fieldName || !direction) {
-      throw new Error('Sort field and sort direction must be provided');
-    }
-    this.sortField = fieldName;
-    this.sortDirection = direction;
+    this.sortField = fieldName || null;
+    this.sortDirection = direction || null;
     return this.update();
   }
 }

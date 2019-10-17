@@ -15,11 +15,11 @@ class ArrayDatasource extends DatasourceBase {
   }
 
   _getProcessedData() {
-    let processedData = this._rawData;
+    let processedData = [ ...this._rawData ];
     if (this.searchText) {
       processedData = this._search.call(this, processedData, this.searchText);
     }
-    if (this._sort) {
+    if (this._sort && this.sortField && this.sortDirection) {
       processedData = this._sort.call(this, processedData, this.sortField, this.sortDirection);
     }
     return processedData;
