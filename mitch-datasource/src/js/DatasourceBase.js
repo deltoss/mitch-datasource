@@ -20,8 +20,8 @@ class DatasourceBase {
     this.offset = mergedOptions.offset;
     this.size = mergedOptions.size;
     this.searchText = mergedOptions.searchText;
-    this.sortField = null;
-    this.sortDirection = null;
+    this.searchArguments = null;
+    this.sortArguments = null;
 
     if (mergedOptions.page) {
       this.page = mergedOptions.page;
@@ -109,6 +109,9 @@ class DatasourceBase {
      * @return {Number} The current page number.
      */
   get page() {
+    if (this.totalPages === 0) {
+      return 0;
+    }
     return (this.offset + this.size) / this.size;
   }
 
@@ -185,21 +188,28 @@ class DatasourceBase {
      * @param  {string} search - The search text to filter with.
      * @return {Promise} A promise object, resolved when the search is completed.
      */
-  search(newSearchText) {
-    this.searchText = newSearchText;
+  search(searchArguments) {
+    this.searchText = null;
+    this.searchArguments = null;
+    if (typeof searchArguments === 'string') {
+      this.searchText = searchArguments;
+    } else {
+      this.searchArguments = searchArguments;
+    }
     this.offset = 0;
     return this.update();
   }
 
   /**
      * Sort the data based on a field and direction.
-     * @param  {string} fieldName - The name of field to sort with.
-     * @param  {string} direction - The sort direction. Can be 'asc', 'ascend', 'desc', 'descending'
+     * @param  {Object} sortArguments - Object with keys as the field names to sort.
+     *                                  The values of the object is the sort direction.
+     *                                  The sort direction can be 'asc', 'ascend', 'desc',
+     *                                  'descending'
      * @return {Promise} A promise object, resolved when the sorting is completed.
      */
-  sort(fieldName, direction) {
-    this.sortField = fieldName || null;
-    this.sortDirection = direction || null;
+  sort(sortArguments = null) {
+    this.sortArguments = sortArguments;
     return this.update();
   }
 }
@@ -208,6 +218,8 @@ DatasourceBase.prototype.defaults = {
   offset: 0,
   size: 10,
   searchText: null,
+  searchArguments: null,
+  sortArguments: null,
 };
 
 export default DatasourceBase;

@@ -2,6 +2,7 @@
 
 import { storiesOf } from '@storybook/vue';
 import SimpleDataGrid from '../components/SimpleDataGrid';
+import MultiColumnSortingAndFilteringDataGrid from '../components/MultiColumnSortingAndFilteringDataGrid';
 import { ArrayDatasource, AjaxDatasource } from 'mitch-datasource';
 import { 
   stubDataArray,
@@ -15,9 +16,7 @@ const arrayDsOptions = {
   data: stubDataArray,
   sortDirection: 'asc',
   search: mockFilterLogic,
-  sort: (data, fieldName, direction) => {
-    fieldName = fieldName || "firstName"; // Defaults to sorting by first name
-    direction = direction || "asc"; // Defaults to sorting by ascending order
+  sort: (data, fieldName = 'firstName', direction = 'asc') => {
     return mockSortLogic(data, fieldName, direction);
   }
 };
@@ -39,6 +38,15 @@ storiesOf('Array Datasource', module)
       }
     },
     template: '<SimpleDataGrid :datasource="datasource"></SimpleDataGrid>'
+  })).add('Multi-Column Sort & Filtering Data Grid', () => ({
+    components: { MultiColumnSortingAndFilteringDataGrid },
+    data() {
+      let datasource = new ArrayDatasource(arrayDsOptions);
+      return {
+        datasource: datasource
+      }
+    },
+    template: '<MultiColumnSortingAndFilteringDataGrid :datasource="datasource"></MultiColumnSortingAndFilteringDataGrid>'
   }));
 
 storiesOf('Ajax Datasource', module)
@@ -51,4 +59,13 @@ storiesOf('Ajax Datasource', module)
       }
     },
     template: '<SimpleDataGrid :datasource="datasource"></SimpleDataGrid>'
+  })).add('Multi-Column Sort & Filtering Data Grid', () => ({
+    components: { MultiColumnSortingAndFilteringDataGrid },
+    data() {
+      let datasource = new AjaxDatasource(ajaxDsOptions);
+      return {
+        datasource: datasource
+      }
+    },
+    template: '<MultiColumnSortingAndFilteringDataGrid :datasource="datasource"></MultiColumnSortingAndFilteringDataGrid>'
   }));

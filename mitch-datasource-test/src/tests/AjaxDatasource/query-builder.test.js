@@ -21,15 +21,14 @@ test("AJAX with GET", async () => {
   let isAxiosError = false;
   let generatedUrl = null;
   try {
-    datasource.sortField = "firstName";
-    datasource.sortDirection = "asc";
-    datasource.searchText = "Michael Jackson";
+    datasource.sortArguments = { 'firstName': 'asc' };
+    datasource.searchText = 'Michael Jackson';
     await datasource.update();
   } catch(ex) { // Axios exception is expected to be thrown, as there's no real endpoint used
     isAxiosError = ex.isAxiosError;
     generatedUrl = ex.config.url;
   }
-  let expectedUrl = 'https://non-existent-hello-world.com/api/get-items?offset=0&page=1&searchText=Michael%20Jackson&size=10&sortDirection=asc&sortField=firstName';
+  let expectedUrl = 'https://non-existent-hello-world.com/api/get-items?offset=0&page=1&searchText=Michael%20Jackson&size=10&sortArguments=%7B%22firstName%22%3A%22asc%22%7D';
   expect(isAxiosError).toBeTruthy();
   expect(generatedUrl).toEqual(expectedUrl);
 });
@@ -39,7 +38,7 @@ test("AJAX with POST", async () => {
   let isAxiosError = false;
   let generatedData = null;
   try {
-    await datasource.search("Michael Jackson");
+    await datasource.search('Michael Jackson');
   } catch(ex) { // Axios exception is expected to be thrown, as there's no real endpoint used
     isAxiosError = ex.isAxiosError;
     generatedData = JSON.parse(ex.config.data);

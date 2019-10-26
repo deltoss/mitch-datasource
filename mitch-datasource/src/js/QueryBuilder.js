@@ -46,17 +46,22 @@ QueryBuilder.prototype.defaults = {
   // objects and arrays.
   queryObjectMap(datasource) {
     const entries = Object.entries(datasource);
-    // Remove all non-primitive properties
     const filteredEntries = entries.filter((entry) => {
       const key = entry[0];
       if (key.indexOf('_') === 0) { // Ignore 'private' properties
         return false;
       }
+      // Ignore properties that shouldn't be serialised,
+      // i.e. properties that configures the serialisation
+      // itself.
       const value = entry[1];
-      if (typeof value !== 'object') {
-        return true;
+      if (value === null) { // Don't serialise null values
+        return false;
       }
-      return false;
+      if (key === 'queryBuilder' || key === 'ajax') {
+        return false;
+      }
+      return true;
     });
     const queryObject = {
       // Computed getters doesn't get included in ES6 spread syntax,

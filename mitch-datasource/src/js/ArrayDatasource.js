@@ -15,12 +15,14 @@ class ArrayDatasource extends DatasourceBase {
   }
 
   _getProcessedData() {
-    let processedData = [ ...this._rawData ];
-    if (this.searchText) {
+    let processedData = [...this._rawData];
+    if (this.searchArguments) {
+      processedData = this._search.call(this, processedData, this.searchArguments);
+    } else if (this.searchText) {
       processedData = this._search.call(this, processedData, this.searchText);
     }
-    if (this._sort && this.sortField && this.sortDirection) {
-      processedData = this._sort.call(this, processedData, this.sortField, this.sortDirection);
+    if (this._sort && this.sortArguments) {
+      processedData = this._sort.call(this, processedData, this.sortArguments);
     }
     return processedData;
   }
@@ -75,7 +77,7 @@ ArrayDatasource.prototype.defaults = {
     return data;
   },
   /* eslint-disable no-unused-vars */
-  sort(data, fieldName, direction) {
+  sort(data, sortArguments) {
     return data;
   },
   /* eslint-enable no-unused-vars */

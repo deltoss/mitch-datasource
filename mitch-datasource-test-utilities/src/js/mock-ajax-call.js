@@ -9,15 +9,15 @@ export default function (datasource, allData) {
         total: allData.length,
       };
       // Filter
+      const searchArgs = datasource.searchArguments || datasource.searchText;
       processedData.data = mockFilterLogic(
         processedData.data,
-        datasource.searchText,
+        searchArgs,
       );
       // Sort
       processedData.data = mockSortLogic(
         processedData.data,
-        datasource.sortField,
-        datasource.sortDirection,
+        datasource.sortArguments,
       );
       // Pagination
       processedData.data = processedData.data.slice(

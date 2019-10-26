@@ -26,62 +26,68 @@
         </tr>
       </tbody>
     </table>
-    <div class="simple-data-grid-info">
-      <br />
-      <div>Page {{ datasource.page }} of {{ datasource.totalPages }}</div>
-      <div>Total: {{ datasource.total }}</div>
-      <div>Total Items on Page: {{ datasource.pageTotal }}</div>
-      <div>Size: {{ datasource.size }}</div>
-      <div>Offset: {{ datasource.offset }}</div>
-      <br/>
-      <div>Search Text: {{ datasource.searchText }}</div>
-      <div>Sort Field: {{ datasource.sortField }}</div>
-      <div>Sort Direction: {{ datasource.sortDirection }}</div>
-    </div>
-    <div class="simple-data-grid-controls">
-      <div>
-        <h4>Pagination</h4>
-        Size: <input type="number" v-model="size"/> <button @click="setSize(size)">Update</button>
-        <br />
-        <button @click="firstPage()">&lt;&lt;</button>
-        <button @click="prevPage()">&lt;</button>
-        &nbsp;&nbsp;
-        <input type="number" v-model="pageToGoTo"/>
-        <button @click="goToPage(pageToGoTo)">Go</button>
-        &nbsp;&nbsp;
-        <button @click="nextPage()">&gt;</button>
-        <button @click="lastPage()">&gt;&gt;</button>
-      </div>
-      <div>
-        <h4>Search</h4>
-        <input type="text" v-model="searchText"/>
-        <button @click="search(searchText)">Search</button>
-      </div>
-      <div>
-        <h4>Sort by</h4>
-        <div>
-          <button @click="clearSort()">Clear Sort</button>
-        </div>
-        <div>
-          <button @click="toggleSort('id')">ID</button>
-        </div>
-        <div>
-          <button @click="toggleSort('firstName')">First Name</button>
-        </div>
-        <div>
-          <button @click="toggleSort('lastName')">Last Name</button>
-        </div>
-        <div>
-          <button @click="toggleSort('job')">Job</button>
-        </div>
-        <div>
-          <button @click="toggleSort('gender')">Gender</button>
-        </div>
-        <div>
-          <button @click="toggleSort('hasCitizenship')">Has Citizenship</button>
-        </div>
-      </div>
-    </div>
+    <br/>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>
+            <div>Page {{ datasource.page }} of {{ datasource.totalPages }}</div>
+            <div>Total: {{ datasource.total }}</div>
+            <div>Total Items on Page: {{ datasource.pageTotal }}</div>
+            <div>Size: {{ datasource.size }}</div>
+            <div>Offset: {{ datasource.offset }}</div>
+            <br/>
+            <div>Search Text: {{ datasource.searchText }}</div>
+            <div>Search Arguments: {{ datasource.searchArguments }}</div>
+            <div>Sort Arguments: {{ datasource.sortArguments }}</div>
+          </td>
+          <td>
+            <h4>Pagination</h4>
+            Size: <input type="number" v-model="size"/> <button @click="setSize(size)">Update</button>
+            <br />
+            <button @click="firstPage()">&lt;&lt;</button>
+            <button @click="prevPage()">&lt;</button>
+            &nbsp;&nbsp;
+            <input type="number" v-model="pageToGoTo"/>
+            <button @click="goToPage(pageToGoTo)">Go</button>
+            &nbsp;&nbsp;
+            <button @click="nextPage()">&gt;</button>
+            <button @click="lastPage()">&gt;&gt;</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>Search</h4>
+            <input type="text" v-model="searchText"/>
+            <button @click="search(searchText)">Search</button>
+          </td>
+          <td>
+            <h4>Single Column Sort</h4>
+            <div>
+              <button @click="clearSort()">Clear Sort</button>
+            </div>
+            <div>
+              <button @click="toggleSort('id')">ID</button>
+            </div>
+            <div>
+              <button @click="toggleSort('firstName')">First Name</button>
+            </div>
+            <div>
+              <button @click="toggleSort('lastName')">Last Name</button>
+            </div>
+            <div>
+              <button @click="toggleSort('job')">Job</button>
+            </div>
+            <div>
+              <button @click="toggleSort('gender')">Gender</button>
+            </div>
+            <div>
+              <button @click="toggleSort('hasCitizenship')">Has Citizenship</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -96,7 +102,7 @@ export default {
       loading: true,
       size: this.$props.datasource.size,
       pageToGoTo: null,
-      searchText: null
+      searchText: null,
     }
   },
   created: async function () {
@@ -144,23 +150,28 @@ export default {
     },
     async search(searchText) {
       this.loading = true;
+      this.multiColumnSearchArguments = {};
       await this.datasource.search(searchText);
       this.loading = false;
     },
     async toggleSort(field) {
       this.loading = true;
+      this.multiColumnSortArguments = {};
       let direction = 'asc';
-      // Toggle to descending if already sorting the field
-      // in ascending order
-      if (this.datasource.sortField === field 
-          && this.datasource.sortDirection === 'asc') {
+      // Toggle to descending if already sorting
+      // the field in ascending order
+      if (this.datasource.sortArguments && Object.keys(this.datasource.sortArguments).length === 1
+          && this.datasource.sortArguments[field] === 'asc') {
             direction = 'desc';
       }
-      await this.datasource.sort(field, direction);
+      let sortArguments = {};
+      sortArguments[field] = direction;
+      await this.datasource.sort(sortArguments);
       this.loading = false;
     },
     async clearSort() {
       this.loading = true;
+      this.multiColumnSortArguments = {};
       await this.datasource.sort();
       this.loading = false;
     }
