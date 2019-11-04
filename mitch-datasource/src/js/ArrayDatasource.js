@@ -54,20 +54,13 @@ class ArrayDatasource extends DatasourceBase {
   /**
      * @inheritdoc
      */
-  update() {
-    return new Promise((resolve, reject) => {
-      if (!this._rawData) {
-        resolve();
-        return;
-      }
-      try {
-        this._processedData = this._getProcessedData();
-        this._data = this._processedData.slice(this.offset, this.offset + this.size);
-        resolve();
-      } catch (error) {
-        reject(error);
-      }
-    });
+  async _update() {
+    if (!this._rawData) {
+      return null;
+    }
+    this._processedData = this._getProcessedData();
+    this._data = this._processedData.slice(this.offset, this.offset + this.size);
+    return this._data;
   }
 }
 

@@ -33,6 +33,7 @@ storiesOf('Array Datasource', module)
     components: { SimpleDataGrid },
     data() {
       let datasource = new ArrayDatasource(arrayDsOptions);
+      datasource.update();
       return {
         datasource: datasource
       }
@@ -42,6 +43,7 @@ storiesOf('Array Datasource', module)
     components: { MultiColumnSortingAndFilteringDataGrid },
     data() {
       let datasource = new ArrayDatasource(arrayDsOptions);
+      datasource.update();
       return {
         datasource: datasource
       }
@@ -54,6 +56,7 @@ storiesOf('Ajax Datasource', module)
     components: { SimpleDataGrid },
     data() {
       let datasource = new AjaxDatasource(ajaxDsOptions);
+      datasource.update();
       return {
         datasource: datasource
       }
@@ -63,6 +66,7 @@ storiesOf('Ajax Datasource', module)
     components: { MultiColumnSortingAndFilteringDataGrid },
     data() {
       let datasource = new AjaxDatasource(ajaxDsOptions);
+      datasource.update();
       return {
         datasource: datasource
       }

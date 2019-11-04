@@ -1,3 +1,5 @@
+import EventEmitter from 'events';
+
 /**
  * DatasourceBase represents an abstract
  * class for derived datasource classes
@@ -7,12 +9,13 @@
  * It provides additional features such
  * as pagination, sorting, etc.
  */
-class DatasourceBase {
+class DatasourceBase extends EventEmitter {
   /**
      * Create a datasource.
      * @param {object} options - The datasource options.
      */
   constructor(options = {}) {
+    super();
     const mergedOptions = {
       ...DatasourceBase.prototype.defaults,
       ...options,
@@ -22,6 +25,7 @@ class DatasourceBase {
     this.searchText = mergedOptions.searchText;
     this.searchArguments = null;
     this.sortArguments = null;
+    this.loading = false;
 
     if (mergedOptions.page) {
       this.page = mergedOptions.page;
@@ -71,32 +75,8 @@ class DatasourceBase {
     * pagination options.
     * @return {Promise} A promise object, resolved when the update is completed.
     */
-  update() {
+  _update() {
     throw new Error(`Method not supported for ${this.constructor.name}`);
-  }
-
-  /**
-     * Traverse to the specified page, and update the datasource accordingly.
-     * @param  {Number} pageNum - The new page to traverse to.
-     * @return {Promise} A promise with a boolean data. True if
-     *                   successfully traversed to specified page.
-     *                   False otherwise.
-     */
-  goToPage(pageNum) {
-    return new Promise((resolve, reject) => {
-      try {
-        if (pageNum > 0 && pageNum <= this.totalPages) {
-          this.page = pageNum;
-          this.update().then(() => {
-            resolve(true);
-          });
-        } else {
-          resolve(false);
-        }
-      } catch (error) {
-        reject(error);
-      }
-    });
   }
 
   /**
@@ -164,12 +144,60 @@ class DatasourceBase {
      */
 
   /**
+    * Updates the datasource, using the currently
+    * configured search text, sort settings, and
+    * pagination options.
+    * @return {Promise} A promise object, resolved when the update is completed.
+    */
+  async update() {
+    this.loading = true;
+    try {
+      const updateStartArgs = {
+        sender: this,
+        prevented: false,
+        preventDefault() {
+          this.prevented = true;
+        },
+      };
+      this.emit('updatestart', updateStartArgs);
+      if (updateStartArgs.prevented) {
+        return null;
+      }
+      const updatedResponse = await this._update();
+      this.emit('updateend', {
+        sender: this,
+      });
+      this.loading = false;
+      return updatedResponse;
+    } catch (ex) {
+      this.loading = false;
+      throw ex;
+    }
+  }
+
+  /**
+     * Traverse to the specified page, and update the datasource accordingly.
+     * @param  {Number} pageNum - The new page to traverse to.
+     * @return {Promise} A promise with a boolean data. True if
+     *                   successfully traversed to specified page.
+     *                   False otherwise.
+     */
+  async goToPage(pageNum) {
+    if (pageNum > 0 && pageNum <= this.totalPages) {
+      this.page = pageNum;
+      await this.update();
+      return true;
+    }
+    return false;
+  }
+
+  /**
      * Traverse to the next page, and update the datasource accordingly.
      * @return {Promise} A promise with a boolean data. True if
      *                   successfully traversed to next page.
      *                   False otherwise.
      */
-  nextPage() {
+  async nextPage() {
     return this.goToPage(this.page + 1);
   }
 
@@ -179,7 +207,7 @@ class DatasourceBase {
      *                   successfully traversed to previous page.
      *                   False otherwise.
      */
-  prevPage() {
+  async prevPage() {
     return this.goToPage(this.page - 1);
   }
 
@@ -188,7 +216,7 @@ class DatasourceBase {
      * @param  {string} search - The search text to filter with.
      * @return {Promise} A promise object, resolved when the search is completed.
      */
-  search(searchArguments) {
+  async search(searchArguments) {
     this.searchText = null;
     this.searchArguments = null;
     if (typeof searchArguments === 'string') {
@@ -208,7 +236,7 @@ class DatasourceBase {
      *                                  'descending'
      * @return {Promise} A promise object, resolved when the sorting is completed.
      */
-  sort(sortArguments = null) {
+  async sort(sortArguments = null) {
     this.sortArguments = sortArguments;
     return this.update();
   }

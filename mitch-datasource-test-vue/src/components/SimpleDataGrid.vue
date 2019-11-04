@@ -1,10 +1,13 @@
 <template>
-  <div class="simple-data-grid">
-    <h3>Simple DataGrid for Datasource Testing Purposes</h3>
-    <div v-if="loading" style="color: crimson;">
+  <div>
+    <h3>DataGrid for Datasource Testing Purposes</h3>
+    <div v-if="!datasource" style="color: crimson;">
+      No datasource supplied
+    </div>
+    <div v-else-if="loading" style="color: crimson;">
       Loading...
     </div>
-    <table v-else class="simple-data-grid">
+    <table v-else>
       <thead>
         <tr>
           <th>ID</th>
@@ -43,7 +46,7 @@
           </td>
           <td>
             <h4>Pagination</h4>
-            Size: <input type="number" v-model="size"/> <button @click="setSize(size)">Update</button>
+            Size: <input type="number" v-model="size"/> <button @click="updateDatasourceSize(size)">Update</button>
             <br />
             <button @click="firstPage()">&lt;&lt;</button>
             <button @click="prevPage()">&lt;</button>
@@ -99,39 +102,49 @@ export default {
   },
   data() {
     return {
-      loading: true,
-      size: this.$props.datasource.size,
-      pageToGoTo: null,
-      searchText: null,
+      loading: this.$props.datasource.loading,
+      size: this.$props.datasource ? this.$props.datasource.size : 0,
+      pageToGoTo: '',
+      searchText: '',
     }
   },
   created: async function () {
-    this.loading = true;
-    await this.datasource.update();
-    this.loading = false;
+    this.loading = this.$props.datasource.loading;
+    this.$props.datasource.on('updatestart', this.updateStartCallback);
+    this.$props.datasource.on('updateend', this.updateEndCallback);
+  },
+  beforeDestroy: function() {
+    this.$props.datasource.off('updatestart', this.updateStartCallback);
+    this.$props.datasource.off('updateend', this.updateEndCallback);
   },
   methods: {
-    async setSize(size) {
+    updateStartCallback() {
       this.loading = true;
-      this.datasource.size = size;
-      await this.datasource.update();
+    },
+    updateEndCallback() {
       this.loading = false;
     },
+    async updateDatasourceSize(size) {
+      this.datasource.size = size;
+      await this.$props.datasource.update();
+    },
     async nextPage() {
-      this.loading = true;
       let success = await this.datasource.nextPage();
       if (!success) {
         console.warn('Failed to go to next page...');
       }
-      this.loading = false;
     },
     async prevPage() {
-      this.loading = true;
       let success = await this.datasource.prevPage();
       if (!success) {
         console.warn('Failed to go to previous page...');
       }
-      this.loading = false;
+    },
+    async goToPage(page) {
+      let success = await this.datasource.goToPage(page);
+      if (!success) {
+        console.warn(`Failed to go to page ${page}...`);
+      }
     },
     async lastPage() {
       await this.goToPage(this.datasource.totalPages);
@@ -139,24 +152,10 @@ export default {
     async firstPage() {
       await this.goToPage(1);
     },
-    async goToPage(page) {
-      this.loading = true;
-      let success = await this.datasource.goToPage(page);
-      if (!success) {
-        console.warn(`Failed to go to page ${page}...`);
-      }
-      this.pageToGoTo = null;
-      this.loading = false;
-    },
     async search(searchText) {
-      this.loading = true;
-      this.multiColumnSearchArguments = {};
       await this.datasource.search(searchText);
-      this.loading = false;
     },
     async toggleSort(field) {
-      this.loading = true;
-      this.multiColumnSortArguments = {};
       let direction = 'asc';
       // Toggle to descending if already sorting
       // the field in ascending order
@@ -167,13 +166,9 @@ export default {
       let sortArguments = {};
       sortArguments[field] = direction;
       await this.datasource.sort(sortArguments);
-      this.loading = false;
     },
     async clearSort() {
-      this.loading = true;
-      this.multiColumnSortArguments = {};
       await this.datasource.sort();
-      this.loading = false;
     }
   }
 }

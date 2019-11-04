@@ -1,10 +1,13 @@
 <template>
-  <div class="simple-data-grid">
-    <h3>Simple DataGrid for Datasource Testing Purposes</h3>
-    <div v-if="loading" style="color: crimson;">
+  <div>
+    <h3>DataGrid for Datasource Testing Purposes</h3>
+    <div v-if="!datasource" style="color: crimson;">
+      No datasource supplied
+    </div>
+    <div v-else-if="loading" style="color: crimson;">
       Loading...
     </div>
-    <table v-else class="simple-data-grid">
+    <table v-else>
       <thead>
         <tr>
           <th>ID</th>
@@ -43,7 +46,7 @@
           </td>
           <td>
             <h4>Pagination</h4>
-            Size: <input type="number" v-model="size"/> <button @click="setSize(size)">Update</button>
+            Size: <input type="number" v-model="size"/> <button @click="updateDatasourceSize(size)">Update</button>
             <br />
             <button @click="firstPage()">&lt;&lt;</button>
             <button @click="prevPage()">&lt;</button>
@@ -138,9 +141,9 @@ export default {
   },
   data() {
     return {
-      loading: true,
-      size: this.$props.datasource.size,
-      pageToGoTo: null,
+      loading: this.$props.datasource.loading,
+      size: this.$props.datasource ? this.$props.datasource.size : 0,
+      pageToGoTo: '',
       multiColumnSearchArguments: {
         id: null,
         firstName: null,
@@ -160,47 +163,48 @@ export default {
     }
   },
   created: async function () {
-    this.loading = true;
-    await this.datasource.update();
-    this.loading = false;
+    this.loading = this.$props.datasource.loading;
+    this.$props.datasource.on('updatestart', this.updateStartCallback);
+    this.$props.datasource.on('updateend', this.updateEndCallback);
+  },
+  beforeDestroy: function() {
+    this.$props.datasource.off('updatestart', this.updateStartCallback);
+    this.$props.datasource.off('updateend', this.updateEndCallback);
   },
   methods: {
-    async setSize(size) {
+    updateStartCallback() {
       this.loading = true;
-      this.datasource.size = size;
-      await this.datasource.update();
+    },
+    updateEndCallback() {
       this.loading = false;
     },
+    async updateDatasourceSize(size) {
+      this.datasource.size = size;
+      await this.$props.datasource.update();
+    },
     async nextPage() {
-      this.loading = true;
       let success = await this.datasource.nextPage();
       if (!success) {
         console.warn('Failed to go to next page...');
       }
-      this.loading = false;
     },
     async prevPage() {
-      this.loading = true;
       let success = await this.datasource.prevPage();
       if (!success) {
         console.warn('Failed to go to previous page...');
       }
-      this.loading = false;
+    },
+    async goToPage(page) {
+      let success = await this.datasource.goToPage(page);
+      if (!success) {
+        console.warn(`Failed to go to page ${page}...`);
+      }
     },
     async lastPage() {
       await this.goToPage(this.datasource.totalPages);
     },
     async firstPage() {
       await this.goToPage(1);
-    },
-    async goToPage(page) {
-      this.loading = true;
-      let success = await this.datasource.goToPage(page);
-      if (!success) {
-        console.warn(`Failed to go to page ${page}...`);
-      }
-      this.pageToGoTo = null;
-      this.loading = false;
     },
     async multiColumnSearch() {
       if (!this.multiColumnSearchArguments) {
@@ -210,7 +214,6 @@ export default {
       if (entries.length === 0) {
         return;
       }
-      this.loading = true;
       let actualSearchArguments = {};
       entries.forEach(function(value) {
         const searchField = value[0];
@@ -220,7 +223,6 @@ export default {
         }
       });
       await this.datasource.search(actualSearchArguments);
-      this.loading = false;
     },
     async multiColumnSort() {
       if (!this.multiColumnSortArguments) {
@@ -230,7 +232,6 @@ export default {
       if (entries.length === 0) {
         return;
       }
-      this.loading = true;
       let actualSortArguments = {};
       entries.forEach(function(value) {
         const sortField = value[0];
@@ -240,7 +241,6 @@ export default {
         }
       });
       await this.datasource.sort(actualSortArguments);
-      this.loading = false;
     }
   }
 }

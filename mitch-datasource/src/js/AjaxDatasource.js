@@ -112,15 +112,30 @@ class AjaxDatasource extends DatasourceBase {
   /**
      * @inheritdoc
      */
-  update() {
+  async _update() {
+    const requestStartArgs = {
+      sender: this,
+      prevented: false,
+      preventDefault() {
+        this.prevented = true;
+      },
+    };
+    this.emit('requeststart', requestStartArgs);
+    if (requestStartArgs.prevented) {
+      return null;
+    }
     const ajaxHandler = this._buildAjaxHandler();
-    return ajaxHandler.call(this).then((...responses) => {
-      // If not provided an object, use the default mapper
-      const mapper = this.ajax.mapper || AjaxDatasource.prototype.defaults.ajax.mapper;
-      const mappedObject = mapper.apply(this, responses);
-      this._data = mappedObject.data;
-      this._total = mappedObject.total;
+    const response = await ajaxHandler.call(this);
+    this.emit('requestend', {
+      sender: this,
+      response,
     });
+    // If not provided an object, use the default mapper
+    const mapper = this.ajax.mapper || AjaxDatasource.prototype.defaults.ajax.mapper;
+    const mappedObject = mapper.call(this, response);
+    this._data = mappedObject.data;
+    this._total = mappedObject.total;
+    return response;
   }
 }
 

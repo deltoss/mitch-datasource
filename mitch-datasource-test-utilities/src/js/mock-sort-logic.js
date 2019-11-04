@@ -2,7 +2,8 @@ export default function (data, sortArguments) {
   if (!sortArguments) {
     return data;
   }
-  data.sort((a, b) => {
+  let clonedData = [ ...data ];
+  clonedData.sort((a, b) => {
     const entries = Object.entries(sortArguments);
     for (let i = 0; i < entries.length; i += 1) {
       const sortFieldName = entries[i][0];
@@ -25,5 +26,5 @@ export default function (data, sortArguments) {
     }
     return 0;
   });
-  return data;
+  return clonedData;
 }
