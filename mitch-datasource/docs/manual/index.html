@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | mitch-datasource</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="mitch-datasource"><meta property="twitter:description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."></head>
+<body class="layout-container manual-root manual-index" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/deltoss/mitch-datasource"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/installation.html"><a href="manual/installation.html" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/installation.html"><a href="manual/installation.html#local-files" data-ice="link">Local Files</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/installation.html"><a href="manual/installation.html#with-npm" data-ice="link">With NPM</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/usage.html"><a href="manual/usage.html" data-ice="link">Usage</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/development.html"><a href="manual/development.html" data-ice="link">Development</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#major-dependencies" data-ice="link">Major Dependencies</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#technologies-used" data-ice="link">Technologies Used</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#available-npm-commands" data-ice="link">Available NPM Commands</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#main-commands" data-ice="link">Main Commands</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#other-commands" data-ice="link">Other Commands</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-user-index" data-ice="manualUserIndex"><p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+<a href="https://esdoc.org/"><img src="https://img.shields.io/badge/Made%20with-ESDocs-green.svg" alt="made-with-esdocs"></a></p>
+<h1 id="introduction">Introduction</h1><h1 id="features">Features</h1><h1 id="license">License</h1><p>MIT &#xA9; Michael Tran</p>
+</div>
+
+  
+
+  <div class="manual-cards">
+    
+  <div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Installation</h1><h2>Local Files</h2><ol>
+<li><p>Clone or download this git repository, and move the contents of the <code>dist</code> folder to your project. For example, you can put it in <code>/scripts/mitch-datasource</code> inside your project.</p>
+</li>
+<li><p>Import the <code>mitch-datasource</code> files as below, changing the path depending on where you copied it into for your project</p>
+<pre><code class="lang-html"><code class="source-code prettyprint">&lt;script src=&quot;/scripts/mitch-datasource/js/index.min.js&quot;&gt;&lt;/script&gt;</code>
+</code></pre>
+</li>
+</ol><h2>With NPM</h2><p><code>mitch-datasource</code> is available on npm. You can perform the following steps to get it set up.</p><ol>
+<li><p>Open up your terminal, and run the below command from your project directory:</p>
+<pre><code class="lang-bash"><code class="source-code prettyprint">npm install mitch-datasource --save</code>
+</code></pre>
+</li>
+<li><p>Now you can use CommonJS, AMD, or ES6 to import the plugin. For example:</p>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">var mitchDatasource = require(&apos;mitch-datasource&apos;);</code>
+</code></pre>
+</li>
+</ol></div>
+        <a data-ice="link" href="manual/installation.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Usage</h1><p>For more information on the usage:</p><ul>
+<li>Open up and view the example files inside the repository for:<ul>
+<li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test/src">Unit Tests</a></li>
+<li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test-react/src">React Example</a></li>
+<li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test-vue/src">Vue Example</a></li>
+</ul>
+</li>
+<li>Refer to the API documentations.</li>
+</ul></div>
+        <a data-ice="link" href="manual/usage.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Development</h1><h2>Major Dependencies</h2><ul>
+<li><a href="https://www.axios.com">axios</a><ul>
+<li>Used to perform default AJAX operations</li>
+</ul>
+</li>
+<li><a href="https://github.com/sindresorhus/query-string#readme">query-string</a><ul>
+<li>For <code>QueryBuilder</code> (Used as part of <code>AJAX Datasource</code>) to convert an object to a query string</li>
+</ul>
+</li>
+</ul><h2>Technologies Used</h2><p>This package was created using:</p><ul>
+<li><code>webpack</code> as the bundler</li>
+<li><code>npm</code> scripts to run common tasks (e.g. build and sass compilation), instead of gulp, grunt</li>
+<li><code>babel</code> with webpack to transpile JavaScript from ES6 to ES5, so this package codebase can utilise the newest ES6 features</li>
+<li><code>esdoc</code> to build the API documentations</li>
+<li><code>eslint</code> for linting JavaScript source code</li>
+</ul><h2>Available NPM Commands</h2><h3>Main Commands</h3><ul>
+<li><code>npm run dev</code> - Lint, build code &amp; docs with development settings.</li>
+<li><code>npm run prd</code> - Lint, build code &amp; docs with production settings.</li>
+<li><code>npm run watch</code> - Lint, build code &amp; docs with development settings anytime when a change has been detected.</li>
+</ul><h3>Other Commands</h3><ul>
+<li><code>build-dev</code> - Build the code, and build docs with development settings. Does not perform linting.</li>
+<li><code>build-prd</code> - Build the code, and build docs with production settings. Does not perform linting.</li>
+<li><code>build-watch</code> - Build code &amp; docs with development settings anytime when a change has been detected.</li>
+<li><code>watch-webpack</code> - Build code anytime when a change has been detected.</li>
+<li><code>build-webpack-dev</code> - Build code with development settings.</li>
+<li><code>build-webpack-prd</code> - Build code with production settings.</li>
+<li><code>lint</code> - Lint the source code.</li>
+<li><code>lint-watch</code> - Lint the source code anytime when a change has been detected</li>
+<li><code>lint-fix</code> - Automatically fix any auto-fixable warnings or errors detected when linting.</li>
+<li><code>build-docs</code> - Build the HTML documentations.</li>
+<li><code>watch-docs</code> - Build the HTML documentations anytime when a change has been detected.</li>
+</ul></div>
+        <a data-ice="link" href="manual/development.html"></a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

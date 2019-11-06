@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/AjaxDatasource.js | mitch-datasource</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="mitch-datasource"><meta property="twitter:description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/deltoss/mitch-datasource"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/AjaxDatasource.js~AjaxDatasource.html">AjaxDatasource</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html">ArrayDatasource</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/AjaxDatasource.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import axios from &apos;axios&apos;;
+import DatasourceBase from &apos;./DatasourceBase&apos;;
+import QueryBuilder from &apos;./QueryBuilder&apos;;
+
+class AjaxDatasource extends DatasourceBase {
+  constructor(options = {}) {
+    let { ajax } = options;
+    if (ajax &amp;&amp; typeof ajax === &apos;object&apos;) {
+      ajax = {
+        ...AjaxDatasource.prototype.defaults.ajax,
+        ...ajax,
+      };
+    }
+
+    const mergedOptions = {
+      ...AjaxDatasource.prototype.defaults,
+      ...options,
+      ajax,
+    };
+
+    super(mergedOptions);
+
+    this._total = null;
+    this._data = null;
+    if (mergedOptions.queryBuilder instanceof QueryBuilder) {
+      this.queryBuilder = mergedOptions.queryBuilder;
+    } else if (mergedOptions.queryBuilder) {
+      this.queryBuilder = new QueryBuilder(mergedOptions.queryBuilder);
+    }
+    this.ajax = mergedOptions.ajax;
+  }
+
+  /**
+     * Performs an AJAX call.
+     * @param {string} url Url to remote endpoint to ajax for.
+     * @param {string} method The AJAX method.
+     */
+  _ajaxCall(url, method) {
+    const actualMethod = method ? method.toLowerCase() : method;
+    let data = {};
+    let actualUrl = url;
+
+    if (actualMethod === &apos;get&apos;) {
+      actualUrl = `${actualUrl}?${this.queryBuilder.getQueryString(this)}`;
+    } else {
+      data = this.queryBuilder.getQueryObject(this);
+    }
+    const axiosOptions = this.ajax.options || {};
+    return axios({
+      ...axiosOptions,
+      method: actualMethod,
+      url: actualUrl,
+      data,
+    });
+  }
+
+  /**
+     * Builds an AJAX handler function.
+     * @return {Function} A callback function ajax which
+     *                    performs the actual ajax operation
+     */
+  _buildAjaxHandler() {
+    const ajaxHandler = {
+      function: () =&gt; this.ajax.call(this, this.queryBuilder),
+      string: () =&gt; {
+        const url = this.ajax;
+        return this._ajaxCall(url, &apos;get&apos;);
+      },
+      object: () =&gt; {
+        const { url } = this.ajax;
+        const method = this.ajax.method || &apos;get&apos;;
+        return this._ajaxCall(url, method);
+      },
+    };
+    const ajaxObjectType = typeof this.ajax;
+    const actualAjaxHandler = ajaxHandler[ajaxObjectType];
+    if (!actualAjaxHandler) {
+      throw new Error(`Does not support provided ajax object of type ${ajaxObjectType}`);
+    }
+    return actualAjaxHandler;
+  }
+
+  /**
+     * Overrides for DatasourceBase
+     */
+
+  /**
+     * @inheritdoc
+     */
+  get total() {
+    return this._total;
+  }
+
+  /**
+     * @inheritdoc
+     */
+  get data() {
+    return this._data;
+  }
+
+  /**
+     * @inheritdoc
+     */
+  async _update() {
+    const requestStartArgs = {
+      sender: this,
+      prevented: false,
+      preventDefault() {
+        requestStartArgs.prevented = true;
+      },
+    };
+    this.emit(&apos;requeststart&apos;, requestStartArgs);
+    if (requestStartArgs.prevented) {
+      return null;
+    }
+    const ajaxHandler = this._buildAjaxHandler();
+    const response = await ajaxHandler.call(this);
+    this.emit(&apos;requestend&apos;, {
+      sender: this,
+      response,
+    });
+    // If not provided an object, use the default mapper
+    const mapper = this.ajax.mapper || AjaxDatasource.prototype.defaults.ajax.mapper;
+    const mappedObject = mapper.call(this, response);
+    this._data = mappedObject.data;
+    this._total = mappedObject.total;
+    return response;
+  }
+}
+
+AjaxDatasource.prototype.defaults = {
+  queryBuilder: {},
+  // ajax can be an object, function, or even a simple string
+  ajax: {
+    // Additional options for axios
+    options: {},
+    // Maps the response to return the data in an expected format
+    mapper(response) {
+      return {
+        data: response.data,
+        total: response.total,
+      };
+    },
+  },
+};
+
+export default AjaxDatasource;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

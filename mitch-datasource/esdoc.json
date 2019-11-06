@@ -1,0 +1,41 @@
+{
+    "source": "./src/js",
+    "destination": "./docs",
+    "index": "./manual/index.md",
+    "plugins": [
+        {
+            "name": "esdoc-ecmascript-proposal-plugin",
+            "option": {
+                "classProperties": true,
+                "objectRestSpread": true,
+                "doExpressions": true,
+                "functionBind": true,
+                "functionSent": true,
+                "asyncGenerators": true,
+                "decorators": true,
+                "exportExtensions": true,
+                "dynamicImport": true
+            }
+        },
+        {
+            "name": "esdoc-standard-plugin",
+            "option": {
+                "accessor": {
+                    "access": ["public", "protected"]
+                },
+                "brand": {
+                    "repository": "https://github.com/deltoss/mitch-datasource"
+                },
+                "manual": {
+                  "index": "./manual/index.md",
+                  "globalIndex": true,
+                  "files": [
+                    "./manual/installation.md",
+                    "./manual/usage.md",
+                    "./manual/development.md"
+                  ]
+                }
+              }
+        }
+    ]
+}

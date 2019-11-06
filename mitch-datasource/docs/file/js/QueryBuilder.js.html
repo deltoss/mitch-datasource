@@ -1,8 +1,51 @@
-import queryString from 'query-string';
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/QueryBuilder.js | mitch-datasource</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="mitch-datasource"><meta property="twitter:description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/deltoss/mitch-datasource"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/AjaxDatasource.js~AjaxDatasource.html">AjaxDatasource</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html">ArrayDatasource</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/QueryBuilder.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import queryString from &apos;query-string&apos;;
 
 function hasObjectInArray(arr) {
-  for (let i = 0; i < arr.length; i += 1) {
-    if (typeof arr[i] === 'object') {
+  for (let i = 0; i &lt; arr.length; i += 1) {
+    if (typeof arr[i] === &apos;object&apos;) {
       return true;
     }
   }
@@ -14,14 +57,14 @@ function hasObjectInArray(arr) {
  * the data object for AJAX post requests,
  * or the query string for AJAX get requests
  *
- * @example <caption>With AJAX Datasource</caption>
+ * @example &lt;caption&gt;With AJAX Datasource&lt;/caption&gt;
  * let datasource = new AjaxDatasource({
  *   // ...
  *   queryBuilder: new QueryBuilder({
  *     // ...
  *   })
  * });
- * @example <caption>With Adding to Defaults</caption>
+ * @example &lt;caption&gt;With Adding to Defaults&lt;/caption&gt;
  * let datasource = new AjaxDatasource({
  *   // ...
  *   queryBuilder: new QueryBuilder({
@@ -45,14 +88,14 @@ function hasObjectInArray(arr) {
  *     }
  *   })
  * });
- * @example <caption>With Extra Parameter for GET/POST Request</caption>
+ * @example &lt;caption&gt;With Extra Parameter for GET/POST Request&lt;/caption&gt;
  * let datasource = new AjaxDatasource({
  *   // ...
  *   queryBuilder: new QueryBuilder({
  *     serialiseToQueryObject(datasource) {
  *       // Calls the original converter
  *       let queryObject = QueryBuilder.prototype.defaults.serialiseToQueryObject(datasource);
- *       queryObject['extraGreetingData'] = 'HelloWorld';
+ *       queryObject[&apos;extraGreetingData&apos;] = &apos;HelloWorld&apos;;
  *       return queryObject;
  *     },
  *   })
@@ -80,7 +123,7 @@ class QueryBuilder {
    * @typedef {Function} SerialiseToQueryStringCallback
    * @param {Object} objectToSerialise
    * The object to serialise to query string.
-   * By default, it's the query object.
+   * By default, it&apos;s the query object.
    * @returns {string} The query string.
    */
 
@@ -157,7 +200,7 @@ class QueryBuilder {
    */
   getQueryObject(datasource) {
     if (!this.serialiseToQueryObject) {
-      throw new Error('serialiseToQueryObject must be specified and cannot be undefined or null.');
+      throw new Error(&apos;serialiseToQueryObject must be specified and cannot be undefined or null.&apos;);
     }
     return this.serialiseToQueryObject.call(this, datasource);
   }
@@ -177,7 +220,7 @@ class QueryBuilder {
     if (this.serialiseToQueryString) {
       return this.serialiseToQueryString.call(this, objectToSerialise);
     }
-    throw new Error('Query string serialiser is specified as null or undefined in the options.');
+    throw new Error(&apos;Query string serialiser is specified as null or undefined in the options.&apos;);
   }
 }
 
@@ -191,29 +234,29 @@ QueryBuilder.prototype.defaults = {
   // objects, arrays and certain properties.
   serialiseToQueryObject(datasource) {
     const entries = Object.entries(datasource);
-    const filteredEntries = entries.filter((entry) => {
+    const filteredEntries = entries.filter((entry) =&gt; {
       const key = entry[0];
-      if (key.indexOf('_') === 0 || key === 'loading') { // Ignore 'private' properties and specified properties
+      if (key.indexOf(&apos;_&apos;) === 0 || key === &apos;loading&apos;) { // Ignore &apos;private&apos; properties and specified properties
         return false;
       }
-      // Ignore properties that shouldn't be serialised,
+      // Ignore properties that shouldn&apos;t be serialised,
       // i.e. properties that configures the serialisation
       // itself.
       const value = entry[1];
-      if (value === null) { // Don't serialise null values
+      if (value === null) { // Don&apos;t serialise null values
         return false;
       }
-      if (key === 'queryBuilder' || key === 'ajax') {
+      if (key === &apos;queryBuilder&apos; || key === &apos;ajax&apos;) {
         return false;
       }
       return true;
     });
     const queryObject = {
-      // Computed getters doesn't get included in ES6 spread syntax,
+      // Computed getters doesn&apos;t get included in ES6 spread syntax,
       // so we manually include the necessary one below.
       page: datasource.page,
     };
-    filteredEntries.forEach((entry) => {
+    filteredEntries.forEach((entry) =&gt; {
       const key = entry[0];
       const value = entry[1];
       queryObject[key] = value;
@@ -222,12 +265,12 @@ QueryBuilder.prototype.defaults = {
   },
   /* eslint-disable no-param-reassign */
   serialiseToQueryString(objectToSerialise) {
-    Object.keys(objectToSerialise).forEach((prop) => {
-      if (Array.isArray(objectToSerialise[prop]) && hasObjectInArray(objectToSerialise[prop])) {
-        for (let i = 0; i < objectToSerialise[prop].length; i += 1) {
+    Object.keys(objectToSerialise).forEach((prop) =&gt; {
+      if (Array.isArray(objectToSerialise[prop]) &amp;&amp; hasObjectInArray(objectToSerialise[prop])) {
+        for (let i = 0; i &lt; objectToSerialise[prop].length; i += 1) {
           objectToSerialise[prop][i] = JSON.stringify(objectToSerialise[prop][i]);
         }
-      } else if (typeof objectToSerialise[prop] === 'object') {
+      } else if (typeof objectToSerialise[prop] === &apos;object&apos;) {
         objectToSerialise[prop] = JSON.stringify(objectToSerialise[prop]);
       }
     });
@@ -242,8 +285,25 @@ QueryBuilder.prototype.defaults = {
     //   https://www.npmjs.com/package/query-string#stringifyobject-options
     // If you specified a query string serialiser,
     // this options can optionally be used.
-    arrayFormat: 'bracket',
+    arrayFormat: &apos;bracket&apos;,
   },
 };
 
 export default QueryBuilder;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

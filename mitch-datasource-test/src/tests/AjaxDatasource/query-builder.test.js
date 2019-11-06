@@ -12,8 +12,7 @@ const postDsOptions = {
   ajax: {
     method: 'post',
     url: 'https://non-existent-hello-world.com/api/get-items'
-  },
-  queryBuilder: new QueryBuilder()
+  }
 };
 
 test("AJAX with GET", async () => {

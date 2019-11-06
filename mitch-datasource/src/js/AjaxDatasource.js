@@ -56,19 +56,8 @@ class AjaxDatasource extends DatasourceBase {
 
   /**
      * Builds an AJAX handler function.
-     * @param {Function|string|object} ajax Can be either a:
-     *                                      * Callback function, taking in a
-     *                                        query builder object, and returning
-     *                                        a promise object.
-     *                                      * A string which is the URL to the
-     *                                        remote endpoint
-     *                                      * An ajax object of the following format:
-     *                                            {
-     *                                                url: String,
-     *                                                method: String, // 'get' or 'post'
-     *                                                mapper: Function,
-     *                                                options: Object
-     *                                            }
+     * @return {Function} A callback function ajax which
+     *                    performs the actual ajax operation
      */
   _buildAjaxHandler() {
     const ajaxHandler = {
@@ -117,7 +106,7 @@ class AjaxDatasource extends DatasourceBase {
       sender: this,
       prevented: false,
       preventDefault() {
-        this.prevented = true;
+        requestStartArgs.prevented = true;
       },
     };
     this.emit('requeststart', requestStartArgs);

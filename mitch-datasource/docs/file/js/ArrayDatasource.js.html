@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/ArrayDatasource.js | mitch-datasource</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."><meta property="twitter:card" content="summary"><meta property="twitter:title" content="mitch-datasource"><meta property="twitter:description" content="Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc."></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/deltoss/mitch-datasource"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/AjaxDatasource.js~AjaxDatasource.html">AjaxDatasource</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html">ArrayDatasource</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/ArrayDatasource.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import DatasourceBase from &apos;./DatasourceBase&apos;;
+
+class ArrayDatasource extends DatasourceBase {
+  constructor(options = {}) {
+    const mergedOptions = {
+      ...ArrayDatasource.prototype.defaults,
+      ...options,
+    };
+    super(mergedOptions);
+    this._rawData = mergedOptions.data;
+    this._search = mergedOptions.search;
+    this._sort = mergedOptions.sort;
+    this._data = null;
+    this._processedData = null;
+  }
+
+  _getProcessedData() {
+    let processedData = [...this._rawData];
+    if (this.searchArguments) {
+      processedData = this._search.call(this, processedData, this.searchArguments);
+    } else if (this.searchText) {
+      processedData = this._search.call(this, processedData, this.searchText);
+    }
+    if (this._sort &amp;&amp; this.sortArguments) {
+      processedData = this._sort.call(this, processedData, this.sortArguments);
+    }
+    return processedData;
+  }
+
+  /**
+     * Overrides for DatasourceBase
+     */
+
+  /**
+     * @inheritdoc
+     */
+  get total() {
+    if (this._processedData) {
+      return this._processedData.length;
+    }
+    if (this._rawData) {
+      return this._rawData.length;
+    }
+    return 0;
+  }
+
+  /**
+     * @inheritdoc
+     */
+  get data() {
+    return this._data;
+  }
+
+  /**
+     * @inheritdoc
+     */
+  async _update() {
+    if (!this._rawData) {
+      return null;
+    }
+    this._processedData = this._getProcessedData();
+    this._data = this._processedData.slice(this.offset, this.offset + this.size);
+    return this._data;
+  }
+}
+
+ArrayDatasource.prototype.defaults = {
+  data: null,
+  search(data) {
+    return data;
+  },
+  /* eslint-disable no-unused-vars */
+  sort(data, sortArguments) {
+    return data;
+  },
+  /* eslint-enable no-unused-vars */
+};
+
+export default ArrayDatasource;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
