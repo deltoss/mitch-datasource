@@ -33,8 +33,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html">ArrayDatasource</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
 </ul>
 </div>
@@ -45,7 +49,72 @@
 import DatasourceBase from &apos;./DatasourceBase&apos;;
 import QueryBuilder from &apos;./QueryBuilder&apos;;
 
+/**
+ * Datasource to retrieve and manage
+ * data from a remote endpoint.
+ *
+ * @example &lt;caption&gt;Basic Usage&lt;/caption&gt;
+ * async function exampleAsyncFunction() {
+ *   let datasource = new AjaxDatasource({
+ *     ajax: &apos;https://path/to/remote/endpoint&apos;
+ *   });
+ *   await datasource.update();
+ *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ *
+ * @example &lt;caption&gt;Basic Usage with Options Object&lt;/caption&gt;
+ * async function exampleAsyncFunction() {
+ *   let datasource = new AjaxDatasource({
+ *     ajax: {
+ *       // Note pagination/sorting/filtering doesn&apos;t
+ *       // work with this fake endpoint, as even when
+ *       // we send the datasource parameters, the
+ *       // remote endpoint won&apos;t actually vary
+ *       // the returned dataset.
+ *       url: &apos;https://jsonplaceholder.typicode.com/posts&apos;,
+ *       method: &apos;get&apos;,
+ *       // ... Other Axios options
+ *       // `mapper` is a custom option unique to this library
+ *       mapper: function(response) {
+ *         return {
+ *           data: response.data,
+ *           total: response.data.length,
+ *         }
+ *       }
+ *     }
+ *   });
+ *   await datasource.update();
+ *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ *
+ * @example &lt;caption&gt;Basic Usage with Function&lt;/caption&gt;
+ * async function exampleAsyncFunction() {
+ *   let datasource = new AjaxDatasource({
+ *     ajax: async function() {
+ *       return await mockAjaxCall();
+ *     }
+ *   });
+ *   await datasource.update();
+ *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ */
 class AjaxDatasource extends DatasourceBase {
+  /**
+   * The constructor, taking in an options object.
+   * For more passable options, see
+   * {@link DatasourceBase#constructor}
+   * @override
+   * @param {String|Function|Object} options.ajax
+   * Defines the behavior of the AJAX call.
+   * If a string, remote endpoint to contact.
+   * If a function, it&apos;ll call the function
+   * when data is requested. If an object,
+   * will use the object to configure
+   * the AJAX call.
+   */
   constructor(options = {}) {
     let { ajax } = options;
     if (ajax &amp;&amp; typeof ajax === &apos;object&apos;) {
@@ -63,56 +132,96 @@ class AjaxDatasource extends DatasourceBase {
 
     super(mergedOptions);
 
+    /**
+     * The total amount of data items to page through.
+     *
+     * @access private
+     * @type {Number}
+     */
     this._total = null;
+
+    /**
+     * The array of data items.
+     *
+     * @access private
+     * @type {?Array}
+     */
     this._data = null;
+
     if (mergedOptions.queryBuilder instanceof QueryBuilder) {
+      /**
+       * The query builder which constructs
+       * either the query object to pass to
+       * post/delete/put requests, or the
+       * query string to pass to get
+       * requests.
+       *
+       * @access public
+       * @type {QueryBuilder}
+       */
       this.queryBuilder = mergedOptions.queryBuilder;
     } else if (mergedOptions.queryBuilder) {
       this.queryBuilder = new QueryBuilder(mergedOptions.queryBuilder);
     }
+
+    /**
+     * Property defining the behavior
+     * of the AJAX call.
+     * If a string, remote endpoint
+     * to contact. If a function,
+     * it&apos;ll call the function when
+     * data is requested. If an object,
+     * will use the object to configure
+     * the AJAX call.
+     *
+     * @access public
+     * @type {String|Function|Object}
+     */
     this.ajax = mergedOptions.ajax;
   }
 
   /**
-     * Performs an AJAX call.
-     * @param {string} url Url to remote endpoint to ajax for.
-     * @param {string} method The AJAX method.
-     */
-  _ajaxCall(url, method) {
-    const actualMethod = method ? method.toLowerCase() : method;
-    let data = {};
-    let actualUrl = url;
-
-    if (actualMethod === &apos;get&apos;) {
-      actualUrl = `${actualUrl}?${this.queryBuilder.getQueryString(this)}`;
+   * Performs an AJAX call.
+   *
+   * @access private
+   * @param {Object} axiosOptions Ajax options object for axios
+   * @param {String} axiosOptions.url Url to remote endpoint to ajax for.
+   * @param {String} axiosOptions.method The AJAX method, i.e. &apos;get&apos;, &apos;post&apos;, etc.
+   * @return {Promise} Returns the axios promise object, containing
+   *                   the response from remote endpoint.
+   */
+  _ajaxCall({ url, method }) {
+    const actualAxiosOptions = { url, method };
+    actualAxiosOptions.method = actualAxiosOptions.method
+      ? actualAxiosOptions.method.toLowerCase()
+      : actualAxiosOptions.method;
+    if (actualAxiosOptions.method === &apos;get&apos;) {
+      actualAxiosOptions.url = `${actualAxiosOptions.url}?${this.queryBuilder.getQueryString(this)}`;
     } else {
-      data = this.queryBuilder.getQueryObject(this);
+      actualAxiosOptions.data = this.queryBuilder.getQueryObject(this);
     }
-    const axiosOptions = this.ajax.options || {};
-    return axios({
-      ...axiosOptions,
-      method: actualMethod,
-      url: actualUrl,
-      data,
-    });
+    return axios(actualAxiosOptions);
   }
 
   /**
-     * Builds an AJAX handler function.
-     * @return {Function} A callback function ajax which
-     *                    performs the actual ajax operation
-     */
+   * Builds an AJAX handler function.
+   * @access private
+   * @return {Function} A callback function ajax which
+   *                    performs the actual ajax operation
+   */
   _buildAjaxHandler() {
     const ajaxHandler = {
       function: () =&gt; this.ajax.call(this, this.queryBuilder),
       string: () =&gt; {
         const url = this.ajax;
-        return this._ajaxCall(url, &apos;get&apos;);
+        return this._ajaxCall({
+          url,
+          method: &apos;get&apos;,
+        });
       },
       object: () =&gt; {
-        const { url } = this.ajax;
-        const method = this.ajax.method || &apos;get&apos;;
-        return this._ajaxCall(url, method);
+        this.ajax.method = this.ajax.method || &apos;get&apos;;
+        return this._ajaxCall(this.ajax);
       },
     };
     const ajaxObjectType = typeof this.ajax;
@@ -124,26 +233,31 @@ class AjaxDatasource extends DatasourceBase {
   }
 
   /**
-     * Overrides for DatasourceBase
-     */
+   * Overrides for DatasourceBase
+   */
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   * @type {Number}
+   */
   get total() {
     return this._total;
   }
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   * @type {?Array}
+   */
   get data() {
     return this._data;
   }
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   */
   async _update() {
     const requestStartArgs = {
       sender: this,
@@ -174,9 +288,7 @@ class AjaxDatasource extends DatasourceBase {
 AjaxDatasource.prototype.defaults = {
   queryBuilder: {},
   // ajax can be an object, function, or even a simple string
-  ajax: {
-    // Additional options for axios
-    options: {},
+  ajax: { // Axios options object
     // Maps the response to return the data in an expected format
     mapper(response) {
       return {

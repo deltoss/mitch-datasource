@@ -2,7 +2,72 @@ import axios from 'axios';
 import DatasourceBase from './DatasourceBase';
 import QueryBuilder from './QueryBuilder';
 
+/**
+ * Datasource to retrieve and manage
+ * data from a remote endpoint.
+ *
+ * @example <caption>Basic Usage</caption>
+ * async function exampleAsyncFunction() {
+ *   let datasource = new AjaxDatasource({
+ *     ajax: 'https://path/to/remote/endpoint'
+ *   });
+ *   await datasource.update();
+ *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ *
+ * @example <caption>Basic Usage with Options Object</caption>
+ * async function exampleAsyncFunction() {
+ *   let datasource = new AjaxDatasource({
+ *     ajax: {
+ *       // Note pagination/sorting/filtering doesn't
+ *       // work with this fake endpoint, as even when
+ *       // we send the datasource parameters, the
+ *       // remote endpoint won't actually vary
+ *       // the returned dataset.
+ *       url: 'https://jsonplaceholder.typicode.com/posts',
+ *       method: 'get',
+ *       // ... Other Axios options
+ *       // `mapper` is a custom option unique to this library
+ *       mapper: function(response) {
+ *         return {
+ *           data: response.data,
+ *           total: response.data.length,
+ *         }
+ *       }
+ *     }
+ *   });
+ *   await datasource.update();
+ *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ *
+ * @example <caption>Basic Usage with Function</caption>
+ * async function exampleAsyncFunction() {
+ *   let datasource = new AjaxDatasource({
+ *     ajax: async function() {
+ *       return await mockAjaxCall();
+ *     }
+ *   });
+ *   await datasource.update();
+ *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ */
 class AjaxDatasource extends DatasourceBase {
+  /**
+   * The constructor, taking in an options object.
+   * For more passable options, see
+   * {@link DatasourceBase#constructor}
+   * @override
+   * @param {String|Function|Object} options.ajax
+   * Defines the behavior of the AJAX call.
+   * If a string, remote endpoint to contact.
+   * If a function, it'll call the function
+   * when data is requested. If an object,
+   * will use the object to configure
+   * the AJAX call.
+   */
   constructor(options = {}) {
     let { ajax } = options;
     if (ajax && typeof ajax === 'object') {
@@ -20,56 +85,96 @@ class AjaxDatasource extends DatasourceBase {
 
     super(mergedOptions);
 
+    /**
+     * The total amount of data items to page through.
+     *
+     * @access private
+     * @type {Number}
+     */
     this._total = null;
+
+    /**
+     * The array of data items.
+     *
+     * @access private
+     * @type {?Array}
+     */
     this._data = null;
+
     if (mergedOptions.queryBuilder instanceof QueryBuilder) {
+      /**
+       * The query builder which constructs
+       * either the query object to pass to
+       * post/delete/put requests, or the
+       * query string to pass to get
+       * requests.
+       *
+       * @access public
+       * @type {QueryBuilder}
+       */
       this.queryBuilder = mergedOptions.queryBuilder;
     } else if (mergedOptions.queryBuilder) {
       this.queryBuilder = new QueryBuilder(mergedOptions.queryBuilder);
     }
+
+    /**
+     * Property defining the behavior
+     * of the AJAX call.
+     * If a string, remote endpoint
+     * to contact. If a function,
+     * it'll call the function when
+     * data is requested. If an object,
+     * will use the object to configure
+     * the AJAX call.
+     *
+     * @access public
+     * @type {String|Function|Object}
+     */
     this.ajax = mergedOptions.ajax;
   }
 
   /**
-     * Performs an AJAX call.
-     * @param {string} url Url to remote endpoint to ajax for.
-     * @param {string} method The AJAX method.
-     */
-  _ajaxCall(url, method) {
-    const actualMethod = method ? method.toLowerCase() : method;
-    let data = {};
-    let actualUrl = url;
-
-    if (actualMethod === 'get') {
-      actualUrl = `${actualUrl}?${this.queryBuilder.getQueryString(this)}`;
+   * Performs an AJAX call.
+   *
+   * @access private
+   * @param {Object} axiosOptions Ajax options object for axios
+   * @param {String} axiosOptions.url Url to remote endpoint to ajax for.
+   * @param {String} axiosOptions.method The AJAX method, i.e. 'get', 'post', etc.
+   * @return {Promise} Returns the axios promise object, containing
+   *                   the response from remote endpoint.
+   */
+  _ajaxCall({ url, method }) {
+    const actualAxiosOptions = { url, method };
+    actualAxiosOptions.method = actualAxiosOptions.method
+      ? actualAxiosOptions.method.toLowerCase()
+      : actualAxiosOptions.method;
+    if (actualAxiosOptions.method === 'get') {
+      actualAxiosOptions.url = `${actualAxiosOptions.url}?${this.queryBuilder.getQueryString(this)}`;
     } else {
-      data = this.queryBuilder.getQueryObject(this);
+      actualAxiosOptions.data = this.queryBuilder.getQueryObject(this);
     }
-    const axiosOptions = this.ajax.options || {};
-    return axios({
-      ...axiosOptions,
-      method: actualMethod,
-      url: actualUrl,
-      data,
-    });
+    return axios(actualAxiosOptions);
   }
 
   /**
-     * Builds an AJAX handler function.
-     * @return {Function} A callback function ajax which
-     *                    performs the actual ajax operation
-     */
+   * Builds an AJAX handler function.
+   * @access private
+   * @return {Function} A callback function ajax which
+   *                    performs the actual ajax operation
+   */
   _buildAjaxHandler() {
     const ajaxHandler = {
       function: () => this.ajax.call(this, this.queryBuilder),
       string: () => {
         const url = this.ajax;
-        return this._ajaxCall(url, 'get');
+        return this._ajaxCall({
+          url,
+          method: 'get',
+        });
       },
       object: () => {
-        const { url } = this.ajax;
-        const method = this.ajax.method || 'get';
-        return this._ajaxCall(url, method);
+        this.ajax.method = this.ajax.method || 'get';
+        return this._ajaxCall(this.ajax);
       },
     };
     const ajaxObjectType = typeof this.ajax;
@@ -81,26 +186,31 @@ class AjaxDatasource extends DatasourceBase {
   }
 
   /**
-     * Overrides for DatasourceBase
-     */
+   * Overrides for DatasourceBase
+   */
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   * @type {Number}
+   */
   get total() {
     return this._total;
   }
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   * @type {?Array}
+   */
   get data() {
     return this._data;
   }
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   */
   async _update() {
     const requestStartArgs = {
       sender: this,
@@ -131,9 +241,7 @@ class AjaxDatasource extends DatasourceBase {
 AjaxDatasource.prototype.defaults = {
   queryBuilder: {},
   // ajax can be an object, function, or even a simple string
-  ajax: {
-    // Additional options for axios
-    options: {},
+  ajax: { // Axios options object
     // Maps the response to return the data in an expected format
     mapper(response) {
       return {

@@ -33,8 +33,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html">ArrayDatasource</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
 </ul>
 </div>
@@ -43,21 +47,132 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/ArrayDatasource.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import DatasourceBase from &apos;./DatasourceBase&apos;;
 
+/**
+ * Datasource to manage an array of data.
+ *
+ * @example &lt;caption&gt;Basic Usage&lt;/caption&gt;
+ * async function exampleAsyncFunction() {
+ *   let datasource = new ArrayDatasource({
+ *     data: [
+ *       {
+ *         id: 1,
+ *         firstName: &apos;John&apos;,
+ *         lastName: &apos;Smith&apos;
+ *       },
+ *       {
+ *         id: 2,
+ *         firstName: &apos;Mary&apos;,
+ *         lastName: &apos;Jane&apos;
+ *       },
+ *       // ... More
+ *     ]
+ *   });
+ *   await datasource.update();
+ *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ */
 class ArrayDatasource extends DatasourceBase {
+  /**
+   * ToDo: Callback function
+   *
+   * @typedef {Function} SortCallback
+   * @param {DatasourceBase} datasource
+   * The datasource to convert to a query object.
+   * @returns {Object} The query object.
+   */
+
+  /**
+   * ToDo: Callback function
+   *
+   * @typedef {Function} SortCallback
+   * @param {DatasourceBase} datasource
+   * The datasource to convert to a query object.
+   * @returns {Object} The query object.
+   */
+
+  /**
+   * The constructor, taking in an options object.
+   * For more passable options, see
+   * {@link DatasourceBase#constructor}
+   * @override
+   * @param {Array} options.data
+   * The data array of items.
+   * @param {Function} [options.search]
+   * The search function callback, which
+   * gets called when searching is requested.
+   * @param {Function} [options.sort]
+   * The sort function callback, which
+   * gets called when sorting is requested.
+   */
   constructor(options = {}) {
     const mergedOptions = {
       ...ArrayDatasource.prototype.defaults,
       ...options,
     };
     super(mergedOptions);
+    /**
+     * The raw, unfiltered, unsorted,
+     * unpaginated set of data.
+     *
+     * @access private
+     * @type {?Array}
+     */
     this._rawData = mergedOptions.data;
-    this._search = mergedOptions.search;
-    this._sort = mergedOptions.sort;
-    this._data = null;
+
+    /**
+     * The filtered, sorted set of data.
+     * This is not paginated.
+     * Extracted from the raw data
+     * ({@link ArrayDatasource#_rawData})
+     *
+     * @access private
+     * @type {?Array}
+     */
     this._processedData = null;
+
+    /**
+     * The filtered, sorted, paginated set
+     * of data. Extracted from the processed data
+     * ({@link ArrayDatasource#_processedData})
+     *
+     * @access private
+     * @type {?Array}
+     */
+    this._data = null;
+
+    /**
+     * The search callback, called
+     * when search operations was
+     * requested.
+     *
+     * @access private
+     * @type {Function}
+     */
+    this._search = mergedOptions.search;
+
+    /**
+     * The sort callback, called
+     * when sort operations was
+     * requested.
+     *
+     * @access private
+     * @type {Function}
+     */
+    this._sort = mergedOptions.sort;
   }
 
+  /**
+   * Extracts the processed set of data
+   * (i.e sorted, filtered) from the
+   * raw data provided.
+   * @access private
+   * @return {Array} The array of processed data items.
+   */
   _getProcessedData() {
+    if (!this._rawData) {
+      return [];
+    }
     let processedData = [...this._rawData];
     if (this.searchArguments) {
       processedData = this._search.call(this, processedData, this.searchArguments);
@@ -71,12 +186,14 @@ class ArrayDatasource extends DatasourceBase {
   }
 
   /**
-     * Overrides for DatasourceBase
-     */
+   * Overrides for DatasourceBase
+   */
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   * @type {Number}
+   */
   get total() {
     if (this._processedData) {
       return this._processedData.length;
@@ -88,15 +205,18 @@ class ArrayDatasource extends DatasourceBase {
   }
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   * @type {?Array}
+   */
   get data() {
     return this._data;
   }
 
   /**
-     * @inheritdoc
-     */
+   * @inheritdoc
+   * @override
+   */
   async _update() {
     if (!this._rawData) {
       return null;
@@ -109,10 +229,10 @@ class ArrayDatasource extends DatasourceBase {
 
 ArrayDatasource.prototype.defaults = {
   data: null,
-  search(data) {
+  /* eslint-disable no-unused-vars */
+  search(data, searchArguments) {
     return data;
   },
-  /* eslint-disable no-unused-vars */
   sort(data, sortArguments) {
     return data;
   },

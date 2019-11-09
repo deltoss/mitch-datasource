@@ -33,21 +33,25 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html">ArrayDatasource</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import QueryBuilder from &apos;<span><a href="file/js/QueryBuilder.js.html#lineNumber61">mitch-datasource/js/QueryBuilder.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import QueryBuilder from &apos;<span><a href="file/js/QueryBuilder.js.html#lineNumber62">mitch-datasource/js/QueryBuilder.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/QueryBuilder.js.html#lineNumber61">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/QueryBuilder.js.html#lineNumber62">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -106,8 +110,9 @@ or the query string for AJAX get requests</p>
       // ... Do your additional operations
     },
     queryStringOptions: {
+      // Keep the default options
       ...QueryBuilder.prototype.defaults.queryStringOptions,
-      // ... Put additional options here
+      // ... Put additional options here. It&apos;ll override default options
       // For available options, check the docs for QueryBuilder constructor
     }
   })
@@ -218,13 +223,13 @@ or the query string for AJAX get requests</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html#instance-member-serialiseToQueryObject">serialiseToQueryObject</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html#instance-member-serialiseToQueryObject">serialiseToQueryObject</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>See <span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></p>
+        <div data-ice="description"><p>See <span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></p>
 </div>
       </div>
     </td>
@@ -315,7 +320,7 @@ an object and returns that object.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html#instance-method-getQueryString">getQueryString</a></span></span><span class="code" data-ice="signature">(datasource: <span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html#instance-method-getQueryString">getQueryString</a></span></span><span class="code" data-ice="signature">(datasource: <span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
         </p>
       </div>
       <div>
@@ -353,7 +358,7 @@ a query string and returns that string.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber111">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -375,13 +380,13 @@ a query string and returns that string.</p>
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">options</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>The options object.</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="1">
       <td data-ice="name" class="code" data-depth="1">options.serialiseToQueryObject</td>
-      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>Function which converts a datasource
 into a query object (which in turn can
@@ -440,7 +445,7 @@ query string object to the query string.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber132">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber131">source</a></span></span>
     </span>
   </h3>
 
@@ -480,7 +485,7 @@ query string object to the query string.</p>
     
     
     
-    <span class="code" data-ice="name">serialiseToQueryObject</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span>
+    <span class="code" data-ice="name">serialiseToQueryObject</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span>
     <span class="right-info">
       
       
@@ -491,7 +496,7 @@ query string object to the query string.</p>
   
   
   
-  <div data-ice="description"><p>See <span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></p>
+  <div data-ice="description"><p>See <span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></p>
 </div>
 
   
@@ -528,7 +533,7 @@ query string object to the query string.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber145">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber143">source</a></span></span>
     </span>
   </h3>
 
@@ -578,7 +583,7 @@ query string, then you should first check
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber158">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber156">source</a></span></span>
     </span>
   </h3>
 
@@ -651,11 +656,11 @@ part of AJAX post requests.</p>
     
     
     
-    <span class="code" data-ice="name">getQueryString</span><span class="code" data-ice="signature">(datasource: <span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="code" data-ice="name">getQueryString</span><span class="code" data-ice="signature">(datasource: <span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber175">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber173">source</a></span></span>
     </span>
   </h3>
 
@@ -695,7 +700,7 @@ part of AJAX get requests.</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
           <td class="return-desc" data-ice="returnDescription"><p>The query string.</p>
 </td>
         </tr>

@@ -39,8 +39,9 @@ function hasObjectInArray(arr) {
  *       // ... Do your additional operations
  *     },
  *     queryStringOptions: {
+ *       // Keep the default options
  *       ...QueryBuilder.prototype.defaults.queryStringOptions,
- *       // ... Put additional options here
+ *       // ... Put additional options here. It'll override default options
  *       // For available options, check the docs for QueryBuilder constructor
  *     }
  *   })
@@ -64,7 +65,7 @@ class QueryBuilder {
    * into a query object (which in turn can be
    * converted to query string).
    *
-   * @typedef {Function} QueryObjectConverterCallback
+   * @typedef {Function} SerialiseToQueryObjectCallback
    * @param {DatasourceBase} datasource
    * The datasource to convert to a query object.
    * @returns {Object} The query object.
@@ -81,7 +82,7 @@ class QueryBuilder {
    * @param {Object} objectToSerialise
    * The object to serialise to query string.
    * By default, it's the query object.
-   * @returns {string} The query string.
+   * @returns {String} The query string.
    */
 
   /**
@@ -97,8 +98,8 @@ class QueryBuilder {
    */
 
   /**
-   * @param {Object} options The options object.
-   * @param {QueryObjectConverterCallback} [options.serialiseToQueryObject]
+   * @param {Object} [options] The options object.
+   * @param {SerialiseToQueryObjectCallback} [options.serialiseToQueryObject]
    * Function which converts a datasource
    * into a query object (which in turn can
    * be converted to query string).
@@ -114,21 +115,19 @@ class QueryBuilder {
       ...options,
     };
     /**
-     * See {@link QueryObjectConverterCallback}
+     * See {@link SerialiseToQueryObjectCallback}
      *
-     * @name QueryBuilder#serialiseToQueryObject
      * @access public
-     * @type {QueryObjectConverterCallback}
-    */
+     * @type {SerialiseToQueryObjectCallback}
+     */
     this.serialiseToQueryObject = mergedOptions.serialiseToQueryObject;
 
     /**
      * See {@link QueryStringOptions}
      *
-     * @name QueryBuilder#queryStringOptions
      * @access public
      * @type {QueryStringOptions}
-    */
+     */
     this.queryStringOptions = mergedOptions.queryStringOptions;
 
     /**
@@ -138,10 +137,9 @@ class QueryBuilder {
      *
      * For more information, see {@link SerialiseToQueryStringCallback}
      *
-     * @name QueryBuilder#serialiseToQueryString
      * @access public
      * @type {SerialiseToQueryStringCallback}
-    */
+     */
     this.serialiseToQueryString = mergedOptions.serialiseToQueryString;
   }
 
@@ -170,7 +168,7 @@ class QueryBuilder {
    *
    * @param {DatasourceBase} datasource The datasource.
    * @access public
-   * @returns {string} The query string.
+   * @returns {String} The query string.
    */
   getQueryString(datasource) {
     const objectToSerialise = { ...this.getQueryObject(datasource) };

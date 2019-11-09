@@ -1,45 +1,22 @@
 {
-  "coverage": "60.37%",
+  "coverage": "98.11%",
   "expectCount": 53,
-  "actualCount": 32,
+  "actualCount": 52,
   "files": {
     "js/AjaxDatasource.js": {
       "expectCount": 11,
-      "actualCount": 5,
-      "undocumentLines": [
-        5,
-        6,
-        23,
-        24,
-        26,
-        30
-      ]
+      "actualCount": 11,
+      "undocumentLines": []
     },
     "js/ArrayDatasource.js": {
       "expectCount": 11,
-      "actualCount": 3,
-      "undocumentLines": [
-        3,
-        4,
-        10,
-        11,
-        12,
-        13,
-        14,
-        17
-      ]
+      "actualCount": 11,
+      "undocumentLines": []
     },
     "js/DatasourceBase.js": {
       "expectCount": 23,
-      "actualCount": 17,
-      "undocumentLines": [
-        23,
-        24,
-        25,
-        26,
-        27,
-        28
-      ]
+      "actualCount": 23,
+      "undocumentLines": []
     },
     "js/QueryBuilder.js": {
       "expectCount": 8,

@@ -366,10 +366,28 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/arraydatasource.js~arraydatasource.sortcallback",
+    "typedef/index.html#static-typedef-SortCallback",
+    "js/ArrayDatasource.js~ArrayDatasource.SortCallback",
+    "typedef"
+  ],
+  [
+    "js/arraydatasource.js~arraydatasource.sortcallback",
+    "typedef/index.html#static-typedef-SortCallback",
+    "js/ArrayDatasource.js~ArrayDatasource.SortCallback",
+    "typedef"
+  ],
+  [
     "js/datasourcebase.js",
     "file/js/DatasourceBase.js.html",
     "js/DatasourceBase.js",
     "file"
+  ],
+  [
+    "js/datasourcebase.js~datasourcebase#_update",
+    "class/js/DatasourceBase.js~DatasourceBase.html#instance-method-_update",
+    "js/DatasourceBase.js~DatasourceBase#_update",
+    "method"
   ],
   [
     "js/datasourcebase.js~datasourcebase#constructor",
@@ -498,6 +516,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/datasourcebase.js~datasourcebase.multicolumnsearchargs",
+    "typedef/index.html#static-typedef-MultiColumnSearchArgs",
+    "js/DatasourceBase.js~DatasourceBase.MultiColumnSearchArgs",
+    "typedef"
+  ],
+  [
+    "js/datasourcebase.js~datasourcebase.multicolumnsortargs",
+    "typedef/index.html#static-typedef-MultiColumnSortArgs",
+    "js/DatasourceBase.js~DatasourceBase.MultiColumnSortArgs",
+    "typedef"
+  ],
+  [
     "js/querybuilder.js",
     "file/js/QueryBuilder.js.html",
     "js/QueryBuilder.js",
@@ -540,15 +570,15 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "js/querybuilder.js~querybuilder.queryobjectconvertercallback",
-    "typedef/index.html#static-typedef-QueryObjectConverterCallback",
-    "js/QueryBuilder.js~QueryBuilder.QueryObjectConverterCallback",
-    "typedef"
-  ],
-  [
     "js/querybuilder.js~querybuilder.querystringoptions",
     "typedef/index.html#static-typedef-QueryStringOptions",
     "js/QueryBuilder.js~QueryBuilder.QueryStringOptions",
+    "typedef"
+  ],
+  [
+    "js/querybuilder.js~querybuilder.serialisetoqueryobjectcallback",
+    "typedef/index.html#static-typedef-SerialiseToQueryObjectCallback",
+    "js/QueryBuilder.js~QueryBuilder.SerialiseToQueryObjectCallback",
     "typedef"
   ],
   [

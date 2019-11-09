@@ -33,21 +33,25 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html">ArrayDatasource</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html">DatasourceBase</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryObjectConverterCallback">QueryObjectConverterCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ArrayDatasource from &apos;<span><a href="file/js/ArrayDatasource.js.html#lineNumber3">mitch-datasource/js/ArrayDatasource.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ArrayDatasource from &apos;<span><a href="file/js/ArrayDatasource.js.html#lineNumber28">mitch-datasource/js/ArrayDatasource.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/ArrayDatasource.js.html#lineNumber3">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/ArrayDatasource.js.html#lineNumber28">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -67,12 +71,39 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Datasource to manage an array of data.</p>
+</div>
   
 
   
 
-  
+  <div data-ice="exampleDocs">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      <div class="example-caption" data-ice="exampleCaption">Basic Usage</div>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">async function exampleAsyncFunction() {
+  let datasource = new ArrayDatasource({
+    data: [
+      {
+        id: 1,
+        firstName: &apos;John&apos;,
+        lastName: &apos;Smith&apos;
+      },
+      {
+        id: 2,
+        firstName: &apos;Mary&apos;,
+        lastName: &apos;Jane&apos;
+      },
+      // ... More
+    ]
+  });
+  await datasource.update();
+  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+}
+exampleAsyncFunction();</code></pre>
+    </div>
+</div>
 
   
 
@@ -105,7 +136,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The constructor, taking in an options object.</p>
+</div>
       </div>
     </td>
     <td>
@@ -134,7 +166,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html#instance-get-data">data</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html#instance-get-data">data</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
         </p>
       </div>
       <div>
@@ -162,7 +194,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html#instance-get-total">total</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/ArrayDatasource.js~ArrayDatasource.html#instance-get-total">total</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
         </p>
       </div>
       <div>
@@ -190,7 +222,7 @@
       <span class="access" data-ice="access">public</span>
       
       <span class="kind" data-ice="kind">get</span>
-      
+      <span class="abstract" data-ice="abstract">abstract</span>
       <span class="override" data-ice="override"></span>
     </td>
     <td>
@@ -199,7 +231,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-data">data</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-data">data</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
         </p>
       </div>
       <div>
@@ -229,7 +261,7 @@ has, based on pagination, sorting, and filtering.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-isFirstPage">isFirstPage</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-isFirstPage">isFirstPage</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -258,7 +290,7 @@ has, based on pagination, sorting, and filtering.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-isLastPage">isLastPage</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-isLastPage">isLastPage</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -287,7 +319,7 @@ has, based on pagination, sorting, and filtering.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-page">page</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-page">page</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
         </p>
       </div>
       <div>
@@ -317,7 +349,7 @@ currently set to.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-set-page">page</a></span></span><span class="code" data-ice="signature">(newPage: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-set-page">page</a></span></span><span class="code" data-ice="signature">(newPage: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
         </p>
       </div>
       <div>
@@ -345,7 +377,7 @@ currently set to.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-pageTotal">pageTotal</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-pageTotal">pageTotal</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
         </p>
       </div>
       <div>
@@ -365,7 +397,7 @@ currently set to.</p>
       <span class="access" data-ice="access">public</span>
       
       <span class="kind" data-ice="kind">get</span>
-      
+      <span class="abstract" data-ice="abstract">abstract</span>
       <span class="override" data-ice="override"></span>
     </td>
     <td>
@@ -374,7 +406,7 @@ currently set to.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-total">total</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-total">total</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
         </p>
       </div>
       <div>
@@ -404,13 +436,13 @@ for the datasource to page through.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-totalPages">totalPages</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-get-totalPages">totalPages</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The total amount of pages</p>
+        <div data-ice="description"><p>The total amount of pages.</p>
 </div>
       </div>
     </td>
@@ -433,13 +465,15 @@ for the datasource to page through.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-loading">loading</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-loading">loading</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Represents whether the datasource is
+loading or not.</p>
+</div>
       </div>
     </td>
     <td>
@@ -461,13 +495,14 @@ for the datasource to page through.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-offset">offset</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-offset">offset</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The pagination offset.</p>
+</div>
       </div>
     </td>
     <td>
@@ -489,13 +524,15 @@ for the datasource to page through.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchArguments">searchArguments</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchArguments">searchArguments</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The search arguments object, for specific
+or multi-column searching purposes.</p>
+</div>
       </div>
     </td>
     <td>
@@ -517,13 +554,14 @@ for the datasource to page through.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchText">searchText</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchText">searchText</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The text to search for.</p>
+</div>
       </div>
     </td>
     <td>
@@ -545,13 +583,14 @@ for the datasource to page through.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-size">size</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-size">size</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The pagination size, i.e.</p>
+</div>
       </div>
     </td>
     <td>
@@ -573,13 +612,15 @@ for the datasource to page through.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-sortArguments">sortArguments</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-sortArguments">sortArguments</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The search arguments object, for specific
+or multi-column sorting purposes.</p>
+</div>
       </div>
     </td>
     <td>
@@ -688,7 +729,7 @@ for the datasource to page through.</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-method-search">search</a></span></span><span class="code" data-ice="signature">(searchArguments: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-method-search">search</a></span></span><span class="code" data-ice="signature">(searchArguments: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -763,6 +804,37 @@ pagination options.</p>
       
     </td>
   </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-method-_update">_update</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Updates the datasource, using the currently
+configured search text, sort settings, and
+pagination options.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
 </tbody>
 </table>
 </div>
@@ -783,19 +855,54 @@ pagination options.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber4">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber61">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Create a datasource.</p>
+  <div data-ice="description"><p>The constructor, taking in an options object.
+For more passable options, see
+<span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-constructor-constructor">DatasourceBase#constructor</a></span></p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-constructor-constructor">DatasourceBase#constructor</a></span></div>
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.data</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The data array of items.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.search</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>The search function callback, which
+gets called when searching is requested.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.sort</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>The sort function callback, which
+gets called when sorting is requested.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -826,11 +933,11 @@ pagination options.</p>
     
     
     
-    <span class="code" data-ice="name">data</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">data</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber50">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber165">source</a></span></span>
     </span>
   </h3>
 
@@ -871,11 +978,11 @@ has, based on pagination, sorting, and filtering.</p>
     
     
     
-    <span class="code" data-ice="name">total</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="code" data-ice="name">total</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber150">source</a></span></span>
     </span>
   </h3>
 
