@@ -12,7 +12,7 @@ commandsToRun.forEach((command) => {
     process.chdir(path);
     try {
       execSync(command, { stdio: 'inherit' });
-      console.log(`Successfully running the command '${command}' for ${path}`);
+      console.log(`Successfully ran the command '${command}' for ${path}`);
     } catch (ex) {
       console.error(`Failed running the command '${command}' for ${path}... continuing`);
     }

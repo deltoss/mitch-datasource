@@ -11,7 +11,7 @@
     "webpack-build-dev": "webpack --config webpack.config.js --mode=development",
     "webpack-build-prd": "webpack --config webpack.config.js --mode=production",
     "lint": "eslint .",
-    "lint-watch": "nodemon --watch ./src/js --ext * --exec \"npm run lint\"",
+    "lint-watch": "nodemon --watch ./src --ext * --exec \"npm run lint\"",
     "lint-fix": "npm run lint -- --fix"
   },
   "keywords": [
