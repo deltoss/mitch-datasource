@@ -1,0 +1,17 @@
+{
+  "name": "mitch-datasource-documentation",
+  "version": "1.0.0",
+  "description": "Documentation for mitch-datasource",
+  "main": "index.js",
+  "scripts": {
+    "build": "esdoc -c esdoc.json",
+    "watch": "nodemon --watch ../mitch-datasource/src/js --watch ./manual --ext * --exec \"npm run build\""
+  },
+  "devDependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-publish-markdown-plugin": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "nodemon": "^1.19.4"
+  }
+}

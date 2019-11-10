@@ -1,0 +1,2304 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "js/AjaxDatasource.js",
+    "content": "import axios from 'axios';\nimport DatasourceBase from './DatasourceBase';\nimport QueryBuilder from './QueryBuilder';\n\n/**\n * Datasource to retrieve and manage\n * data from a remote endpoint.\n *\n * @example <caption>Basic Usage</caption>\n * async function exampleAsyncFunction() {\n *   let datasource = new AjaxDatasource({\n *     ajax: 'https://path/to/remote/endpoint'\n *   });\n *   await datasource.update();\n *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n * }\n * exampleAsyncFunction();\n *\n * @example <caption>Basic Usage with Options Object</caption>\n * async function exampleAsyncFunction() {\n *   let datasource = new AjaxDatasource({\n *     ajax: {\n *       // Note pagination/sorting/filtering doesn't\n *       // work with this fake endpoint, as even when\n *       // we send the datasource parameters, the\n *       // remote endpoint won't actually vary\n *       // the returned dataset.\n *       url: 'https://jsonplaceholder.typicode.com/posts',\n *       method: 'get',\n *       // ... Other Axios options\n *       // `mapper` is a custom option unique to this library\n *       mapper: function(response) {\n *         return {\n *           data: response.data,\n *           total: response.data.length,\n *         }\n *       }\n *     }\n *   });\n *   await datasource.update();\n *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n * }\n * exampleAsyncFunction();\n *\n * @example <caption>Basic Usage with Function</caption>\n * async function exampleAsyncFunction() {\n *   let datasource = new AjaxDatasource({\n *     ajax: async function() {\n *       return await mockAjaxCall();\n *     }\n *   });\n *   await datasource.update();\n *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n * }\n * exampleAsyncFunction();\n */\nclass AjaxDatasource extends DatasourceBase {\n  /**\n   * The constructor, taking in an options object.\n   * For more passable options, see\n   * {@link DatasourceBase#constructor}\n   * @override\n   * @param {String|Function|Object} options.ajax\n   * Defines the behavior of the AJAX call.\n   * If a string, remote endpoint to contact.\n   * If a function, it'll call the function\n   * when data is requested. If an object,\n   * will use the object to configure\n   * the AJAX call.\n   */\n  constructor(options = {}) {\n    let { ajax } = options;\n    if (ajax && typeof ajax === 'object') {\n      ajax = {\n        ...AjaxDatasource.prototype.defaults.ajax,\n        ...ajax,\n      };\n    }\n\n    const mergedOptions = {\n      ...AjaxDatasource.prototype.defaults,\n      ...options,\n      ajax,\n    };\n\n    super(mergedOptions);\n\n    /**\n     * The total amount of data items to page through.\n     *\n     * @access private\n     * @type {Number}\n     */\n    this._total = null;\n\n    /**\n     * The array of data items.\n     *\n     * @access private\n     * @type {?Array}\n     */\n    this._data = null;\n\n    if (mergedOptions.queryBuilder instanceof QueryBuilder) {\n      /**\n       * The query builder which constructs\n       * either the query object to pass to\n       * post/delete/put requests, or the\n       * query string to pass to get\n       * requests.\n       *\n       * @access public\n       * @type {QueryBuilder}\n       */\n      this.queryBuilder = mergedOptions.queryBuilder;\n    } else if (mergedOptions.queryBuilder) {\n      this.queryBuilder = new QueryBuilder(mergedOptions.queryBuilder);\n    }\n\n    /**\n     * Property defining the behavior\n     * of the AJAX call.\n     * If a string, remote endpoint\n     * to contact. If a function,\n     * it'll call the function when\n     * data is requested. If an object,\n     * will use the object to configure\n     * the AJAX call.\n     *\n     * @access public\n     * @type {String|Function|Object}\n     */\n    this.ajax = mergedOptions.ajax;\n  }\n\n  /**\n   * Performs an AJAX call.\n   *\n   * @access private\n   * @param {Object} axiosOptions Ajax options object for axios\n   * @param {String} axiosOptions.url Url to remote endpoint to ajax for.\n   * @param {String} axiosOptions.method The AJAX method, i.e. 'get', 'post', etc.\n   * @return {Promise} Returns the axios promise object, containing\n   *                   the response from remote endpoint.\n   */\n  _ajaxCall({ url, method }) {\n    const actualAxiosOptions = { url, method };\n    actualAxiosOptions.method = actualAxiosOptions.method\n      ? actualAxiosOptions.method.toLowerCase()\n      : actualAxiosOptions.method;\n    if (actualAxiosOptions.method === 'get') {\n      actualAxiosOptions.url = `${actualAxiosOptions.url}?${this.queryBuilder.getQueryString(this)}`;\n    } else {\n      actualAxiosOptions.data = this.queryBuilder.getQueryObject(this);\n    }\n    return axios(actualAxiosOptions);\n  }\n\n  /**\n   * Builds an AJAX handler function.\n   * @access private\n   * @return {Function} A callback function which performs\n   *                    the actual ajax operation.\n   */\n  _buildAjaxHandler() {\n    const ajaxHandler = {\n      function: () => this.ajax.call(this, this.queryBuilder),\n      string: () => {\n        const url = this.ajax;\n        return this._ajaxCall({\n          url,\n          method: 'get',\n        });\n      },\n      object: () => {\n        this.ajax.method = this.ajax.method || 'get';\n        return this._ajaxCall(this.ajax);\n      },\n    };\n    const ajaxObjectType = typeof this.ajax;\n    const actualAjaxHandler = ajaxHandler[ajaxObjectType];\n    if (!actualAjaxHandler) {\n      throw new Error(`Does not support provided ajax object of type ${ajaxObjectType}`);\n    }\n    return actualAjaxHandler;\n  }\n\n  /**\n   * Overrides for DatasourceBase\n   */\n\n  /**\n   * @inheritdoc\n   * @override\n   * @type {Number}\n   */\n  get total() {\n    return this._total;\n  }\n\n  /**\n   * @inheritdoc\n   * @override\n   * @type {?Array}\n   */\n  get data() {\n    return this._data;\n  }\n\n  /**\n   * @inheritdoc\n   * @override\n   */\n  async _update() {\n    const requestStartArgs = {\n      sender: this,\n      prevented: false,\n      preventDefault() {\n        requestStartArgs.prevented = true;\n      },\n    };\n    this.emit('requeststart', requestStartArgs);\n    if (requestStartArgs.prevented) {\n      return null;\n    }\n    const ajaxHandler = this._buildAjaxHandler();\n    const response = await ajaxHandler.call(this);\n    this.emit('requestend', {\n      sender: this,\n      response,\n    });\n    // If not provided an object, use the default mapper\n    const mapper = this.ajax.mapper || AjaxDatasource.prototype.defaults.ajax.mapper;\n    const mappedObject = mapper.call(this, response);\n    this._data = mappedObject.data;\n    this._total = mappedObject.total;\n    return response;\n  }\n}\n\nAjaxDatasource.prototype.defaults = {\n  queryBuilder: {},\n  // ajax can be an object, function, or even a simple string\n  ajax: { // Axios options object\n    // Maps the response to return the data in an expected format\n    mapper(response) {\n      return {\n        data: response.data,\n        total: response.total,\n      };\n    },\n  },\n};\n\nexport default AjaxDatasource;\n",
+    "static": true,
+    "longname": "D:/Git Repositories/Packages/mitch-datasource/projects/mitch-datasource/src/js/AjaxDatasource.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "name": "AjaxDatasource",
+    "memberof": "js/AjaxDatasource.js",
+    "static": true,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource",
+    "access": "public",
+    "export": true,
+    "importPath": "mitch-datasource-documentation/js/AjaxDatasource.js",
+    "importStyle": "AjaxDatasource",
+    "description": "Datasource to retrieve and manage\ndata from a remote endpoint.",
+    "examples": [
+      "<caption>Basic Usage</caption>\nasync function exampleAsyncFunction() {\n  let datasource = new AjaxDatasource({\n    ajax: 'https://path/to/remote/endpoint'\n  });\n  await datasource.update();\n  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n}\nexampleAsyncFunction();",
+      "<caption>Basic Usage with Options Object</caption>\nasync function exampleAsyncFunction() {\n  let datasource = new AjaxDatasource({\n    ajax: {\n      // Note pagination/sorting/filtering doesn't\n      // work with this fake endpoint, as even when\n      // we send the datasource parameters, the\n      // remote endpoint won't actually vary\n      // the returned dataset.\n      url: 'https://jsonplaceholder.typicode.com/posts',\n      method: 'get',\n      // ... Other Axios options\n      // `mapper` is a custom option unique to this library\n      mapper: function(response) {\n        return {\n          data: response.data,\n          total: response.data.length,\n        }\n      }\n    }\n  });\n  await datasource.update();\n  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n}\nexampleAsyncFunction();",
+      "<caption>Basic Usage with Function</caption>\nasync function exampleAsyncFunction() {\n  let datasource = new AjaxDatasource({\n    ajax: async function() {\n      return await mockAjaxCall();\n    }\n  });\n  await datasource.update();\n  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n}\nexampleAsyncFunction();"
+    ],
+    "lineNumber": 57,
+    "interface": false,
+    "extends": [
+      "js/DatasourceBase.js~DatasourceBase"
+    ]
+  },
+  {
+    "__docId__": 50,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#constructor",
+    "access": "public",
+    "description": "The constructor, taking in an options object.\nFor more passable options, see\n{@link DatasourceBase#constructor}",
+    "lineNumber": 71,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String",
+          "Function",
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.ajax",
+        "description": "Defines the behavior of the AJAX call.\nIf a string, remote endpoint to contact.\nIf a function, it'll call the function\nwhen data is requested. If an object,\nwill use the object to configure\nthe AJAX call."
+      }
+    ],
+    "override": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "member",
+    "name": "_total",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#_total",
+    "access": "private",
+    "description": "The total amount of data items to page through.",
+    "lineNumber": 94,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "member",
+    "name": "_data",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#_data",
+    "access": "private",
+    "description": "The array of data items.",
+    "lineNumber": 102,
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "member",
+    "name": "queryBuilder",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#queryBuilder",
+    "access": "public",
+    "description": "The query builder which constructs\neither the query object to pass to\npost/delete/put requests, or the\nquery string to pass to get\nrequests.",
+    "lineNumber": 115,
+    "type": {
+      "nullable": null,
+      "types": [
+        "QueryBuilder"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "member",
+    "name": "ajax",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#ajax",
+    "access": "public",
+    "description": "Property defining the behavior\nof the AJAX call.\nIf a string, remote endpoint\nto contact. If a function,\nit'll call the function when\ndata is requested. If an object,\nwill use the object to configure\nthe AJAX call.",
+    "lineNumber": 133,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String",
+        "Function",
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "_ajaxCall",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#_ajaxCall",
+    "access": "private",
+    "description": "Performs an AJAX call.",
+    "lineNumber": 146,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "axiosOptions",
+        "description": "Ajax options object for axios"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "axiosOptions.url",
+        "description": "Url to remote endpoint to ajax for."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "axiosOptions.method",
+        "description": "The AJAX method, i.e. 'get', 'post', etc."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "Returns the axios promise object, containing\n                  the response from remote endpoint."
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "_buildAjaxHandler",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#_buildAjaxHandler",
+    "access": "private",
+    "description": "Builds an AJAX handler function.",
+    "lineNumber": 165,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "A callback function which performs\n                   the actual ajax operation."
+    },
+    "ignore": true,
+    "params": []
+  },
+  {
+    "__docId__": 58,
+    "kind": "get",
+    "name": "total",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#total",
+    "access": "public",
+    "description": "",
+    "lineNumber": 197,
+    "unknown": [
+      {
+        "tagName": "@inheritdoc",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "override": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "get",
+    "name": "data",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#data",
+    "access": "public",
+    "description": "",
+    "lineNumber": 206,
+    "unknown": [
+      {
+        "tagName": "@inheritdoc",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "override": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "_update",
+    "memberof": "js/AjaxDatasource.js~AjaxDatasource",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/AjaxDatasource.js~AjaxDatasource#_update",
+    "access": "private",
+    "description": "",
+    "lineNumber": 214,
+    "unknown": [
+      {
+        "tagName": "@inheritdoc",
+        "tagValue": ""
+      }
+    ],
+    "override": true,
+    "ignore": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "file",
+    "name": "js/ArrayDatasource.js",
+    "content": "import DatasourceBase from './DatasourceBase';\n\n/**\n * Datasource to manage an array of data.\n *\n * @example <caption>Basic Usage</caption>\n * async function exampleAsyncFunction() {\n *   let datasource = new ArrayDatasource({\n *     data: [\n *       {\n *         id: 1,\n *         firstName: 'John',\n *         lastName: 'Smith'\n *       },\n *       {\n *         id: 2,\n *         firstName: 'Mary',\n *         lastName: 'Jane'\n *       },\n *       // ... More\n *     ]\n *   });\n *   await datasource.update();\n *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n * }\n * exampleAsyncFunction();\n */\nclass ArrayDatasource extends DatasourceBase {\n  /**\n   * ToDo: Callback function\n   *\n   * @typedef {Function} SortCallback\n   * @param {DatasourceBase} datasource\n   * The datasource to convert to a query object.\n   * @returns {Object} The query object.\n   */\n\n  /**\n   * ToDo: Callback function\n   *\n   * @typedef {Function} SortCallback\n   * @param {DatasourceBase} datasource\n   * The datasource to convert to a query object.\n   * @returns {Object} The query object.\n   */\n\n  /**\n   * The constructor, taking in an options object.\n   * For more passable options, see\n   * {@link DatasourceBase#constructor}\n   * @override\n   * @param {Array} options.data\n   * The data array of items.\n   * @param {Function} [options.search]\n   * The search function callback, which\n   * gets called when searching is requested.\n   * @param {Function} [options.sort]\n   * The sort function callback, which\n   * gets called when sorting is requested.\n   */\n  constructor(options = {}) {\n    const mergedOptions = {\n      ...ArrayDatasource.prototype.defaults,\n      ...options,\n    };\n    super(mergedOptions);\n    /**\n     * The raw, unfiltered, unsorted,\n     * unpaginated set of data.\n     *\n     * @access private\n     * @type {?Array}\n     */\n    this._rawData = mergedOptions.data;\n\n    /**\n     * The filtered, sorted set of data.\n     * This is not paginated.\n     * Extracted from the raw data\n     * ({@link ArrayDatasource#_rawData})\n     *\n     * @access private\n     * @type {?Array}\n     */\n    this._processedData = null;\n\n    /**\n     * The filtered, sorted, paginated set\n     * of data. Extracted from the processed data\n     * ({@link ArrayDatasource#_processedData})\n     *\n     * @access private\n     * @type {?Array}\n     */\n    this._data = null;\n\n    /**\n     * The search callback, called\n     * when search operations was\n     * requested.\n     *\n     * @access private\n     * @type {Function}\n     */\n    this._search = mergedOptions.search;\n\n    /**\n     * The sort callback, called\n     * when sort operations was\n     * requested.\n     *\n     * @access private\n     * @type {Function}\n     */\n    this._sort = mergedOptions.sort;\n  }\n\n  /**\n   * Extracts the processed set of data\n   * (i.e sorted, filtered) from the\n   * raw data provided.\n   * @access private\n   * @return {Array} The array of processed data items.\n   */\n  _getProcessedData() {\n    if (!this._rawData) {\n      return [];\n    }\n    let processedData = [...this._rawData];\n    if (this.searchArguments) {\n      processedData = this._search.call(this, processedData, this.searchArguments);\n    } else if (this.searchText) {\n      processedData = this._search.call(this, processedData, this.searchText);\n    }\n    if (this._sort && this.sortArguments) {\n      processedData = this._sort.call(this, processedData, this.sortArguments);\n    }\n    return processedData;\n  }\n\n  /**\n   * Overrides for DatasourceBase\n   */\n\n  /**\n   * @inheritdoc\n   * @override\n   * @type {Number}\n   */\n  get total() {\n    if (this._processedData) {\n      return this._processedData.length;\n    }\n    if (this._rawData) {\n      return this._rawData.length;\n    }\n    return 0;\n  }\n\n  /**\n   * @inheritdoc\n   * @override\n   * @type {?Array}\n   */\n  get data() {\n    return this._data;\n  }\n\n  /**\n   * @inheritdoc\n   * @override\n   */\n  async _update() {\n    if (!this._rawData) {\n      return null;\n    }\n    this._processedData = this._getProcessedData();\n    this._data = this._processedData.slice(this.offset, this.offset + this.size);\n    return this._data;\n  }\n}\n\nArrayDatasource.prototype.defaults = {\n  data: null,\n  /* eslint-disable no-unused-vars */\n  search(data, searchArguments) {\n    return data;\n  },\n  sort(data, sortArguments) {\n    return data;\n  },\n  /* eslint-enable no-unused-vars */\n};\n\nexport default ArrayDatasource;\n",
+    "static": true,
+    "longname": "D:/Git Repositories/Packages/mitch-datasource/projects/mitch-datasource/src/js/ArrayDatasource.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 64,
+    "kind": "class",
+    "name": "ArrayDatasource",
+    "memberof": "js/ArrayDatasource.js",
+    "static": true,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource",
+    "access": "public",
+    "export": true,
+    "importPath": "mitch-datasource-documentation/js/ArrayDatasource.js",
+    "importStyle": "ArrayDatasource",
+    "description": "Datasource to manage an array of data.",
+    "examples": [
+      "<caption>Basic Usage</caption>\nasync function exampleAsyncFunction() {\n  let datasource = new ArrayDatasource({\n    data: [\n      {\n        id: 1,\n        firstName: 'John',\n        lastName: 'Smith'\n      },\n      {\n        id: 2,\n        firstName: 'Mary',\n        lastName: 'Jane'\n      },\n      // ... More\n    ]\n  });\n  await datasource.update();\n  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);\n}\nexampleAsyncFunction();"
+    ],
+    "lineNumber": 28,
+    "interface": false,
+    "extends": [
+      "js/DatasourceBase.js~DatasourceBase"
+    ]
+  },
+  {
+    "__docId__": 65,
+    "kind": "typedef",
+    "name": "SortCallback",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "static": true,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource.SortCallback",
+    "access": "public",
+    "description": "ToDo: Callback function",
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Object} The query object."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "DatasourceBase"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "datasource",
+        "description": "The datasource to convert to a query object."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The query object."
+    },
+    "type": {
+      "types": [
+        "Function"
+      ],
+      "optional": false,
+      "name": "SortCallback"
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "typedef",
+    "name": "SortCallback",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "static": true,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource.SortCallback",
+    "access": "public",
+    "description": "ToDo: Callback function",
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Object} The query object."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "DatasourceBase"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "datasource",
+        "description": "The datasource to convert to a query object."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The query object."
+    },
+    "type": {
+      "types": [
+        "Function"
+      ],
+      "optional": false,
+      "name": "SortCallback"
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#constructor",
+    "access": "public",
+    "description": "The constructor, taking in an options object.\nFor more passable options, see\n{@link DatasourceBase#constructor}",
+    "lineNumber": 61,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.data",
+        "description": "The data array of items."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.search",
+        "description": "The search function callback, which\ngets called when searching is requested."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.sort",
+        "description": "The sort function callback, which\ngets called when sorting is requested."
+      }
+    ],
+    "override": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "member",
+    "name": "_rawData",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#_rawData",
+    "access": "private",
+    "description": "The raw, unfiltered, unsorted,\nunpaginated set of data.",
+    "lineNumber": 74,
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "member",
+    "name": "_processedData",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#_processedData",
+    "access": "private",
+    "description": "The filtered, sorted set of data.\nThis is not paginated.\nExtracted from the raw data\n({@link ArrayDatasource#_rawData})",
+    "lineNumber": 85,
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "member",
+    "name": "_data",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#_data",
+    "access": "private",
+    "description": "The filtered, sorted, paginated set\nof data. Extracted from the processed data\n({@link ArrayDatasource#_processedData})",
+    "lineNumber": 95,
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "member",
+    "name": "_search",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#_search",
+    "access": "private",
+    "description": "The search callback, called\nwhen search operations was\nrequested.",
+    "lineNumber": 105,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "member",
+    "name": "_sort",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#_sort",
+    "access": "private",
+    "description": "The sort callback, called\nwhen sort operations was\nrequested.",
+    "lineNumber": 115,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "name": "_getProcessedData",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#_getProcessedData",
+    "access": "private",
+    "description": "Extracts the processed set of data\n(i.e sorted, filtered) from the\nraw data provided.",
+    "lineNumber": 125,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": "The array of processed data items."
+    },
+    "ignore": true,
+    "params": []
+  },
+  {
+    "__docId__": 74,
+    "kind": "get",
+    "name": "total",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#total",
+    "access": "public",
+    "description": "",
+    "lineNumber": 150,
+    "unknown": [
+      {
+        "tagName": "@inheritdoc",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "override": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "get",
+    "name": "data",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#data",
+    "access": "public",
+    "description": "",
+    "lineNumber": 165,
+    "unknown": [
+      {
+        "tagName": "@inheritdoc",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "override": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "method",
+    "name": "_update",
+    "memberof": "js/ArrayDatasource.js~ArrayDatasource",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/ArrayDatasource.js~ArrayDatasource#_update",
+    "access": "private",
+    "description": "",
+    "lineNumber": 173,
+    "unknown": [
+      {
+        "tagName": "@inheritdoc",
+        "tagValue": ""
+      }
+    ],
+    "override": true,
+    "ignore": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 79,
+    "kind": "file",
+    "name": "js/DatasourceBase.js",
+    "content": "import EventEmitter from 'events';\n\n/**\n * An abstract class for derived datasource\n * classes to use to represent core collections\n * of data.\n *\n * It provides additional features such\n * as pagination, sorting, searching, etc.\n */\nclass DatasourceBase extends EventEmitter {\n  /**\n   * The object used for multi-column or\n   * specific-column searching. It should be\n   * in the format of:\n   * ```\n   * {\n   *   '[fieldNameToSearch1]': '[textToSearch]',\n   *   // ...\n   *   '[fieldNameToSearchN]': '[textToSearch]'\n   * }\n   * ```\n   *\n   * @typedef {Object} MultiColumnSearchArgs\n   * @example\n   * {\n   *    'firstName': 'michael',\n   *    'lastName': 'jackson'\n   * }\n   */\n\n  /**\n   * The object used for multi-column or\n   * specific-column sorting. It should be\n   * in the format of:\n   * ```\n   * {\n   *   '[fieldNameToSort1]': '[desc|descend|descending|asc|ascend|ascending]',\n   *   // ...\n   *   '[fieldNameToSortN]': '[desc|descend|descending|asc|ascend|ascending]'\n   * }\n   * ```\n   *\n   * @typedef {Object} MultiColumnSortArgs\n   * @example\n   * {\n   *    'firstName': 'asc',\n   *    'lastName': 'desc'\n   * }\n   */\n\n  /**\n   * Create a datasource.\n   * @param {Object} [options]\n   * The datasource options.\n   * @param {Boolean} [options.loading=false]\n   * Represents whether the datasource is\n   * loading or not.\n   * @param {Number} [options.offset=0]\n   * The pagination offset. It skips the\n   * specified amount of items when querying.\n   * @param {Number} [options.page=1]\n   * The page Number for data pagination.\n   * @param {Number} [options.size=10]\n   * The pagination size, i.e. the Number\n   * of records per page.\n   * @param {String} [options.searchText=null]\n   * The text to search for. Used to filter\n   * the data items.\n   * @param {MultiColumnSearchArgs} [options.searchArguments=null]\n   * The search arguments object, for specific\n   * or multi-column searching purposes.\n   * @param {MultiColumnSortArgs} [options.sortArguments=null]\n   * The sort arguments object, for specific\n   * or multi-column sorting purposes.\n   */\n  constructor(options = {}) {\n    super();\n    const mergedOptions = {\n      ...DatasourceBase.prototype.defaults,\n      ...options,\n    };\n\n    /**\n     * Represents whether the datasource is\n     * loading or not.\n     *\n     * @access public\n     * @type {Boolean}\n     */\n    this.loading = mergedOptions.loading;\n\n    /**\n     * The pagination offset. It skips the\n     * specified amount of items when querying.\n     *\n     * @access public\n     * @type {Number}\n     */\n    this.offset = mergedOptions.offset;\n\n    /**\n     * The pagination size, i.e. the Number\n     * of records per page.\n     *\n     * @access public\n     * @type {Number}\n     */\n    this.size = mergedOptions.size;\n\n    /**\n     * The text to search for. Used to filter\n     * the data items.\n     *\n     * @access public\n     * @type {String}\n     */\n    this.searchText = mergedOptions.searchText;\n\n    /**\n     * The search arguments object, for specific\n     * or multi-column searching purposes.\n     *\n     * @access public\n     * @type {MultiColumnSearchArgs}\n     */\n    this.searchArguments = mergedOptions.searchArguments;\n\n    /**\n     * The search arguments object, for specific\n     * or multi-column sorting purposes.\n     *\n     * @access public\n     * @type {MultiColumnSortArgs}\n     */\n    this.sortArguments = mergedOptions.sortArguments;\n\n    if (mergedOptions.page) {\n      /**\n       * The page Number for data pagination.\n       *\n       * @access public\n       * @type {Number}\n       */\n      this.page = mergedOptions.page;\n    }\n  }\n\n  /**\n   * Overridables\n   */\n\n  /**\n   * Gets the current set of data the datasource\n   * has, based on pagination, sorting, and filtering.\n   * @abstract\n   * @access public\n   * @type {?Array}\n   */\n  get data() {\n    throw new Error(`Getter not supported for ${this.constructor.name}`);\n  }\n\n  /**\n   * Gets the total amount of data items available\n   * for the datasource to page through.\n   * @abstract\n   * @type {Number}\n   */\n  get total() {\n    throw new Error(`Getter not supported for ${this.constructor.name}`);\n  }\n\n  /**\n   * Updates the datasource, using the currently\n   * configured search text, sort settings, and\n   * pagination options.\n   * @abstract\n   * @access protected\n   * @return {Promise} A promise object, resolved when the update is completed.\n   */\n  _update() {\n    throw new Error(`Method not supported for ${this.constructor.name}`);\n  }\n\n  /**\n   * Getters & Setters\n   */\n\n  /**\n   * Gets the total amount of data items for the current page.\n   * @access public\n   * @type {?Array}\n   */\n  get pageTotal() {\n    if (this.offset === this.total) {\n      return 0;\n    }\n    const itemsRemaining = this.total - this.offset;\n    if (itemsRemaining <= this.size) {\n      return itemsRemaining;\n    }\n    return this.size;\n  }\n\n  /**\n   * Gets the current page the datasource is\n   * currently set to.\n   * @access public\n   * @type {Number}\n   */\n  get page() {\n    if (this.totalPages === 0) {\n      return 0;\n    }\n    return (this.offset + this.size) / this.size;\n  }\n\n  /**\n   * @param  {Number} newPage - The new page to set to.\n   * @access public\n   * @type {Number}\n   */\n  set page(newPage) {\n    this.offset = newPage * this.size - this.size;\n  }\n\n  /**\n   * Boolean to indicate whether it's the first page or not.\n   * @access public\n   * @type {Boolean}\n   */\n  get isFirstPage() {\n    if (this.page <= 1) {\n      return true;\n    }\n    return false;\n  }\n\n  /**\n   * Boolean to indicate whether it's the last page or not.\n   * @access public\n   * @type {Boolean}\n   */\n  get isLastPage() {\n    if (this.page >= this.totalPages) {\n      return true;\n    }\n    return false;\n  }\n\n  /**\n   * The total amount of pages.\n   * Returns null if total wasn't provided.\n   * A Number representing current page otherwise.\n   * @access public\n   * @type {?Number}\n   */\n  get totalPages() {\n    if (this.total === null || !this.size) {\n      return null;\n    }\n    if (this.total === 0) {\n      return 0;\n    }\n    return Math.ceil(this.total / this.size);\n  }\n\n  /**\n   * Methods\n   */\n\n  /**\n   * Updates the datasource, using the currently\n   * configured search text, sort settings, and\n   * pagination options.\n   * @access public\n   * @return {Promise} A promise object, resolved when the update is completed.\n   */\n  async update() {\n    this.loading = true;\n    try {\n      const updateStartArgs = {\n        sender: this,\n        prevented: false,\n        preventDefault() {\n          updateStartArgs.prevented = true;\n        },\n      };\n      this.emit('updatestart', updateStartArgs);\n      if (updateStartArgs.prevented) {\n        return null;\n      }\n      const updatedResponse = await this._update();\n      this.emit('updateend', {\n        sender: this,\n      });\n      this.loading = false;\n      return updatedResponse;\n    } catch (ex) {\n      this.loading = false;\n      throw ex;\n    }\n  }\n\n  /**\n   * Traverse to the specified page, and update the datasource accordingly.\n   * @access public\n   * @param  {Number} pageNum - The new page to traverse to.\n   * @return {Promise} A promise with a boolean data. True if\n   *                   successfully traversed to specified page.\n   *                   False otherwise.\n   */\n  async goToPage(pageNum) {\n    if (pageNum > 0 && pageNum <= this.totalPages) {\n      this.page = pageNum;\n      await this.update();\n      return true;\n    }\n    return false;\n  }\n\n  /**\n   * Traverse to the next page, and update the datasource accordingly.\n   * @return {Promise} A promise with a boolean data. True if\n   *                   successfully traversed to next page.\n   *                   False otherwise.\n   */\n  async nextPage() {\n    return this.goToPage(this.page + 1);\n  }\n\n  /**\n   * Traverse to the previous page, and update the datasource accordingly.\n   * @access public\n   * @return {Promise} A promise with a boolean data. True if\n   *                   successfully traversed to previous page.\n   *                   False otherwise.\n   */\n  async prevPage() {\n    return this.goToPage(this.page - 1);\n  }\n\n  /**\n   * Given a search text, filters the data accordingly.\n   * @access public\n   * @param  {String} searchArguments - The search text to filter with, or\n   *                                    the search arguments object to filter\n   *                                    with specific column filtering.\n   * @return {Promise} A promise object, resolved when the search is completed.\n   */\n  async search(searchArguments) {\n    this.searchText = null;\n    this.searchArguments = null;\n    if (typeof searchArguments === 'string') {\n      this.searchText = searchArguments;\n    } else {\n      this.searchArguments = searchArguments;\n    }\n    this.offset = 0;\n    return this.update();\n  }\n\n  /**\n   * Sort the data based on a field and direction.\n   * @access public\n   * @param  {Object} sortArguments - Object with keys as the field names to sort.\n   *                                  The values of the object is the sort direction.\n   *                                  The sort direction can be 'asc', 'ascend', 'desc',\n   *                                  'descending'\n   * @return {Promise} A promise object, resolved when the sorting is completed.\n   */\n  async sort(sortArguments = null) {\n    this.sortArguments = sortArguments;\n    return this.update();\n  }\n}\n\nDatasourceBase.prototype.defaults = {\n  loading: false,\n  offset: 0,\n  size: 10,\n  searchText: null,\n  searchArguments: null,\n  sortArguments: null,\n};\n\nexport default DatasourceBase;\n",
+    "static": true,
+    "longname": "D:/Git Repositories/Packages/mitch-datasource/projects/mitch-datasource/src/js/DatasourceBase.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 80,
+    "kind": "class",
+    "name": "DatasourceBase",
+    "memberof": "js/DatasourceBase.js",
+    "static": true,
+    "longname": "js/DatasourceBase.js~DatasourceBase",
+    "access": "public",
+    "export": true,
+    "importPath": "mitch-datasource-documentation/js/DatasourceBase.js",
+    "importStyle": "DatasourceBase",
+    "description": "An abstract class for derived datasource\nclasses to use to represent core collections\nof data.\n\nIt provides additional features such\nas pagination, sorting, searching, etc.",
+    "lineNumber": 11,
+    "interface": false,
+    "extends": [
+      "events~EventEmitter"
+    ]
+  },
+  {
+    "__docId__": 81,
+    "kind": "typedef",
+    "name": "MultiColumnSearchArgs",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": true,
+    "longname": "js/DatasourceBase.js~DatasourceBase.MultiColumnSearchArgs",
+    "access": "public",
+    "description": "The object used for multi-column or\nspecific-column searching. It should be\nin the format of:\n```\n{\n  '[fieldNameToSearch1]': '[textToSearch]',\n  // ...\n  '[fieldNameToSearchN]': '[textToSearch]'\n}\n```",
+    "examples": [
+      "{\n   'firstName': 'michael',\n   'lastName': 'jackson'\n}"
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "MultiColumnSearchArgs"
+    }
+  },
+  {
+    "__docId__": 82,
+    "kind": "typedef",
+    "name": "MultiColumnSortArgs",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": true,
+    "longname": "js/DatasourceBase.js~DatasourceBase.MultiColumnSortArgs",
+    "access": "public",
+    "description": "The object used for multi-column or\nspecific-column sorting. It should be\nin the format of:\n```\n{\n  '[fieldNameToSort1]': '[desc|descend|descending|asc|ascend|ascending]',\n  // ...\n  '[fieldNameToSortN]': '[desc|descend|descending|asc|ascend|ascending]'\n}\n```",
+    "examples": [
+      "{\n   'firstName': 'asc',\n   'lastName': 'desc'\n}"
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "MultiColumnSortArgs"
+    }
+  },
+  {
+    "__docId__": 83,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#constructor",
+    "access": "public",
+    "description": "Create a datasource.",
+    "lineNumber": 77,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "The datasource options."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "options.loading",
+        "description": "Represents whether the datasource is\nloading or not."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0",
+        "defaultRaw": 0,
+        "name": "options.offset",
+        "description": "The pagination offset. It skips the\nspecified amount of items when querying."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "1",
+        "defaultRaw": 1,
+        "name": "options.page",
+        "description": "The page Number for data pagination."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "10",
+        "defaultRaw": 10,
+        "name": "options.size",
+        "description": "The pagination size, i.e. the Number\nof records per page."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "null",
+        "defaultRaw": null,
+        "name": "options.searchText",
+        "description": "The text to search for. Used to filter\nthe data items."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "MultiColumnSearchArgs"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "null",
+        "defaultRaw": null,
+        "name": "options.searchArguments",
+        "description": "The search arguments object, for specific\nor multi-column searching purposes."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "MultiColumnSortArgs"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "null",
+        "defaultRaw": null,
+        "name": "options.sortArguments",
+        "description": "The sort arguments object, for specific\nor multi-column sorting purposes."
+      }
+    ]
+  },
+  {
+    "__docId__": 84,
+    "kind": "member",
+    "name": "loading",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#loading",
+    "access": "public",
+    "description": "Represents whether the datasource is\nloading or not.",
+    "lineNumber": 91,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 85,
+    "kind": "member",
+    "name": "offset",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#offset",
+    "access": "public",
+    "description": "The pagination offset. It skips the\nspecified amount of items when querying.",
+    "lineNumber": 100,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 86,
+    "kind": "member",
+    "name": "size",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#size",
+    "access": "public",
+    "description": "The pagination size, i.e. the Number\nof records per page.",
+    "lineNumber": 109,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 87,
+    "kind": "member",
+    "name": "searchText",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#searchText",
+    "access": "public",
+    "description": "The text to search for. Used to filter\nthe data items.",
+    "lineNumber": 118,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "member",
+    "name": "searchArguments",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#searchArguments",
+    "access": "public",
+    "description": "The search arguments object, for specific\nor multi-column searching purposes.",
+    "lineNumber": 127,
+    "type": {
+      "nullable": null,
+      "types": [
+        "MultiColumnSearchArgs"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 89,
+    "kind": "member",
+    "name": "sortArguments",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#sortArguments",
+    "access": "public",
+    "description": "The search arguments object, for specific\nor multi-column sorting purposes.",
+    "lineNumber": 136,
+    "type": {
+      "nullable": null,
+      "types": [
+        "MultiColumnSortArgs"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 91,
+    "kind": "get",
+    "name": "data",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#data",
+    "access": "public",
+    "description": "Gets the current set of data the datasource\nhas, based on pagination, sorting, and filtering.",
+    "lineNumber": 160,
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "abstract": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "get",
+    "name": "total",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#total",
+    "access": "public",
+    "description": "Gets the total amount of data items available\nfor the datasource to page through.",
+    "lineNumber": 170,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "abstract": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "name": "_update",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#_update",
+    "access": "protected",
+    "description": "Updates the datasource, using the currently\nconfigured search text, sort settings, and\npagination options.",
+    "lineNumber": 182,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "A promise object, resolved when the update is completed."
+    },
+    "abstract": true,
+    "params": []
+  },
+  {
+    "__docId__": 94,
+    "kind": "get",
+    "name": "pageTotal",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#pageTotal",
+    "access": "public",
+    "description": "Gets the total amount of data items for the current page.",
+    "lineNumber": 195,
+    "type": {
+      "nullable": true,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "get",
+    "name": "page",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#page",
+    "access": "public",
+    "description": "Gets the current page the datasource is\ncurrently set to.",
+    "lineNumber": 212,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "set",
+    "name": "page",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#page",
+    "access": "public",
+    "description": "",
+    "lineNumber": 224,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "newPage",
+        "description": "The new page to set to."
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "get",
+    "name": "isFirstPage",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#isFirstPage",
+    "access": "public",
+    "description": "Boolean to indicate whether it's the first page or not.",
+    "lineNumber": 233,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "get",
+    "name": "isLastPage",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#isLastPage",
+    "access": "public",
+    "description": "Boolean to indicate whether it's the last page or not.",
+    "lineNumber": 245,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "get",
+    "name": "totalPages",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#totalPages",
+    "access": "public",
+    "description": "The total amount of pages.\nReturns null if total wasn't provided.\nA Number representing current page otherwise.",
+    "lineNumber": 259,
+    "type": {
+      "nullable": true,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "name": "update",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#update",
+    "access": "public",
+    "description": "Updates the datasource, using the currently\nconfigured search text, sort settings, and\npagination options.",
+    "lineNumber": 280,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "A promise object, resolved when the update is completed."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "goToPage",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#goToPage",
+    "access": "public",
+    "description": "Traverse to the specified page, and update the datasource accordingly.",
+    "lineNumber": 314,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "pageNum",
+        "description": "The new page to traverse to."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "A promise with a boolean data. True if\n                  successfully traversed to specified page.\n                  False otherwise."
+    }
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "name": "nextPage",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#nextPage",
+    "access": "public",
+    "description": "Traverse to the next page, and update the datasource accordingly.",
+    "lineNumber": 329,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "A promise with a boolean data. True if\n                  successfully traversed to next page.\n                  False otherwise."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 108,
+    "kind": "method",
+    "name": "prevPage",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#prevPage",
+    "access": "public",
+    "description": "Traverse to the previous page, and update the datasource accordingly.",
+    "lineNumber": 340,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "A promise with a boolean data. True if\n                  successfully traversed to previous page.\n                  False otherwise."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 109,
+    "kind": "method",
+    "name": "search",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#search",
+    "access": "public",
+    "description": "Given a search text, filters the data accordingly.",
+    "lineNumber": 352,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchArguments",
+        "description": "The search text to filter with, or\n                                   the search arguments object to filter\n                                   with specific column filtering."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "A promise object, resolved when the search is completed."
+    }
+  },
+  {
+    "__docId__": 115,
+    "kind": "method",
+    "name": "sort",
+    "memberof": "js/DatasourceBase.js~DatasourceBase",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/DatasourceBase.js~DatasourceBase#sort",
+    "access": "public",
+    "description": "Sort the data based on a field and direction.",
+    "lineNumber": 373,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "sortArguments",
+        "description": "Object with keys as the field names to sort.\n                                 The values of the object is the sort direction.\n                                 The sort direction can be 'asc', 'ascend', 'desc',\n                                 'descending'"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": "A promise object, resolved when the sorting is completed."
+    }
+  },
+  {
+    "__docId__": 117,
+    "kind": "file",
+    "name": "js/QueryBuilder.js",
+    "content": "import queryString from 'query-string';\n\nfunction hasObjectInArray(arr) {\n  for (let i = 0; i < arr.length; i += 1) {\n    if (typeof arr[i] === 'object') {\n      return true;\n    }\n  }\n  return false;\n}\n\n/**\n * Using a datasource object, it builds\n * the data object for AJAX post requests,\n * or the query string for AJAX get requests\n *\n * @example <caption>With AJAX Datasource</caption>\n * let datasource = new AjaxDatasource({\n *   // ...\n *   queryBuilder: new QueryBuilder({\n *     // ...\n *   })\n * });\n * @example <caption>With Adding to Defaults</caption>\n * let datasource = new AjaxDatasource({\n *   // ...\n *   queryBuilder: new QueryBuilder({\n *     // ...\n *     serialiseToQueryObject(datasource) {\n *       // Calls the original default serialiser\n *       let queryObject = QueryBuilder.prototype\n *                         .defaults.serialiseToQueryObject(datasource);\n *       // ... Do your additional operations\n *     },\n *     serialiseToQueryString(objectToSerialise) {\n *       // Calls the original default serialiser\n *       let queryString = QueryBuilder.prototype\n *                         .defaults.serialiseToQueryString(objectToSerialise);\n *       // ... Do your additional operations\n *     },\n *     queryStringOptions: {\n *       // Keep the default options\n *       ...QueryBuilder.prototype.defaults.queryStringOptions,\n *       // ... Put additional options here. It'll override default options\n *       // For available options, check the docs for QueryBuilder constructor\n *     }\n *   })\n * });\n * @example <caption>With Extra Parameter for GET/POST Request</caption>\n * let datasource = new AjaxDatasource({\n *   // ...\n *   queryBuilder: new QueryBuilder({\n *     serialiseToQueryObject(datasource) {\n *       // Calls the original converter\n *       let queryObject = QueryBuilder.prototype.defaults.serialiseToQueryObject(datasource);\n *       queryObject['extraGreetingData'] = 'HelloWorld';\n *       return queryObject;\n *     },\n *   })\n * });\n */\nclass QueryBuilder {\n  /**\n   * Callback function that converts a datasource\n   * into a query object (which in turn can be\n   * converted to query string).\n   *\n   * @typedef {Function} SerialiseToQueryObjectCallback\n   * @param {DatasourceBase} datasource\n   * The datasource to convert to a query object.\n   * @returns {Object} The query object.\n   */\n\n  /**\n   * Callback function which serialises the\n   * query string object to the query string.\n   * By default, it uses the `query-string` package\n   * to convert the query string object to query\n   * string.\n   *\n   * @typedef {Function} SerialiseToQueryStringCallback\n   * @param {Object} objectToSerialise\n   * The object to serialise to query string.\n   * By default, it's the query object.\n   * @returns {String} The query string.\n   */\n\n  /**\n   * The query string options object that\n   * contains configuration and settings\n   * to affect the process of converting\n   * the datasource to a query string.\n   *\n   * For a full list of available options\n   * and settings, see {@link https://www.npmjs.com/package/query-string#stringifyobject-options}\n   *\n   * @typedef {Object} QueryStringOptions\n   */\n\n  /**\n   * @param {Object} [options] The options object.\n   * @param {SerialiseToQueryObjectCallback} [options.serialiseToQueryObject]\n   * Function which converts a datasource\n   * into a query object (which in turn can\n   * be converted to query string).\n   * @param {QueryStringOptions} [options.queryStringOptions]\n   * See {@link QueryStringOptions}\n   * @param {SerialiseToQueryStringCallback} [options.serialiseToQueryString]\n   * The function which serialises the\n   * query string object to the query string.\n   */\n  constructor(options = {}) {\n    const mergedOptions = {\n      ...QueryBuilder.prototype.defaults,\n      ...options,\n    };\n    /**\n     * See {@link SerialiseToQueryObjectCallback}\n     *\n     * @access public\n     * @type {SerialiseToQueryObjectCallback}\n     */\n    this.serialiseToQueryObject = mergedOptions.serialiseToQueryObject;\n\n    /**\n     * See {@link QueryStringOptions}\n     *\n     * @access public\n     * @type {QueryStringOptions}\n     */\n    this.queryStringOptions = mergedOptions.queryStringOptions;\n\n    /**\n     * If you need to change the behavior of the\n     * query string, then you should first check\n     * {@link QueryBuilder#queryStringOptions}\n     *\n     * For more information, see {@link SerialiseToQueryStringCallback}\n     *\n     * @access public\n     * @type {SerialiseToQueryStringCallback}\n     */\n    this.serialiseToQueryString = mergedOptions.serialiseToQueryString;\n  }\n\n  /**\n   * Serialises a datasource into\n   * an object and returns that object.\n   * That object is passed as data as\n   * part of AJAX post requests.\n   *\n   * @param {DatasourceBase} datasource The datasource.\n   * @access public\n   * @returns {Object} The query object.\n   */\n  getQueryObject(datasource) {\n    if (!this.serialiseToQueryObject) {\n      throw new Error('serialiseToQueryObject must be specified and cannot be undefined or null.');\n    }\n    return this.serialiseToQueryObject.call(this, datasource);\n  }\n\n  /**\n   * Serialises a datasource into\n   * a query string and returns that string.\n   * This string is passed as data as\n   * part of AJAX get requests.\n   *\n   * @param {DatasourceBase} datasource The datasource.\n   * @access public\n   * @returns {String} The query string.\n   */\n  getQueryString(datasource) {\n    const objectToSerialise = { ...this.getQueryObject(datasource) };\n    if (this.serialiseToQueryString) {\n      return this.serialiseToQueryString.call(this, objectToSerialise);\n    }\n    throw new Error('Query string serialiser is specified as null or undefined in the options.');\n  }\n}\n\nQueryBuilder.prototype.defaults = {\n  // Properties to include in the\n  // serialisation to GET query string,\n  // or when constructing the\n  // data object.\n  // By default, it only include\n  // primitive properties, ignoring\n  // objects, arrays and certain properties.\n  serialiseToQueryObject(datasource) {\n    const entries = Object.entries(datasource);\n    const filteredEntries = entries.filter((entry) => {\n      const key = entry[0];\n      if (key.indexOf('_') === 0 || key === 'loading') { // Ignore 'private' properties and specified properties\n        return false;\n      }\n      // Ignore properties that shouldn't be serialised,\n      // i.e. properties that configures the serialisation\n      // itself.\n      const value = entry[1];\n      if (value === null) { // Don't serialise null values\n        return false;\n      }\n      if (key === 'queryBuilder' || key === 'ajax') {\n        return false;\n      }\n      return true;\n    });\n    const queryObject = {\n      // Computed getters doesn't get included in ES6 spread syntax,\n      // so we manually include the necessary one below.\n      page: datasource.page,\n    };\n    filteredEntries.forEach((entry) => {\n      const key = entry[0];\n      const value = entry[1];\n      queryObject[key] = value;\n    });\n    return queryObject;\n  },\n  /* eslint-disable no-param-reassign */\n  serialiseToQueryString(objectToSerialise) {\n    Object.keys(objectToSerialise).forEach((prop) => {\n      if (Array.isArray(objectToSerialise[prop]) && hasObjectInArray(objectToSerialise[prop])) {\n        for (let i = 0; i < objectToSerialise[prop].length; i += 1) {\n          objectToSerialise[prop][i] = JSON.stringify(objectToSerialise[prop][i]);\n        }\n      } else if (typeof objectToSerialise[prop] === 'object') {\n        objectToSerialise[prop] = JSON.stringify(objectToSerialise[prop]);\n      }\n    });\n    return queryString.stringify(objectToSerialise, this.queryStringOptions);\n  },\n  /* eslint-enable no-param-reassign */\n  queryStringOptions: {\n    // By default, uses NPM query\n    // string package to serialise\n    // to query string. For full list\n    // of options, see:\n    //   https://www.npmjs.com/package/query-string#stringifyobject-options\n    // If you specified a query string serialiser,\n    // this options can optionally be used.\n    arrayFormat: 'bracket',\n  },\n};\n\nexport default QueryBuilder;\n",
+    "static": true,
+    "longname": "D:/Git Repositories/Packages/mitch-datasource/projects/mitch-datasource/src/js/QueryBuilder.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 118,
+    "kind": "function",
+    "name": "hasObjectInArray",
+    "memberof": "js/QueryBuilder.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/QueryBuilder.js~hasObjectInArray",
+    "access": "public",
+    "export": false,
+    "importPath": "mitch-datasource-documentation/js/QueryBuilder.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "arr",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 119,
+    "kind": "class",
+    "name": "QueryBuilder",
+    "memberof": "js/QueryBuilder.js",
+    "static": true,
+    "longname": "js/QueryBuilder.js~QueryBuilder",
+    "access": "public",
+    "export": true,
+    "importPath": "mitch-datasource-documentation/js/QueryBuilder.js",
+    "importStyle": "QueryBuilder",
+    "description": "Using a datasource object, it builds\nthe data object for AJAX post requests,\nor the query string for AJAX get requests",
+    "examples": [
+      "<caption>With AJAX Datasource</caption>\nlet datasource = new AjaxDatasource({\n  // ...\n  queryBuilder: new QueryBuilder({\n    // ...\n  })\n});",
+      "<caption>With Adding to Defaults</caption>\nlet datasource = new AjaxDatasource({\n  // ...\n  queryBuilder: new QueryBuilder({\n    // ...\n    serialiseToQueryObject(datasource) {\n      // Calls the original default serialiser\n      let queryObject = QueryBuilder.prototype\n                        .defaults.serialiseToQueryObject(datasource);\n      // ... Do your additional operations\n    },\n    serialiseToQueryString(objectToSerialise) {\n      // Calls the original default serialiser\n      let queryString = QueryBuilder.prototype\n                        .defaults.serialiseToQueryString(objectToSerialise);\n      // ... Do your additional operations\n    },\n    queryStringOptions: {\n      // Keep the default options\n      ...QueryBuilder.prototype.defaults.queryStringOptions,\n      // ... Put additional options here. It'll override default options\n      // For available options, check the docs for QueryBuilder constructor\n    }\n  })\n});",
+      "<caption>With Extra Parameter for GET/POST Request</caption>\nlet datasource = new AjaxDatasource({\n  // ...\n  queryBuilder: new QueryBuilder({\n    serialiseToQueryObject(datasource) {\n      // Calls the original converter\n      let queryObject = QueryBuilder.prototype.defaults.serialiseToQueryObject(datasource);\n      queryObject['extraGreetingData'] = 'HelloWorld';\n      return queryObject;\n    },\n  })\n});"
+    ],
+    "lineNumber": 62,
+    "interface": false
+  },
+  {
+    "__docId__": 120,
+    "kind": "typedef",
+    "name": "SerialiseToQueryObjectCallback",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "static": true,
+    "longname": "js/QueryBuilder.js~QueryBuilder.SerialiseToQueryObjectCallback",
+    "access": "public",
+    "description": "Callback function that converts a datasource\ninto a query object (which in turn can be\nconverted to query string).",
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Object} The query object."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "DatasourceBase"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "datasource",
+        "description": "The datasource to convert to a query object."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The query object."
+    },
+    "type": {
+      "types": [
+        "Function"
+      ],
+      "optional": false,
+      "name": "SerialiseToQueryObjectCallback"
+    }
+  },
+  {
+    "__docId__": 121,
+    "kind": "typedef",
+    "name": "SerialiseToQueryStringCallback",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "static": true,
+    "longname": "js/QueryBuilder.js~QueryBuilder.SerialiseToQueryStringCallback",
+    "access": "public",
+    "description": "Callback function which serialises the\nquery string object to the query string.\nBy default, it uses the `query-string` package\nto convert the query string object to query\nstring.",
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String} The query string."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "objectToSerialise",
+        "description": "The object to serialise to query string.\nBy default, it's the query object."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "The query string."
+    },
+    "type": {
+      "types": [
+        "Function"
+      ],
+      "optional": false,
+      "name": "SerialiseToQueryStringCallback"
+    }
+  },
+  {
+    "__docId__": 122,
+    "kind": "typedef",
+    "name": "QueryStringOptions",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "static": true,
+    "longname": "js/QueryBuilder.js~QueryBuilder.QueryStringOptions",
+    "access": "public",
+    "description": "The query string options object that\ncontains configuration and settings\nto affect the process of converting\nthe datasource to a query string.\n\nFor a full list of available options\nand settings, see {@link https://www.npmjs.com/package/query-string#stringifyobject-options}",
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "QueryStringOptions"
+    }
+  },
+  {
+    "__docId__": 123,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/QueryBuilder.js~QueryBuilder#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 112,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "The options object."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "SerialiseToQueryObjectCallback"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.serialiseToQueryObject",
+        "description": "Function which converts a datasource\ninto a query object (which in turn can\nbe converted to query string)."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "QueryStringOptions"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.queryStringOptions",
+        "description": "See {@link QueryStringOptions}"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "SerialiseToQueryStringCallback"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.serialiseToQueryString",
+        "description": "The function which serialises the\nquery string object to the query string."
+      }
+    ]
+  },
+  {
+    "__docId__": 124,
+    "kind": "member",
+    "name": "serialiseToQueryObject",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "static": false,
+    "longname": "js/QueryBuilder.js~QueryBuilder#serialiseToQueryObject",
+    "access": "public",
+    "description": "See {@link SerialiseToQueryObjectCallback}",
+    "lineNumber": 123,
+    "type": {
+      "nullable": null,
+      "types": [
+        "SerialiseToQueryObjectCallback"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 125,
+    "kind": "member",
+    "name": "queryStringOptions",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "static": false,
+    "longname": "js/QueryBuilder.js~QueryBuilder#queryStringOptions",
+    "access": "public",
+    "description": "See {@link QueryStringOptions}",
+    "lineNumber": 131,
+    "type": {
+      "nullable": null,
+      "types": [
+        "QueryStringOptions"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 126,
+    "kind": "member",
+    "name": "serialiseToQueryString",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "static": false,
+    "longname": "js/QueryBuilder.js~QueryBuilder#serialiseToQueryString",
+    "access": "public",
+    "description": "If you need to change the behavior of the\nquery string, then you should first check\n{@link QueryBuilder#queryStringOptions}\n\nFor more information, see {@link SerialiseToQueryStringCallback}",
+    "lineNumber": 143,
+    "type": {
+      "nullable": null,
+      "types": [
+        "SerialiseToQueryStringCallback"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 127,
+    "kind": "method",
+    "name": "getQueryObject",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/QueryBuilder.js~QueryBuilder#getQueryObject",
+    "access": "public",
+    "description": "Serialises a datasource into\nan object and returns that object.\nThat object is passed as data as\npart of AJAX post requests.",
+    "lineNumber": 156,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Object} The query object."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "DatasourceBase"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "datasource",
+        "description": "The datasource."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The query object."
+    }
+  },
+  {
+    "__docId__": 128,
+    "kind": "method",
+    "name": "getQueryString",
+    "memberof": "js/QueryBuilder.js~QueryBuilder",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/QueryBuilder.js~QueryBuilder#getQueryString",
+    "access": "public",
+    "description": "Serialises a datasource into\na query string and returns that string.\nThis string is passed as data as\npart of AJAX get requests.",
+    "lineNumber": 173,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String} The query string."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "DatasourceBase"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "datasource",
+        "description": "The datasource."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "The query string."
+    }
+  },
+  {
+    "kind": "index",
+    "content": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![made-with-esdocs](https://img.shields.io/badge/Made%20with-ESDocs-green.svg)](https://esdoc.org/)\n\n\n# Introduction\n\n\n# Features\n\n\n\n# License\n\nMIT © Michael Tran",
+    "longname": "D:\\Git Repositories\\Packages\\mitch-datasource\\projects\\mitch-datasource-documentation\\manual\\index.md",
+    "name": "./manual/index.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"mitch-datasource-documentation\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Documentation for mitch-datasource\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"build\": \"esdoc -c esdoc.json\",\n    \"watch\": \"nodemon --watch ../mitch-datasource/src/js --watch ./manual --ext * --exec \\\"npm run build\\\"\"\n  },\n  \"devDependencies\": {\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-publish-markdown-plugin\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"nodemon\": \"^1.19.4\"\n  }\n}\n",
+    "longname": "D:\\Git Repositories\\Packages\\mitch-datasource\\projects\\mitch-datasource-documentation\\package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manualIndex",
+    "globalIndex": true,
+    "content": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![made-with-esdocs](https://img.shields.io/badge/Made%20with-ESDocs-green.svg)](https://esdoc.org/)\n\n\n# Introduction\n\n\n# Features\n\n\n\n# License\n\nMIT © Michael Tran",
+    "longname": "D:\\Git Repositories\\Packages\\mitch-datasource\\projects\\mitch-datasource-documentation\\manual\\index.md",
+    "name": "./manual/index.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "D:\\Git Repositories\\Packages\\mitch-datasource\\projects\\mitch-datasource-documentation\\manual\\installation.md",
+    "name": "./manual/installation.md",
+    "content": "# Installation\r\n\r\n## Local Files\r\n\r\n1. Clone or download this git repository, and move the contents of the `dist` folder to your project. For example, you can put it in `/scripts/mitch-datasource` inside your project.\r\n\r\n2. Import the `mitch-datasource` files as below, changing the path depending on where you copied it into for your project\r\n   ```html\r\n   <script src=\"/scripts/mitch-datasource/js/index.min.js\"></script>\r\n   ```\r\n\r\n## With NPM\r\n\r\n`mitch-datasource` is available on npm. You can perform the following steps to get it set up.\r\n\r\n1. Open up your terminal, and run the below command from your project directory:\r\n   ```bash\r\n   npm install mitch-datasource --save\r\n   ```\r\n\r\n2. Now you can use CommonJS, AMD, or ES6 to import the plugin. For example:\r\n   ```JavaScript\r\n   var mitchDatasource = require('mitch-datasource');\r\n   ```",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "D:\\Git Repositories\\Packages\\mitch-datasource\\projects\\mitch-datasource-documentation\\manual\\usage.md",
+    "name": "./manual/usage.md",
+    "content": "# Usage\r\n\r\nFor more information on the usage:\r\n* Open up and view the example files inside the repository for:\r\n  * [Unit Tests](https://github.com/deltoss/mitch-datasource/mitch-datasource-test/src)\r\n  * [React Example](https://github.com/deltoss/mitch-datasource/mitch-datasource-test-react/src)\r\n  * [Vue Example](https://github.com/deltoss/mitch-datasource/mitch-datasource-test-vue/src)\r\n* Refer to the API documentations.",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "D:\\Git Repositories\\Packages\\mitch-datasource\\projects\\mitch-datasource-documentation\\manual\\development.md",
+    "name": "./manual/development.md",
+    "content": "# Development\r\n\r\n## Major Dependencies\r\n* [axios](https://www.axios.com)\r\n  * Used to perform default AJAX operations\r\n* [query-string](https://github.com/sindresorhus/query-string#readme)\r\n  * For `QueryBuilder` (Used as part of `AJAX Datasource`) to convert an object to a query string\r\n\r\n## Technologies Used\r\n\r\nThis package was created using:\r\n* `webpack` as the bundler\r\n* `npm` scripts to run common tasks (e.g. build and sass compilation), instead of gulp, grunt\r\n* `babel` with webpack to transpile JavaScript from ES6 to ES5, so this package codebase can utilise the newest ES6 features\r\n* `esdoc` to build the API documentations\r\n* `eslint` for linting JavaScript source code\r\n* `nodemon` to set up npm watch scripts (to auto-compile when code changes are detected)\r\n* `npm-run-all` to run multiple npm scripts in sequence/parallel whilst being compatible cross operating systems (e.g. Windows, Linux, etc)\r\n\r\n## Available NPM Commands\r\n\r\n### Main Commands\r\n\r\n- `npm run dev` - Lint, build code & docs with development settings.\r\n- `npm run prd` - Lint, build code & docs with production settings.\r\n- `npm run watch` - Lint, build code & docs with development settings anytime when a change has been detected.\r\n\r\n### Other Commands\r\n\r\n- `build-dev` - Build the code, and build docs with development settings. Does not perform linting.\r\n- `build-prd` - Build the code, and build docs with production settings. Does not perform linting.\r\n- `build-watch` - Build code & docs with development settings anytime when a change has been detected.\r\n- `watch-webpack` - Build code anytime when a change has been detected.\r\n- `build-webpack-dev` - Build code with development settings.\r\n- `build-webpack-prd` - Build code with production settings.\r\n- `lint` - Lint the source code.\r\n- `lint-watch` - Lint the source code anytime when a change has been detected\r\n- `lint-fix` - Automatically fix any auto-fixable warnings or errors detected when linting.\r\n- `build-docs` - Build the HTML documentations.\r\n- `watch-docs` - Build the HTML documentations anytime when a change has been detected.",
+    "static": true,
+    "access": "public"
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "name": "mitch-datasource",
+  "version": "1.0.0",
+  "description": "Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "dev": "npm-run-all \"lint\" \"webpack-build-dev\"",
+    "prd": "npm-run-all \"lint\" \"webpack-build-prd\"",
+    "watch": "npm-run-all --parallel \"lint-watch\" \"webpack-watch\"",
+    "webpack-watch": "npm run webpack-build-dev -- --watch",
+    "webpack-build-dev": "webpack --config webpack.config.js --mode=development",
+    "webpack-build-prd": "webpack --config webpack.config.js --mode=production",
+    "lint": "eslint .",
+    "lint-watch": "nodemon --watch ./src/js --ext * --exec \"npm run lint\"",
+    "lint-fix": "npm run lint -- --fix"
+  },
+  "keywords": [
+    "datasource",
+    "javascript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deltoss/mitch-datasource.git"
+  },
+  "author": "Michael Tran <MTran0011@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deltoss/mitch-datasource/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.5",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.4",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "core-js": "^3.3.6",
+    "regenerator-runtime": "^0.13.3",
+    "query-string": "^6.8.3"
+  }
+}
