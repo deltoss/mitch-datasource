@@ -3,13 +3,15 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:12.13
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:12.13
-
-    working_directory: ~/repo
+    <<: *defaults
 
     steps:
       - checkout
@@ -20,6 +22,30 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+      - restore_cache:
+          keys:
+            - v1-mitch-datasource-dependencies-{{ checksum "projects/mitch-datasource/package.json" }}
+            - v1-mitch-datasource-dependencies-
+      - restore_cache:
+          keys:
+            - v1-mitch-datasource-documentation-dependencies-{{ checksum "projects/mitch-datasource-documentation/package.json" }}
+            - v1-mitch-datasource-documentation-dependencies-
+      - restore_cache:
+          keys:
+            - v1-mitch-datasource-test-dependencies-{{ checksum "projects/mitch-datasource-test/package.json" }}
+            - v1-mitch-datasource-test-dependencies-
+      - restore_cache:
+          keys:
+            - v1-mitch-datasource-test-react-dependencies-{{ checksum "projects/mitch-datasource-test-react/package.json" }}
+            - v1-mitch-datasource-test-react-dependencies-
+      - restore_cache:
+          keys:
+            - v1-mitch-datasource-test-vue-dependencies-{{ checksum "projects/mitch-datasource-test-vue/package.json" }}
+            - v1-mitch-datasource-test-vue-dependencies-
+      - restore_cache:
+          keys:
+            - v1-mitch-datasource-test-utilities-dependencies-{{ checksum "projects/mitch-datasource-test-utilities/package.json" }}
+            - v1-mitch-datasource-test-utilities-dependencies-
 
       - run: npm install
       - run: npm run install
@@ -27,13 +53,31 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-            - projects/mitch-datasource/node_modules
-            - projects/mitch-datasource-documentation/node_modules
-            - projects/mitch-datasource-test/node_modules
-            - projects/mitch-datasource-test-react/node_modules
-            - projects/mitch-datasource-test-vue/node_modules
-            - projects/mitch-datasource-test-utilities/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - save_cache:
+          paths:
+            - projects/mitch-datasource/node_modules
+          key: v1-mitch-datasource-dependencies-{{ checksum "projects/mitch-datasource/package.json" }}
+      - save_cache:
+          paths:
+            - projects/mitch-datasource-documentation/node_modules
+          key: v1-mitch-datasource-documentation-dependencies-{{ checksum "projects/mitch-datasource-documentation/package.json" }}
+      - save_cache:
+          paths:
+            - projects/mitch-datasource-test/node_modules
+          key: v1-mitch-datasource-test-dependencies-{{ checksum "projects/mitch-datasource-test/package.json" }}
+      - save_cache:
+          paths:
+            - projects/mitch-datasource-test-react/node_modules
+          key: v1-mitch-datasource-test-react-dependencies-{{ checksum "projects/mitch-datasource-test-react/package.json" }}
+      - save_cache:
+          paths:
+            - projects/mitch-datasource-test-vue/node_modules
+          key: v1-mitch-datasource-test-vue-dependencies-{{ checksum "projects/mitch-datasource-test-vue/package.json" }}
+      - save_cache:
+          paths:
+            - projects/mitch-datasource-test-utilities/node_modules
+          key: v1-mitch-datasource-test-utilities-dependencies-{{ checksum "projects/mitch-datasource-test-utilities/package.json" }}
 
       # run tests!
       - run: npm run test
