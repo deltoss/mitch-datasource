@@ -1,5 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-
 import { storiesOf } from '@storybook/vue';
 import SimpleDataGrid from '../components/SimpleDataGrid';
 import MultiColumnSortingAndFilteringDataGrid from '../components/MultiColumnSortingAndFilteringDataGrid';

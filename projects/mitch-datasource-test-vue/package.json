@@ -10,7 +10,6 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "core-js": "^2.6.10",
     "mitch-datasource": "file:../mitch-datasource",
     "mitch-datasource-test-utilities": "file:../mitch-datasource-test-utilities",
     "vue": "^2.6.10"
@@ -21,14 +20,15 @@
     "@storybook/addon-links": "^5.2.4",
     "@storybook/addons": "^5.2.4",
     "@storybook/vue": "^5.2.4",
-    "@vue/cli-plugin-babel": "^3.12.0",
-    "@vue/cli-plugin-eslint": "^3.12.0",
-    "@vue/cli-service": "^3.12.0",
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-plugin-eslint": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
+    "core-js": "^3.4.0",
     "eslint": "^6.5.1",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^6.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
