@@ -8,11 +8,19 @@
 
 ## Advanced Usage
 
-### Multi-Sorting/Filtering mechanics
+### Sorting
+
+### Multi-Column Sorting
+
+### Filtering
+
+### Multi-Column Filtering
+
+### Events
 
 ### Making your own Custom Datasource
 
-### Events
+### Modifying the Defaults
 
 ## Additional Information
 

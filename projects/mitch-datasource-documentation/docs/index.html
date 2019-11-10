@@ -44,9 +44,13 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#array" data-ice="link">Array</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#ajax" data-ice="link">Ajax</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#advanced-usage" data-ice="link">Advanced Usage</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#multi-sorting-filtering-mechanics" data-ice="link">Multi-Sorting/Filtering mechanics</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#making-your-own-custom-datasource" data-ice="link">Making your own Custom Datasource</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#sorting" data-ice="link">Sorting</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#multi-column-sorting" data-ice="link">Multi-Column Sorting</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#filtering" data-ice="link">Filtering</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#multi-column-filtering" data-ice="link">Multi-Column Filtering</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#events" data-ice="link">Events</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#making-your-own-custom-datasource" data-ice="link">Making your own Custom Datasource</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#modifying-the-defaults" data-ice="link">Modifying the Defaults</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#additional-information" data-ice="link">Additional Information</a></li>
 </ul>
   </div>
@@ -69,6 +73,7 @@
 <li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource-documentation" data-ice="link">mitch-datasource-documentation</a></li>
 <li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
 <li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#other-scripts" data-ice="link">Other Scripts</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource-test" data-ice="link">mitch-datasource-test</a></li>
 <li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
 <li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
@@ -92,9 +97,11 @@
 <div class="content" data-ice="content"><div class="github-markdown">
   <div class="manual-user-index" data-ice="manualUserIndex"><p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 <a href="https://esdoc.org/"><img src="https://img.shields.io/badge/Made%20with-ESDocs-green.svg" alt="made-with-esdocs"></a></p>
-<h1 id="introduction">Introduction</h1><p>When developing multiple data-oriented components, there can be a lot of redundancies when it comes to common data operations such as paging, searching, or sorting. To reduce this redundancy, <code>mitch-datasource</code> was developed as flexible package to handle the management of data for components.</p>
+<h1 id="introduction">Introduction</h1><p>Modern applications are usually data-oriented, and it can have many ways to present data. There can be many different components, plugins, and so on. Between all of these, the approach to perform data operations is mostly the same. Why would you want to write the same pagination/search/sorting logic per component?</p>
+<p>That&apos;s where this package shines. <code>mitch-datasource</code> was developed to resolve the issue by having a core entity which manage those data operations whilst being flexible to cater to different requirements. It&apos;s framework-agnostic, so you can feed it into plugins, components, or whatever.</p>
 <h1 id="features">Features</h1><ul>
 <li>Client-Side Framework Agnostic</li>
+<li>Highly Customisable &amp; Extensible</li>
 <li>Works and tested with React &amp; Vue (See <code>mitch-datasource-test-vue</code> &amp; <code>mitch-datasourve-test-react</code> projects)</li>
 <li>Pagination</li>
 <li>Sorting (Single &amp; Multi Column Support)</li>
@@ -104,7 +111,6 @@
 <li>Array</li>
 </ul>
 </li>
-<li>Highly Customisable &amp; Extensible</li>
 <li>Events</li>
 </ul>
 <h1 id="requested-future-improvements">Requested/Future Improvements</h1><ul>
@@ -149,7 +155,7 @@
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Usage</h1><h2>Basic Usage</h2><h3>Array</h3><h3>Ajax</h3><h2>Advanced Usage</h2><h3>Multi-Sorting/Filtering mechanics</h3><h3>Making your own Custom Datasource</h3><h3>Events</h3><h2>Additional Information</h2><p>For more information on the usage:</p><ul>
+        <div data-ice="card"><h1>Usage</h1><h2>Basic Usage</h2><h3>Array</h3><h3>Ajax</h3><h2>Advanced Usage</h2><h3>Sorting</h3><h3>Multi-Column Sorting</h3><h3>Filtering</h3><h3>Multi-Column Filtering</h3><h3>Events</h3><h3>Making your own Custom Datasource</h3><h3>Modifying the Defaults</h3><h2>Additional Information</h2><p>For more information on the usage:</p><ul>
 <li>Open up and view the example files inside the repository for:<ul>
 <li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test/src">Unit Tests</a></li>
 <li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test-react/src">React Example</a></li>
@@ -164,7 +170,7 @@
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
         <div data-ice="card"><h1>Development</h1><h2>Overview</h2><p>This repository contains multiple projects. Each project has a specific set of responsibilities.
-The main project is <code>mitch-datasource</code>, which contains the base source code.</p><p>See below diagram:</p><p>--ToDo Stub: Put MermaidJS diagram--</p><table>
+The main project is <code>mitch-datasource</code>, which contains the base source code.</p><table>
 <thead>
 <tr>
 <th>Project Name</th>
@@ -197,7 +203,7 @@ The main project is <code>mitch-datasource</code>, which contains the base sourc
 <td>Contains the core code for testing purposes, such as mocks, or stub data.</td>
 </tr>
 </tbody>
-</table><p>Each project has their own set of scripts which you can run. However, for general use,
+</table><p>The relationship between all the above projects can be illustrated as per below:</p><p><img src="./manual/asset/architecture.png" alt="mitch-datasource architecture diagram"></p><p>Each project has their own set of scripts which you can run. However, for general use,
 you can simply just use the scripts located at the root of this repository in <code>package.json</code>.
 These scripts run convenient tasks when developing the application, and saves you the trouble of switching directories/terminals to execute individual scripts for each project.</p><h3>Major Dependencies</h3><ul>
 <li><a href="https://www.axios.com">axios</a><ul>
@@ -219,6 +225,8 @@ These scripts run convenient tasks when developing the application, and saves yo
 <li><code>jest</code> for running tests</li>
 <li><code>storybook</code> to develop playground applications to perform manual integration tests with client-side frameworks (e.g. React, Vue).</li>
 <li><code>esm</code> to use modern ES import/export syntax (for executing node scripts without the need for webpack).</li>
+<li><code>mermaid cli</code> to generate mermaid diagrams using markdownish syntax (i.e. <code>.mmd</code> files).</li>
+<li><code>glob</code> retrieve all files within a folder matching an expression.</li>
 </ul><h2>Repository Scripts</h2><h3>Installation Scripts</h3><p>To run the script, simply open up terminal and change directory to where the root <code>package.json</code> resides.
 Afterwards, simply type in <code>npm run &lt;ScriptName&gt;</code>. For example, <code>npm run install</code>.</p><table>
 <thead>
@@ -400,10 +408,35 @@ This project is published as a package to NPM registry.</p><h4>Available NPM Scr
 <tbody>
 <tr>
 <td><code>build</code></td>
-<td>Build the HTML documentation to the <code>docs</code> folder.</td>
+<td>Generate Diagrams and then build the HTML documentation to the <code>docs</code> folder.</td>
 </tr>
 <tr>
 <td><code>watch</code></td>
+<td>Generate Diagrams and then build the HTML documentation when a relevant file has been changed.</td>
+</tr>
+</tbody>
+</table><h5>Other Scripts</h5><table>
+<thead>
+<tr>
+<th>Script Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>build-mermaid</code></td>
+<td>Generate diagrams to the <code>docs</code> folder.</td>
+</tr>
+<tr>
+<td><code>watch-mermaid</code></td>
+<td>Generate diagrams when a relevant file has been changed (i.e. <code>.mmd</code> files in <code>manual/asset/</code>).</td>
+</tr>
+<tr>
+<td><code>build-esdoc</code></td>
+<td>Build the HTML documentation to the <code>docs</code> folder.</td>
+</tr>
+<tr>
+<td><code>watch-esdoc</code></td>
 <td>Build the HTML documentation when a relevant file has been changed.</td>
 </tr>
 </tbody>

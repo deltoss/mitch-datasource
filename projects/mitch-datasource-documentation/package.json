@@ -4,14 +4,22 @@
   "description": "Documentation for mitch-datasource",
   "main": "index.js",
   "scripts": {
-    "build": "esdoc -c esdoc.json",
-    "watch": "nodemon --watch ../mitch-datasource/src/js --watch ./manual --ext * --exec \"npm run build\""
+    "build": "npm-run-all \"build-mermaid\" \"build-esdoc\"",
+    "watch": "nodemon --watch ./scripts --watch ../mitch-datasource/src/js --watch ./manual --ext js,mmd,md --exec \"npm run build\"",
+    "build-mermaid": "node -r esm ./scripts/build-mermaid.js -- ./manual/asset",
+    "watch-mermaid": "nodemon --watch ./manual/asset --ext mmd --exec \"npm run build-mermaid\"",
+    "build-esdoc": "esdoc -c esdoc.json",
+    "watch-esdoc": "nodemon --watch ../mitch-datasource/src/js --watch ./manual --ext * --exec \"npm run build-esdoc\""
   },
   "devDependencies": {
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-publish-markdown-plugin": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "nodemon": "^1.19.4"
+    "esm": "^3.2.25",
+    "glob": "^7.1.6",
+    "mermaid.cli": "^0.5.1",
+    "nodemon": "^1.19.4",
+    "npm-run-all": "^4.1.5"
   }
 }

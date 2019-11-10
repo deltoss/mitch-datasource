@@ -3,10 +3,14 @@
 
 # Introduction
 
-When developing multiple data-oriented components, there can be a lot of redundancies when it comes to common data operations such as paging, searching, or sorting. To reduce this redundancy, `mitch-datasource` was developed as flexible package to handle the management of data for components.
+Modern applications are usually data-oriented, and it can have many ways to present data. There can be many different components, plugins, and so on. Between all of these, the approach to perform data operations is mostly the same. Why would you want to write the same pagination/search/sorting logic per component?
+
+That's where this package shines. `mitch-datasource` was developed to resolve the issue by having a core entity which manage those data operations whilst being flexible to cater to different requirements. It's framework-agnostic, so you can feed it into plugins, components, or whatever.
 
 # Features
+
 - Client-Side Framework Agnostic
+- Highly Customisable & Extensible
 - Works and tested with React & Vue (See `mitch-datasource-test-vue` & `mitch-datasourve-test-react` projects)
 - Pagination
 - Sorting (Single & Multi Column Support)
@@ -14,7 +18,6 @@ When developing multiple data-oriented components, there can be a lot of redunda
 - Datasources for:
   - AJAX
   - Array
-- Highly Customisable & Extensible
 - Events
 
 # Requested/Future Improvements

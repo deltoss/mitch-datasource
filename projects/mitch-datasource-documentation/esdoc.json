@@ -33,7 +33,8 @@
                     "./manual/installation.md",
                     "./manual/usage.md",
                     "./manual/development.md"
-                  ]
+                  ],
+                  "asset": "./manual/asset/"
                 }
               }
         }

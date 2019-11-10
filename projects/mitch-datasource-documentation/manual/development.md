@@ -5,10 +5,6 @@
 This repository contains multiple projects. Each project has a specific set of responsibilities.
 The main project is `mitch-datasource`, which contains the base source code.
 
-See below diagram:
-
---ToDo Stub: Put MermaidJS diagram--
-
 Project Name | Description
 --- | ---
 `mitch-datasource` | The code datasource codebase. The NPM package is deployed from this folder.
@@ -17,6 +13,10 @@ Project Name | Description
 `mitch-datasource-test-react` | A playground application (using storybook) so integration tests with React can be manually performed. Manual tests can also be done here.
 `mitch-datasource-test-vue` | A playground application (using storybook) so integration tests with Vue can be manually performed. Manual tests can also be done here.
 `mitch-datasource-test-utilities` | Contains the core code for testing purposes, such as mocks, or stub data.
+
+The relationship between all the above projects can be illustrated as per below:
+
+![mitch-datasource architecture diagram](asset/architecture.png)
 
 Each project has their own set of scripts which you can run. However, for general use,
 you can simply just use the scripts located at the root of this repository in `package.json`.
@@ -41,6 +41,8 @@ This package was created using:
 * `jest` for running tests
 * `storybook` to develop playground applications to perform manual integration tests with client-side frameworks (e.g. React, Vue).
 * `esm` to use modern ES import/export syntax (for executing node scripts without the need for webpack).
+* `mermaid cli` to generate mermaid diagrams using markdownish syntax (i.e. `.mmd` files).
+* `glob` retrieve all files within a folder matching an expression.
 
 ## Repository Scripts
 
@@ -122,8 +124,17 @@ Generates the HTML documentation based on source code in the `mitch-datasource` 
 
 Script Name | Description
 --- | ---
-`build` | Build the HTML documentation to the `docs` folder.
-`watch` | Build the HTML documentation when a relevant file has been changed.
+`build` | Generate Diagrams and then build the HTML documentation to the `docs` folder.
+`watch` | Generate Diagrams and then build the HTML documentation when a relevant file has been changed.
+
+##### Other Scripts
+
+Script Name | Description
+--- | ---
+`build-mermaid` | Generate diagrams to the `docs` folder.
+`watch-mermaid` | Generate diagrams when a relevant file has been changed (i.e. `.mmd` files in `manual/asset/`).
+`build-esdoc` | Build the HTML documentation to the `docs` folder.
+`watch-esdoc` | Build the HTML documentation when a relevant file has been changed.
 
 ### mitch-datasource-test
 
