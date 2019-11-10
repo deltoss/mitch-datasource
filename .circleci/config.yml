@@ -79,12 +79,17 @@ jobs:
             - projects/mitch-datasource-test-utilities/node_modules
           key: v1-mitch-datasource-test-utilities-dependencies-{{ checksum "projects/mitch-datasource-test-utilities/package.json" }}
 
-      # run tests!
-      - run: npm run test
-
       - persist_to_workspace:
           root: ~/repo
           paths: .
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Run Tests
+          command: npm run test
   deploy:
     <<: *defaults
     steps:
@@ -102,14 +107,19 @@ jobs:
 
 workflows:
   version: 2
-  test-deploy:
+  build-deploy:
     jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
       - test:
           filters:
             tags:
               only: /^v.*/
       - deploy:
           requires:
+            - build
             - test
           filters:
             tags:
