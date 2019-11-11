@@ -95,6 +95,12 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      # Releases the package. Note the change directory
+      # is in the same command. If we put it as a separate
+      # command, it won't actually change directory when releasing
+      # due to the way CircleCI works.
+      # For more information, see:
+      #   https://discuss.circleci.com/t/unable-to-change-present-directory-or-cd-cmd-ignored/12537/4
       - run:
           name: Release package
           command: cd "./projects/mitch-datasource" && npx semantic-release -r 'https://github.com/deltoss/mitch-datasource.git'
