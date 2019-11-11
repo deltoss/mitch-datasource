@@ -5,3 +5,11 @@ In addition, also utilises the semantic-release package to
 automate the process of npm releases via commit messages.
 Note you can do an initial easy setup using the
 semantic-release-cli tool.
+
+In addition, if you don't want to write commits in the
+correct format, you can use the commitizen package
+which displays prompts to do so for you.
+
+As this repository is essentially a monorepo, an additional
+plugin was required, i.e. `semantic-release-monorepo`.
+See the `config.yml` for more details.

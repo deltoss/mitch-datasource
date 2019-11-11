@@ -100,7 +100,7 @@ jobs:
           command: cd "./projects/mitch-datasource"
       - run:
           name: Release package
-          command: npx semantic-release -r 'https://github.com/deltoss/mitch-datasource.git'
+          command: npx semantic-release -r 'https://github.com/deltoss/mitch-datasource.git' -e semantic-release-monorepo
 
 workflows:
   version: 2
