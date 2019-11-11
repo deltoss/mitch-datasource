@@ -98,6 +98,11 @@ jobs:
       - run:
           name: Change to mitch-datasource Directory
           command: cd "./projects/mitch-datasource"
+
+      - run:
+          name: Install Semantic Release & Plugins
+          command: npm install semantic-release semantic-release-monorepo
+
       - run:
           name: Release package
           command: npx semantic-release -r 'https://github.com/deltoss/mitch-datasource.git' -e semantic-release-monorepo
