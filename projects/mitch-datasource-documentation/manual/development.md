@@ -22,6 +22,48 @@ Each project has their own set of scripts which you can run. However, for genera
 you can simply just use the scripts located at the root of this repository in `package.json`.
 These scripts run convenient tasks when developing the application, and saves you the trouble of switching directories/terminals to execute individual scripts for each project.
 
+### Commit Messages
+
+#### Needs to Be In Certain Format
+
+When making any GIT commits to this repository or a branch, it needs to be in a certain format (i.e. **Angular Commit Message Conventions**). This is because the `semantic-release` tool which this package uses relies on having a specific format of commit messages for it to evaluate whether to create a release, or not.
+
+For more information, see the [semantic-release docs](https://github.com/semantic-release/semantic-release#commit-message-format).
+
+#### Easier Way to Write Commit Messages
+
+To assist making commits to the repository in that certain format, `commitizen` is installed at the root of the repo. To use it after you downloaded the repository:
+
+1. Open up terminal
+2. Change the working directory to the root of the repo
+3. Enter the command `git add .` to add stage files. 
+4. Enter the command `npm run commit`, and follow the prompts for it to construct a commit message for you.
+5. Enter the command `git push` to push to the remote.
+
+Note that steps 3 & 5 can be substituted through a GIT GUI tool (e.g. SourceTree). You can use a GUI to stage and push files to remote. However, ensure that you don't use the default commit command or commit of the GUI tool. You must use `npm run commit`.
+
+## Deployment
+
+### CI/CD
+
+This package has a CI/CD pipeline with CircleCI configured. It has a workflow setup to use `semantic-release` so that if it detect any commits that requires a release (e.g. adding a new feature, breaking changes, fixes, etc), it'll perform various release related tasks including:
+
+* Tagging the commit with vX.X.X
+* Create a GitHub release (auto-generating the documentation)
+* Publish to NPM package registry
+
+However, this works through commit messages, so all commits, aside from merges needs to be under a certain format. For more information, see the section [Commit Messages](#commit-messages).
+
+### Monorepo
+
+This repository is essentially a monorepo as it has multiple projects. However only one project is released (i.e. the `mitch-datasource`) as a package. The others are for testing, documentation and various other purposes.
+
+`semantic-release` doesn't support monorepos out-of-the-box. However, there are solutions for this. For more information see this [GitHub issue](https://github.com/semantic-release/semantic-release/issues/193).
+
+To get `semantic-release` to work for mono repos, i.e. this repository, there are a few approaches. This repository took the approach mentioned in this [GitHub issue comment](https://github.com/semantic-release/semantic-release/issues/193#issuecomment-355418830).
+
+Although this is a monorepo, it doesn't have multiple packages to release and publish. This package only releases a single project as a package. Thus, the `circleci` configuration was setup in such a way where it simply changes directory and then runs `semantic-release` in that directory.
+
 ### Major Dependencies
 * [axios](https://www.axios.com)
   * Used to perform default AJAX operations
