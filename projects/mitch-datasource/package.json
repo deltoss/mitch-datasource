@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/deltoss/mitch-datasource.git"
+    "url": "https://github.com/deltoss/mitch-datasource"
   },
   "author": "Michael Tran <MTran0011@outlook.com>",
   "license": "MIT",

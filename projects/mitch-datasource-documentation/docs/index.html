@@ -216,6 +216,9 @@ These scripts run convenient tasks when developing the application, and saves yo
 </ul>
 </li>
 </ul><h3>Technologies Used</h3><p>This package was created using:</p><ul>
+<li><code>semantic-release</code> to automate the release process to NPM, and creating git releases.</li>
+<li><code>commitizen</code> which ensures commits is in a nice format. See <code>commit</code> script of the main repository scripts.</li>
+<li><code>CircleCI</code> For CI/CD pipeline to publish to NPM.</li>
 <li><code>webpack</code> as the bundler</li>
 <li><code>npm</code> scripts to run common tasks (e.g. build and sass compilation), instead of gulp, grunt</li>
 <li><code>babel</code> with webpack to transpile JavaScript from ES6 to ES5, so this package codebase can utilise the newest ES6 features</li>
@@ -330,6 +333,10 @@ Afterwards, simply type in <code>npm run &lt;ScriptName&gt;</code>. For example,
 <tr>
 <td><code>vue-storybook</code></td>
 <td>Runs the storybook application for Vue. For manual integration tests with client-side frameworks (e.g. React, Vue).</td>
+</tr>
+<tr>
+<td><code>commit</code></td>
+<td>Uses <code>commitizen</code> to create a angular styled commit message. Useful for <code>semantic-release</code></td>
 </tr>
 </tbody>
 </table><h2>Projects</h2><h3>mitch-datasource</h3><p>The main project containing the source code for mitch-datasource.
