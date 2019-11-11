@@ -99,11 +99,8 @@ jobs:
           name: Change to mitch-datasource Directory
           command: cd "./projects/mitch-datasource"
       - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/projects/mitch-datasource/.npmrc
-      - run:
-          name: Publish package
-          command: npm publish
+          name: Release package
+          command: npx semantic-release
 
 workflows:
   version: 2
@@ -117,7 +114,6 @@ workflows:
           requires:
             - test
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              ignore: /.*/
+              only:
+                - master

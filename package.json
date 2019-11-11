@@ -1,6 +1,7 @@
 {
   "name": "mitch-datasource-script-runner",
   "scripts": {
+    "commit": "npx git-cz",
     "dev": "npm-run-all \"code-dev\" \"docs-build\" \"test-utilities-dev\" \"test\"",
     "prd": "npm-run-all \"code-prd\" \"docs-build\" \"test-utilities-prd\" \"test\"",
     "watch": "npm-run-all --parallel \"code-watch\" \"docs-watch\" \"test-utilities-watch\" \"test-watch\"",

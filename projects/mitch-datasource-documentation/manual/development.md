@@ -31,6 +31,7 @@ These scripts run convenient tasks when developing the application, and saves yo
 ### Technologies Used
 
 This package was created using:
+* `semantic-release` to automate the release process to NPM, and creating git releases.
 * `webpack` as the bundler
 * `npm` scripts to run common tasks (e.g. build and sass compilation), instead of gulp, grunt
 * `babel` with webpack to transpile JavaScript from ES6 to ES5, so this package codebase can utilise the newest ES6 features
@@ -82,6 +83,7 @@ Script Name | Description
 `test-watch` | Run tests when a relevant file has been changed.
 `react-storybook` | Runs the storybook application for React. For manual integration tests with client-side frameworks (e.g. React, Vue).
 `vue-storybook` | Runs the storybook application for Vue. For manual integration tests with client-side frameworks (e.g. React, Vue).
+`commit` | Uses `commitizen` to create a Angular styled commit message. Useful for `semantic-release`
 
 ## Projects
 
