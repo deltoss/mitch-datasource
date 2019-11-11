@@ -31,7 +31,7 @@ These scripts run convenient tasks when developing the application, and saves yo
 ### Technologies Used
 
 This package was created using:
-* `semantic-release` to automate the release process to NPM, and creating git releases.
+* `semantic-release` to automate the release process to NPM, and creating git releases. Isn't actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through npx). See the root `.circleci/config.yml` & `.circleci/notes.txt` for more details.
 * `commitizen` which ensures commits is in a nice format. See `commit` script of the main repository scripts.
 * `CircleCI` For CI/CD pipeline to publish to NPM.
 * `webpack` as the bundler
