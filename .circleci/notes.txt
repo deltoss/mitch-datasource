@@ -1,2 +1,7 @@
 Follow tutorial from:
   https://circleci.com/blog/publishing-npm-packages-using-circleci-2-0/
+
+In addition, also utilises the semantic-release package to
+automate the process of npm releases via commit messages.
+Note you can do an initial easy setup using the
+semantic-release-cli tool.
