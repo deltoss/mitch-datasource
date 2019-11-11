@@ -19,10 +19,7 @@
     "datasource",
     "javascript"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/deltoss/mitch-datasource"
-  },
+  "repository": "https://github.com/deltoss/mitch-datasource.git",
   "author": "Michael Tran <MTran0011@outlook.com>",
   "license": "MIT",
   "bugs": {
