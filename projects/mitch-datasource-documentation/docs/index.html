@@ -59,8 +59,15 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/development.html"><a href="manual/development.html" data-ice="link">Development</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#overview" data-ice="link">Overview</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#major-dependencies" data-ice="link">Major Dependencies</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#technologies-used" data-ice="link">Technologies Used</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#commit-messages" data-ice="link">Commit Messages</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#needs-to-be-in-certain-format" data-ice="link">Needs to Be In Certain Format</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#easier-way-to-write-commit-messages" data-ice="link">Easier Way to Write Commit Messages</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#deployment" data-ice="link">Deployment</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#ci-cd" data-ice="link">CI/CD</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#monorepo" data-ice="link">Monorepo</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#services-used-when-developing-this-package" data-ice="link">Services Used when Developing this Package</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#dependencies" data-ice="link">Dependencies</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#development-dependencies" data-ice="link">Development Dependencies</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#repository-scripts" data-ice="link">Repository Scripts</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#installation-scripts" data-ice="link">Installation Scripts</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
@@ -205,9 +212,24 @@ The main project is <code>mitch-datasource</code>, which contains the base sourc
 <td>Contains the core code for testing purposes, such as mocks, or stub data.</td>
 </tr>
 </tbody>
-</table><p>The relationship between all the above projects can be illustrated as per below:</p><p><img src="./manual/asset/architecture.png" alt="mitch-datasource architecture diagram"></p><p>Each project has their own set of scripts which you can run. However, for general use,
+</table><p>The relationship between all the above projects can be illustrated as per below:</p><p><img src="./manual/asset/Architecture.png" alt="mitch-datasource architecture diagram"></p><p>Each project has their own set of scripts which you can run. However, for general use,
 you can simply just use the scripts located at the root of this repository in <code>package.json</code>.
-These scripts run convenient tasks when developing the application, and saves you the trouble of switching directories/terminals to execute individual scripts for each project.</p><h3>Major Dependencies</h3><ul>
+These scripts run convenient tasks when developing the application, and saves you the trouble of switching directories/terminals to execute individual scripts for each project.</p><h3>Commit Messages</h3><h4>Needs to Be In Certain Format</h4><p>When making any GIT commits to this repository or a branch, it needs to be in a certain format (i.e. <strong>Angular Commit Message Conventions</strong>). This is because the <code>semantic-release</code> tool which this package uses relies on having a specific format of commit messages for it to evaluate whether to create a release, or not.</p><p>For more information, see the <a href="https://github.com/semantic-release/semantic-release#commit-message-format">semantic-release docs</a>.</p><h4>Easier Way to Write Commit Messages</h4><p>To assist making commits to the repository in that certain format, <code>commitizen</code> is installed at the root of the repo. To use it after you downloaded the repository:</p><ol>
+<li>Open up terminal</li>
+<li>Change the working directory to the root of the repo</li>
+<li>Enter the command <code>git add .</code> to add stage files. </li>
+<li>Enter the command <code>npm run commit</code>, and follow the prompts for it to construct a commit message for you.</li>
+<li>Enter the command <code>git push</code> to push to the remote.</li>
+</ol><p>Note that steps 3 &amp; 5 can be substituted through a GIT GUI tool (e.g. SourceTree). You can use a GUI to stage and push files to remote. However, ensure that you don&apos;t use the default commit command or commit of the GUI tool. You must use <code>npm run commit</code>.</p><h2>Deployment</h2><h3>CI/CD</h3><p><img src="./manual/asset/CirlceCI%20Workflow.png" alt="mitch-datasource CI/CD flow diagram"></p><p>This package has a CI/CD pipeline with CircleCI configured. It has a workflow setup to use <code>semantic-release</code> so that if it detect any commits that requires a release (e.g. adding a new feature, breaking changes, fixes, etc), it&apos;ll perform various release related tasks including:</p><ul>
+<li>Tagging the commit with vX.X.X</li>
+<li>Create a GitHub release (auto-generating the documentation)</li>
+<li>Publish to NPM package registry</li>
+</ul><p>However, this works through commit messages, so all commits, aside from merges needs to be under a certain format. For more information, see the section <a href="#commit-messages">Commit Messages</a>.</p><h3>Monorepo</h3><p>This repository is essentially a monorepo as it has multiple projects. However only one project is released (i.e. the <code>mitch-datasource</code>) as a package. The others are for testing, documentation and various other purposes.</p><p><code>semantic-release</code> doesn&apos;t support monorepos out-of-the-box. However, there are solutions for this. For more information see this <a href="https://github.com/semantic-release/semantic-release/issues/193">GitHub issue</a>.</p><p>To get <code>semantic-release</code> to work for mono repos, i.e. this repository, there are a few approaches. This repository took the approach mentioned in this <a href="https://github.com/semantic-release/semantic-release/issues/193#issuecomment-355418830">GitHub issue comment</a>.</p><p>Although this is a monorepo, it doesn&apos;t have multiple packages to release and publish. This package only releases a single project as a package. Thus, the <code>circleci</code> configuration was setup in such a way where it simply changes directory and then runs <code>semantic-release</code> in that directory.</p><h2>Services Used when Developing this Package</h2><ul>
+<li><code>CircleCI</code> For CI/CD pipeline to publish to NPM.</li>
+<li><code>GitHub</code> To host the source code</li>
+<li><code>NPM Registry</code> To upload the node package and make it available as a node package</li>
+<li><code>Netlify</code> To host the static HTML documentation</li>
+</ul><h3>Dependencies</h3><ul>
 <li><a href="https://www.axios.com">axios</a><ul>
 <li>Used to perform default AJAX operations</li>
 </ul>
@@ -216,22 +238,21 @@ These scripts run convenient tasks when developing the application, and saves yo
 <li>For <code>QueryBuilder</code> (Used as part of <code>AJAX Datasource</code>) to convert an object to a query string</li>
 </ul>
 </li>
-</ul><h3>Technologies Used</h3><p>This package was created using:</p><ul>
-<li><code>semantic-release</code> to automate the release process to NPM, and creating git releases. Isn&apos;t actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through npx). See the root <code>.circleci/config.yml</code> &amp; <code>.circleci/notes.txt</code> for more details.</li>
-<li><code>commitizen</code> which ensures commits is in a nice format. See <code>commit</code> script of the main repository scripts.</li>
-<li><code>CircleCI</code> For CI/CD pipeline to publish to NPM.</li>
+</ul><h3>Development Dependencies</h3><p>This package was created using:</p><ul>
+<li><code>semantic-release</code> to automate the release process to NPM, and creating git releases. Isn&apos;t actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through npx). See the root <code>.circleci/config.yml</code> &amp; <code>.circleci/notes.txt</code> for more details</li>
+<li><code>commitizen</code> which ensures commits is in a nice format. See <code>commit</code> script of the main repository scripts</li>
 <li><code>webpack</code> as the bundler</li>
 <li><code>npm</code> scripts to run common tasks (e.g. build and sass compilation), instead of gulp, grunt</li>
-<li><code>babel</code> with webpack to transpile JavaScript from ES6 to ES5, so this package codebase can utilise the newest ES6 features</li>
+<li><code>babel</code> with webpack to transpile JavaScript from ES6 &amp; ES7 to ES5, so this package codebase can utilise the newest ES features</li>
 <li><code>esdoc</code> to build the API documentations</li>
 <li><code>eslint</code> for linting JavaScript source code</li>
 <li><code>nodemon</code> to set up npm watch scripts (to auto-compile when code changes are detected)</li>
 <li><code>npm-run-all</code> to run multiple npm scripts in sequence/parallel whilst being compatible cross operating systems (e.g. Windows, Linux, etc)</li>
 <li><code>jest</code> for running tests</li>
-<li><code>storybook</code> to develop playground applications to perform manual integration tests with client-side frameworks (e.g. React, Vue).</li>
-<li><code>esm</code> to use modern ES import/export syntax (for executing node scripts without the need for webpack).</li>
-<li><code>mermaid cli</code> to generate mermaid diagrams using markdownish syntax (i.e. <code>.mmd</code> files).</li>
-<li><code>glob</code> retrieve all files within a folder matching an expression.</li>
+<li><code>storybook</code> to develop playground applications to perform manual integration tests with client-side frameworks (e.g. React, Vue)</li>
+<li><code>esm</code> to use modern ES import/export syntax (for executing node scripts without the need for webpack)</li>
+<li><code>mermaid cli</code> to generate mermaid diagrams using markdownish syntax (i.e. <code>.mmd</code> files)</li>
+<li><code>glob</code> retrieve all files within a folder matching an expression</li>
 </ul><h2>Repository Scripts</h2><h3>Installation Scripts</h3><p>To run the script, simply open up terminal and change directory to where the root <code>package.json</code> resides.
 Afterwards, simply type in <code>npm run &lt;ScriptName&gt;</code>. For example, <code>npm run install</code>.</p><table>
 <thead>
@@ -337,7 +358,7 @@ Afterwards, simply type in <code>npm run &lt;ScriptName&gt;</code>. For example,
 </tr>
 <tr>
 <td><code>commit</code></td>
-<td>Uses <code>commitizen</code> to create a angular styled commit message. Useful for <code>semantic-release</code></td>
+<td>Uses <code>commitizen</code> to create a angular styled commit message. Useful for <code>semantic-release</code>.</td>
 </tr>
 </tbody>
 </table><h2>Projects</h2><h3>mitch-datasource</h3><p>The main project containing the source code for mitch-datasource.
@@ -400,7 +421,7 @@ This project is published as a package to NPM registry.</p><h4>Available NPM Scr
 </tr>
 <tr>
 <td><code>lint-watch</code></td>
-<td>Lint the source code anytime when a change has been detected</td>
+<td>Lint the source code anytime when a change has been detected.</td>
 </tr>
 <tr>
 <td><code>lint-fix</code></td>
@@ -572,7 +593,7 @@ This project is published as a package to NPM registry.</p><h4>Available NPM Scr
 </tr>
 <tr>
 <td><code>lint-watch</code></td>
-<td>Lint the source code anytime when a change has been detected</td>
+<td>Lint the source code anytime when a change has been detected.</td>
 </tr>
 <tr>
 <td><code>lint-fix</code></td>

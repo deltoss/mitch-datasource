@@ -16,7 +16,7 @@ Project Name | Description
 
 The relationship between all the above projects can be illustrated as per below:
 
-![mitch-datasource architecture diagram](asset/architecture.png)
+![mitch-datasource architecture diagram](asset/Architecture.png)
 
 Each project has their own set of scripts which you can run. However, for general use,
 you can simply just use the scripts located at the root of this repository in `package.json`.
@@ -46,6 +46,8 @@ Note that steps 3 & 5 can be substituted through a GIT GUI tool (e.g. SourceTree
 
 ### CI/CD
 
+![mitch-datasource CI/CD flow diagram](asset/CirlceCI%20Workflow.png)
+
 This package has a CI/CD pipeline with CircleCI configured. It has a workflow setup to use `semantic-release` so that if it detect any commits that requires a release (e.g. adding a new feature, breaking changes, fixes, etc), it'll perform various release related tasks including:
 
 * Tagging the commit with vX.X.X
@@ -64,30 +66,37 @@ To get `semantic-release` to work for mono repos, i.e. this repository, there ar
 
 Although this is a monorepo, it doesn't have multiple packages to release and publish. This package only releases a single project as a package. Thus, the `circleci` configuration was setup in such a way where it simply changes directory and then runs `semantic-release` in that directory.
 
-### Major Dependencies
+## Services Used when Developing this Package
+
+* `CircleCI` For CI/CD pipeline to publish to NPM.
+* `GitHub` To host the source code
+* `NPM Registry` To upload the node package and make it available as a node package
+* `Netlify` To host the static HTML documentation
+
+### Dependencies
+
 * [axios](https://www.axios.com)
   * Used to perform default AJAX operations
 * [query-string](https://github.com/sindresorhus/query-string#readme)
   * For `QueryBuilder` (Used as part of `AJAX Datasource`) to convert an object to a query string
 
-### Technologies Used
+### Development Dependencies
 
 This package was created using:
-* `semantic-release` to automate the release process to NPM, and creating git releases. Isn't actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through npx). See the root `.circleci/config.yml` & `.circleci/notes.txt` for more details.
-* `commitizen` which ensures commits is in a nice format. See `commit` script of the main repository scripts.
-* `CircleCI` For CI/CD pipeline to publish to NPM.
+* `semantic-release` to automate the release process to NPM, and creating git releases. Isn't actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through npx). See the root `.circleci/config.yml` & `.circleci/notes.txt` for more details
+* `commitizen` which ensures commits is in a nice format. See `commit` script of the main repository scripts
 * `webpack` as the bundler
 * `npm` scripts to run common tasks (e.g. build and sass compilation), instead of gulp, grunt
-* `babel` with webpack to transpile JavaScript from ES6 to ES5, so this package codebase can utilise the newest ES6 features
+* `babel` with webpack to transpile JavaScript from ES6 & ES7 to ES5, so this package codebase can utilise the newest ES features
 * `esdoc` to build the API documentations
 * `eslint` for linting JavaScript source code
 * `nodemon` to set up npm watch scripts (to auto-compile when code changes are detected)
 * `npm-run-all` to run multiple npm scripts in sequence/parallel whilst being compatible cross operating systems (e.g. Windows, Linux, etc)
 * `jest` for running tests
-* `storybook` to develop playground applications to perform manual integration tests with client-side frameworks (e.g. React, Vue).
-* `esm` to use modern ES import/export syntax (for executing node scripts without the need for webpack).
-* `mermaid cli` to generate mermaid diagrams using markdownish syntax (i.e. `.mmd` files).
-* `glob` retrieve all files within a folder matching an expression.
+* `storybook` to develop playground applications to perform manual integration tests with client-side frameworks (e.g. React, Vue)
+* `esm` to use modern ES import/export syntax (for executing node scripts without the need for webpack)
+* `mermaid cli` to generate mermaid diagrams using markdownish syntax (i.e. `.mmd` files)
+* `glob` retrieve all files within a folder matching an expression
 
 ## Repository Scripts
 
@@ -127,7 +136,7 @@ Script Name | Description
 `test-watch` | Run tests when a relevant file has been changed.
 `react-storybook` | Runs the storybook application for React. For manual integration tests with client-side frameworks (e.g. React, Vue).
 `vue-storybook` | Runs the storybook application for Vue. For manual integration tests with client-side frameworks (e.g. React, Vue).
-`commit` | Uses `commitizen` to create a angular styled commit message. Useful for `semantic-release`
+`commit` | Uses `commitizen` to create a angular styled commit message. Useful for `semantic-release`.
 
 ## Projects
 
@@ -157,7 +166,7 @@ Script Name | Description
 `webpack-build-dev` | Build code with development settings.
 `webpack-build-prd` | Build code with production settings.
 `lint` | Lint the source code, finding any errors or code smells.
-`lint-watch` | Lint the source code anytime when a change has been detected
+`lint-watch` | Lint the source code anytime when a change has been detected.
 `lint-fix` | Automatically fix any auto-fixable warnings or errors detected when linting.
 
 ### mitch-datasource-documentation
@@ -252,7 +261,7 @@ Script Name | Description
 `build-dev` | Performs linting and builds the codebase.
 `build-prd` | Performs linting and builds the codebase.
 `lint` | Lint the source code, finding any errors or code smells.
-`lint-watch` | Lint the source code anytime when a change has been detected
+`lint-watch` | Lint the source code anytime when a change has been detected.
 `lint-fix` | Automatically fix any auto-fixable warnings or errors detected when linting.
 
 ##### Other Scripts

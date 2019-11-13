@@ -8,8 +8,8 @@ mermaidFolderPaths.forEach((mermaidFolderPath) => {
   mermaidFilePaths.forEach((mermaidFilePath) => {
     const dirName = path.dirname(mermaidFilePath);
     const fileName = path.basename(mermaidFilePath, '.mmd');
-    const mermaidOutputFilePath = `${dirName}\\${fileName}.png`;
-    const command = `mmdc -i \"${mermaidFilePath}\" -o ${mermaidOutputFilePath} -b transparent -t neutral`;
+    const mermaidOutputFilePath = `${dirName}/${fileName}.png`;
+    const command = `mmdc -i \"${mermaidFilePath}\" -o \"${mermaidOutputFilePath}\" -b transparent -t neutral`;
     execSync(command, { stdio: 'inherit' });
   });
 });
