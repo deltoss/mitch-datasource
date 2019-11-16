@@ -26,8 +26,8 @@ module.exports = (env, options) => {
     output: {
       library: {
         root: 'MitchDatasource',
-        amd: 'mitchdatasource',
-        commonjs: 'mitchdatasource',
+        amd: 'mitch-datasource',
+        commonjs: 'mitch-datasource',
       },
       libraryExport: 'default',
       libraryTarget: 'umd',

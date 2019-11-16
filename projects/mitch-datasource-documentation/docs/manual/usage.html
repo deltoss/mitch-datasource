@@ -43,6 +43,14 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#basic-usage" data-ice="link">Basic Usage</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#array" data-ice="link">Array</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#ajax" data-ice="link">Ajax</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/usage.html"><a href="manual/usage.html#minimal-configuration-" data-ice="link">Minimal Configuration:</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/usage.html"><a href="manual/usage.html#with-mapper" data-ice="link">With Mapper</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/usage.html"><a href="manual/usage.html#querybuilder" data-ice="link">QueryBuilder</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/usage.html"><a href="manual/usage.html#adjust-parameters-to-send" data-ice="link">Adjust Parameters to Send</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/usage.html"><a href="manual/usage.html#full-options" data-ice="link">Full Options</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#with-components" data-ice="link">With Components</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/usage.html"><a href="manual/usage.html#vue-example" data-ice="link">Vue Example</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/usage.html"><a href="manual/usage.html#react-example" data-ice="link">React Example</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#advanced-usage" data-ice="link">Advanced Usage</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#sorting" data-ice="link">Sorting</a></li>
 <li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#multi-column-sorting" data-ice="link">Multi-Column Sorting</a></li>
@@ -101,7 +109,257 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="usage">Usage</h1><h2 id="basic-usage">Basic Usage</h2><h3 id="array">Array</h3><h3 id="ajax">Ajax</h3><h2 id="advanced-usage">Advanced Usage</h2><h3 id="sorting">Sorting</h3><h3 id="multi-column-sorting">Multi-Column Sorting</h3><h3 id="filtering">Filtering</h3><h3 id="multi-column-filtering">Multi-Column Filtering</h3><h3 id="events">Events</h3><h3 id="making-your-own-custom-datasource">Making your own Custom Datasource</h3><h3 id="modifying-the-defaults">Modifying the Defaults</h3><h2 id="additional-information">Additional Information</h2><p>For more information on the usage:</p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="usage">Usage</h1><h2 id="basic-usage">Basic Usage</h2><p>To find documentation on the possible options to pass, or methods &amp; properties provided by the datasources, refer to the api documentation. Otherwise, below are usage examples to demonstrate how you may the datasource.</p>
+<h3 id="array">Array</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import { ArrayDatasource } from &apos;mitch-datasource&apos;;
+
+let datasource = new ArrayDatasource({
+  data: [
+    {
+      id: 1,
+      firstName: &apos;John&apos;,
+      lastName: &apos;Smith&apos;
+    },
+    {
+      id: 2,
+      firstName: &apos;Mary&apos;,
+      lastName: &apos;Jane&apos;
+    },
+    // ... More
+  ]
+});
+await datasource.update();
+console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<h3 id="ajax">Ajax</h3><p>AJAX Datasource is configured to contact a remote endpoint.
+Given an endpoint, by default, it&apos;ll pass the below parameters either as query string, or as part of the request data:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offset</td>
+<td>The pagination offset. It skips the specified amount of items when querying.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>The page number for data pagination.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>The pagination size, i.e. the number of records per page.</td>
+</tr>
+<tr>
+<td>searchText</td>
+<td>May not be included (i.e. it&apos;s optional). The text to search for. Used to filter the data items.</td>
+</tr>
+<tr>
+<td>sortArguments</td>
+<td>May not be included (i.e. it&apos;s optional). The sort arguments object, for specific or multi-column sorting purposes.</td>
+</tr>
+<tr>
+<td>searchArguments</td>
+<td>May not be included (i.e. it&apos;s optional). The search arguments object, for specific or multi-column searching purposes.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="minimal-configuration-">Minimal Configuration:</h4><pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  ajax: &apos;https://path/to/remote/endpoint&apos;
+});
+await datasource.update();
+console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<h4 id="with-mapper">With Mapper</h4><p>If your remote endpoint doesn&apos;t return data in an expected format for the datasource, then you can use the <code>mapper</code> option of the AJAX datasource:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  ajax: {
+    // Note pagination/sorting/filtering doesn&apos;t
+    // work with this fake endpoint, as even when
+    // we send the datasource parameters, the
+    // remote endpoint won&apos;t actually vary
+    // the returned dataset.
+    url: &apos;https://jsonplaceholder.typicode.com/posts&apos;,
+    method: &apos;get&apos;,
+    // ... Other Axios options
+    // `mapper` is a custom option unique to the datasource package,
+    // it&apos;s not actually part of Axios
+    mapper: function(response) {
+      return {
+        data: response.data,
+        total: response.data.length,
+      }
+    }
+  }
+});
+await datasource.update();
+console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<h4 id="querybuilder">QueryBuilder</h4><h5 id="adjust-parameters-to-send">Adjust Parameters to Send</h5><p>If you want to adjust the parameters passed to the remote endpoint, you can provide the QueryBuilder instance passed to the AJAX datasource, with the <code>serialiseToQueryObject</code> callback configured.</p>
+<p>Within that callback, you can rename your parameters, or adjust the values.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource, QueryBuilder } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  // ...
+  queryBuilder: new QueryBuilder({
+    // ...
+    serialiseToQueryObject(datasource) {
+      // Calls the original default serialiser
+      let queryObject = QueryBuilder.prototype
+                        .defaults.serialiseToQueryObject(datasource);
+      // E.g. We want to rename the parameter
+      // &apos;offset&apos;, to &apos;start&apos;.
+      queryObject.start = queryObject.offset;
+      delete queryObject.offset;
+
+      return queryObject;
+    }
+  })
+});</code>
+</code></pre>
+<h5 id="full-options">Full Options</h5><pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource, QueryBuilder } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  // ...
+  queryBuilder: new QueryBuilder({
+    // ...
+    serialiseToQueryObject(datasource) {
+      // Calls the original default serialiser
+      let queryObject = QueryBuilder.prototype
+                        .defaults.serialiseToQueryObject(datasource);
+      // ... Do your additional operations
+      return queryObject;
+    },
+    serialiseToQueryString(objectToSerialise) {
+      // Calls the original default serialiser
+      let queryString = QueryBuilder.prototype
+                        .defaults.serialiseToQueryString(objectToSerialise);
+      // ... Do your additional operations
+      return queryString;
+    },
+    queryStringOptions: {
+      // Keep the default options
+      ...QueryBuilder.prototype.defaults.queryStringOptions,
+      // ... Put additional options here. It&apos;ll override default options
+      // For available options, check the docs for QueryBuilder constructor
+    }
+  })
+});</code>
+</code></pre>
+<h3 id="with-components">With Components</h3><p>It&apos;s not only primitives that can be passed onto client-side framework components.
+Objects can be passed, meaning we can pass in the datasource objects, and the components&apos; main responsibility is simply to wire up the UI to the datasource.</p>
+<p>When a component needs to perform pagination, filtering, sorting, it&apos;ll use the datasoure methods and properties.</p>
+<h4 id="vue-example">Vue Example</h4><p>How we pass the datasource to the Vue component:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">var app = new Vue({
+  el: &apos;#app&apos;,
+  data: {
+    message: &apos;Hello Vue!&apos;
+  }
+});</code>
+</code></pre>
+<p>Our example component <code>SimpleTable.vue</code>:</p>
+<pre><code class="lang-html"><code class="source-code prettyprint">&lt;template&gt;
+  &lt;div&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;First Name&lt;/th&gt;
+          &lt;th&gt;Last Name&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr v-for=&quot;item in datasource.data&quot; :key=&quot;item.id&quot;&gt;
+          &lt;td&gt;{{ item.firstName }}&lt;/td&gt;
+          &lt;td&gt;{{ item.lastName }}&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;br/&gt;
+    &lt;table border=&quot;1&quot;&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;div&gt;Page {{ datasource.page }} of {{ datasource.totalPages }}&lt;/div&gt;
+            &lt;div&gt;Total: {{ datasource.total }}&lt;/div&gt;
+            &lt;div&gt;Total Items on Page: {{ datasource.pageTotal }}&lt;/div&gt;
+            &lt;div&gt;Size: {{ datasource.size }}&lt;/div&gt;
+            &lt;div&gt;Offset: {{ datasource.offset }}&lt;/div&gt;
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;h4&gt;Pagination&lt;/h4&gt;
+            &lt;button @click=&quot;firstPage()&quot;&gt;&amp;lt;&amp;lt;&lt;/button&gt;
+            &lt;button @click=&quot;prevPage()&quot;&gt;&amp;lt;&lt;/button&gt;
+            &amp;nbsp;&amp;nbsp;
+            &lt;input type=&quot;number&quot; v-model=&quot;pageToGoTo&quot;/&gt;
+            &lt;button @click=&quot;goToPage(pageToGoTo)&quot;&gt;Go&lt;/button&gt;
+            &amp;nbsp;&amp;nbsp;
+            &lt;button @click=&quot;nextPage()&quot;&gt;&amp;gt;&lt;/button&gt;
+            &lt;button @click=&quot;lastPage()&quot;&gt;&amp;gt;&amp;gt;&lt;/button&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &apos;SimpleTable&apos;,
+  props: {
+    datasource: Object
+  },
+  data() {
+    return {
+      loading: this.$props.datasource.loading,
+      size: this.$props.datasource ? this.$props.datasource.size : 0,
+      pageToGoTo: &apos;&apos;,
+      searchText: &apos;&apos;,
+    }
+  },
+  created: async function () {
+    this.loading = this.$props.datasource.loading;
+    this.$props.datasource.on(&apos;updatestart&apos;, this.updateStartCallback);
+    this.$props.datasource.on(&apos;updateend&apos;, this.updateEndCallback);
+  },
+  beforeDestroy: function() {
+    this.$props.datasource.off(&apos;updatestart&apos;, this.updateStartCallback);
+    this.$props.datasource.off(&apos;updateend&apos;, this.updateEndCallback);
+  },
+  methods: {
+    async nextPage() {
+      let success = await this.datasource.nextPage();
+      if (!success) {
+        console.warn(&apos;Failed to go to next page...&apos;);
+      }
+    },
+    async prevPage() {
+      let success = await this.datasource.prevPage();
+      if (!success) {
+        console.warn(&apos;Failed to go to previous page...&apos;);
+      }
+    },
+    async goToPage(page) {
+      let success = await this.datasource.goToPage(page);
+      if (!success) {
+        console.warn(`Failed to go to page ${page}...`);
+      }
+    },
+    async lastPage() {
+      await this.goToPage(this.datasource.totalPages);
+    },
+    async firstPage() {
+      await this.goToPage(1);
+    },
+  }
+}
+&lt;/script&gt;</code>
+</code></pre>
+<h4 id="react-example">React Example</h4><h2 id="advanced-usage">Advanced Usage</h2><h3 id="sorting">Sorting</h3><h3 id="multi-column-sorting">Multi-Column Sorting</h3><h3 id="filtering">Filtering</h3><h3 id="multi-column-filtering">Multi-Column Filtering</h3><h3 id="events">Events</h3><h3 id="making-your-own-custom-datasource">Making your own Custom Datasource</h3><h3 id="modifying-the-defaults">Modifying the Defaults</h3><h2 id="additional-information">Additional Information</h2><p>For more information on the usage:</p>
 <ul>
 <li>Open up and view the example files inside the repository for:<ul>
 <li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test/src">Unit Tests</a></li>

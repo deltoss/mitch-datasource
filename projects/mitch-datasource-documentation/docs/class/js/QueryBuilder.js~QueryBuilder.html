@@ -45,13 +45,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import QueryBuilder from &apos;<span><a href="file/js/QueryBuilder.js.html#lineNumber62">mitch-datasource-documentation/js/QueryBuilder.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import QueryBuilder from &apos;<span><a href="file/js/QueryBuilder.js.html#lineNumber75">mitch-datasource-documentation/js/QueryBuilder.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/QueryBuilder.js.html#lineNumber62">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/QueryBuilder.js.html#lineNumber75">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -84,7 +84,10 @@ or the query string for AJAX get requests</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">With AJAX Datasource</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">let datasource = new AjaxDatasource({
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { AjaxDatasource, QueryBuilder } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
   // ...
   queryBuilder: new QueryBuilder({
     // ...
@@ -93,7 +96,10 @@ or the query string for AJAX get requests</p>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">With Adding to Defaults</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">let datasource = new AjaxDatasource({
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { AjaxDatasource, QueryBuilder } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
   // ...
   queryBuilder: new QueryBuilder({
     // ...
@@ -102,12 +108,14 @@ or the query string for AJAX get requests</p>
       let queryObject = QueryBuilder.prototype
                         .defaults.serialiseToQueryObject(datasource);
       // ... Do your additional operations
+      return queryObject;
     },
     serialiseToQueryString(objectToSerialise) {
       // Calls the original default serialiser
       let queryString = QueryBuilder.prototype
                         .defaults.serialiseToQueryString(objectToSerialise);
       // ... Do your additional operations
+      return queryString;
     },
     queryStringOptions: {
       // Keep the default options
@@ -120,7 +128,10 @@ or the query string for AJAX get requests</p>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">With Extra Parameter for GET/POST Request</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">let datasource = new AjaxDatasource({
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { AjaxDatasource, QueryBuilder } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
   // ...
   queryBuilder: new QueryBuilder({
     serialiseToQueryObject(datasource) {
@@ -358,7 +369,7 @@ a query string and returns that string.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber112">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber125">source</a></span></span>
     </span>
   </h3>
 
@@ -445,7 +456,7 @@ query string object to the query string.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber131">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber144">source</a></span></span>
     </span>
   </h3>
 
@@ -489,7 +500,7 @@ query string object to the query string.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber123">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber136">source</a></span></span>
     </span>
   </h3>
 
@@ -533,7 +544,7 @@ query string object to the query string.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber143">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber156">source</a></span></span>
     </span>
   </h3>
 
@@ -583,7 +594,7 @@ query string, then you should first check
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber156">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber169">source</a></span></span>
     </span>
   </h3>
 
@@ -660,7 +671,7 @@ part of AJAX post requests.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber173">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/QueryBuilder.js.html#lineNumber186">source</a></span></span>
     </span>
   </h3>
 

@@ -45,13 +45,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ArrayDatasource from &apos;<span><a href="file/js/ArrayDatasource.js.html#lineNumber28">mitch-datasource-documentation/js/ArrayDatasource.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ArrayDatasource from &apos;<span><a href="file/js/ArrayDatasource.js.html#lineNumber87">mitch-datasource-documentation/js/ArrayDatasource.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/ArrayDatasource.js.html#lineNumber28">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/ArrayDatasource.js.html#lineNumber87">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -82,7 +82,10 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Basic Usage</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">async function exampleAsyncFunction() {
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { ArrayDatasource } from &apos;mitch-datasource&apos;;
+
+async function exampleAsyncFunction() {
   let datasource = new ArrayDatasource({
     data: [
       {
@@ -100,6 +103,64 @@
   });
   await datasource.update();
   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+}
+exampleAsyncFunction();</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      <div class="example-caption" data-ice="exampleCaption">Sorting</div>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { ArrayDatasource } from &apos;mitch-datasource&apos;;
+
+async function exampleAsyncFunction() {
+  let datasource = new ArrayDatasource({
+    data: [
+      {
+        id: 1,
+        firstName: &apos;John&apos;,
+        lastName: &apos;Smith&apos;
+      },
+      {
+        id: 2,
+        firstName: &apos;Mary&apos;,
+        lastName: &apos;Jane&apos;
+      },
+      // ... More
+    ],
+    sort: (data, sortArguments = { &apos;firstName&apos;: &apos;asc&apos; }) =&gt; {
+      return mockSortLogic(data, sortArguments);
+    }
+  });
+  await datasource.sort({ &apos;lastName&apos;: &apos;asc&apos; });
+  console.log(`First page of sorted data: ${JSON.stringify(datasource.data)}`);
+}
+exampleAsyncFunction();</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      <div class="example-caption" data-ice="exampleCaption">Filtering</div>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { ArrayDatasource } from &apos;mitch-datasource&apos;;
+
+async function exampleAsyncFunction() {
+  let datasource = new ArrayDatasource({
+    data: [
+      {
+        id: 1,
+        firstName: &apos;John&apos;,
+        lastName: &apos;Smith&apos;
+      },
+      {
+        id: 2,
+        firstName: &apos;Mary&apos;,
+        lastName: &apos;Jane&apos;
+      },
+      // ... More
+    ],
+    search: (data, searchText) =&gt; {
+      return mockSearchLogic(data, searchText);
+    }
+  });
+  await datasource.search(&apos;John Smith&apos;);
+  console.log(`First page of filtered data: ${JSON.stringify(datasource.data)}`);
 }
 exampleAsyncFunction();</code></pre>
     </div>
@@ -855,7 +916,7 @@ pagination options.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber120">source</a></span></span>
     </span>
   </h3>
 
@@ -937,7 +998,7 @@ gets called when sorting is requested.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber165">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber224">source</a></span></span>
     </span>
   </h3>
 
@@ -982,7 +1043,7 @@ has, based on pagination, sorting, and filtering.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber150">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber209">source</a></span></span>
     </span>
   </h3>
 

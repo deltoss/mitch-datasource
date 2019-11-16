@@ -107,9 +107,9 @@ class DatasourceBase extends EventEmitter {
    * The pagination offset. It skips the
    * specified amount of items when querying.
    * @param {Number} [options.page=1]
-   * The page Number for data pagination.
+   * The page number for data pagination.
    * @param {Number} [options.size=10]
-   * The pagination size, i.e. the Number
+   * The pagination size, i.e. the number
    * of records per page.
    * @param {String} [options.searchText=null]
    * The text to search for. Used to filter
@@ -147,7 +147,7 @@ class DatasourceBase extends EventEmitter {
     this.offset = mergedOptions.offset;
 
     /**
-     * The pagination size, i.e. the Number
+     * The pagination size, i.e. the number
      * of records per page.
      *
      * @access public
@@ -184,7 +184,7 @@ class DatasourceBase extends EventEmitter {
 
     if (mergedOptions.page) {
       /**
-       * The page Number for data pagination.
+       * The page number for data pagination.
        *
        * @access public
        * @type {Number}
@@ -264,7 +264,7 @@ class DatasourceBase extends EventEmitter {
   }
 
   /**
-   * @param  {Number} newPage - The new page to set to.
+   * @param {Number} newPage - The new page to set to.
    * @access public
    * @type {Number}
    */
@@ -299,7 +299,7 @@ class DatasourceBase extends EventEmitter {
   /**
    * The total amount of pages.
    * Returns null if total wasn&apos;t provided.
-   * A Number representing current page otherwise.
+   * A number representing current page otherwise.
    * @access public
    * @type {?Number}
    */

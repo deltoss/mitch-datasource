@@ -4,6 +4,9 @@ import DatasourceBase from './DatasourceBase';
  * Datasource to manage an array of data.
  *
  * @example <caption>Basic Usage</caption>
+ *
+ * import { ArrayDatasource } from 'mitch-datasource';
+ *
  * async function exampleAsyncFunction() {
  *   let datasource = new ArrayDatasource({
  *     data: [
@@ -22,6 +25,62 @@ import DatasourceBase from './DatasourceBase';
  *   });
  *   await datasource.update();
  *   console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ *
+ * @example <caption>Sorting</caption>
+ *
+ * import { ArrayDatasource } from 'mitch-datasource';
+ *
+ * async function exampleAsyncFunction() {
+ *   let datasource = new ArrayDatasource({
+ *     data: [
+ *       {
+ *         id: 1,
+ *         firstName: 'John',
+ *         lastName: 'Smith'
+ *       },
+ *       {
+ *         id: 2,
+ *         firstName: 'Mary',
+ *         lastName: 'Jane'
+ *       },
+ *       // ... More
+ *     ],
+ *     sort: (data, sortArguments = { 'firstName': 'asc' }) => {
+ *       return mockSortLogic(data, sortArguments);
+ *     }
+ *   });
+ *   await datasource.sort({ 'lastName': 'asc' });
+ *   console.log(`First page of sorted data: ${JSON.stringify(datasource.data)}`);
+ * }
+ * exampleAsyncFunction();
+ *
+ * @example <caption>Filtering</caption>
+ *
+ * import { ArrayDatasource } from 'mitch-datasource';
+ *
+ * async function exampleAsyncFunction() {
+ *   let datasource = new ArrayDatasource({
+ *     data: [
+ *       {
+ *         id: 1,
+ *         firstName: 'John',
+ *         lastName: 'Smith'
+ *       },
+ *       {
+ *         id: 2,
+ *         firstName: 'Mary',
+ *         lastName: 'Jane'
+ *       },
+ *       // ... More
+ *     ],
+ *     search: (data, searchText) => {
+ *       return mockSearchLogic(data, searchText);
+ *     }
+ *   });
+ *   await datasource.search('John Smith');
+ *   console.log(`First page of filtered data: ${JSON.stringify(datasource.data)}`);
  * }
  * exampleAsyncFunction();
  */

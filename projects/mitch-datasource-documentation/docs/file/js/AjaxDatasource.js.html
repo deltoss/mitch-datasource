@@ -54,6 +54,9 @@ import QueryBuilder from &apos;./QueryBuilder&apos;;
  * data from a remote endpoint.
  *
  * @example &lt;caption&gt;Basic Usage&lt;/caption&gt;
+ *
+ * import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+ *
  * async function exampleAsyncFunction() {
  *   let datasource = new AjaxDatasource({
  *     ajax: &apos;https://path/to/remote/endpoint&apos;
@@ -64,6 +67,9 @@ import QueryBuilder from &apos;./QueryBuilder&apos;;
  * exampleAsyncFunction();
  *
  * @example &lt;caption&gt;Basic Usage with Options Object&lt;/caption&gt;
+ *
+ * import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+ *
  * async function exampleAsyncFunction() {
  *   let datasource = new AjaxDatasource({
  *     ajax: {
@@ -75,7 +81,8 @@ import QueryBuilder from &apos;./QueryBuilder&apos;;
  *       url: &apos;https://jsonplaceholder.typicode.com/posts&apos;,
  *       method: &apos;get&apos;,
  *       // ... Other Axios options
- *       // `mapper` is a custom option unique to this library
+ *       // `mapper` is a custom option unique to the datasource package,
+ *       // it&apos;s not actually part of Axios
  *       mapper: function(response) {
  *         return {
  *           data: response.data,
@@ -90,6 +97,9 @@ import QueryBuilder from &apos;./QueryBuilder&apos;;
  * exampleAsyncFunction();
  *
  * @example &lt;caption&gt;Basic Usage with Function&lt;/caption&gt;
+ *
+ * import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+ *
  * async function exampleAsyncFunction() {
  *   let datasource = new AjaxDatasource({
  *     ajax: async function() {

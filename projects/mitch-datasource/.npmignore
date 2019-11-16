@@ -17,7 +17,6 @@ docs
 
 # Non-NPM related project directories and files
 manual
-lib
 dest
 src
 test

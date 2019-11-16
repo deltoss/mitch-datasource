@@ -15,13 +15,20 @@ function hasObjectInArray(arr) {
  * or the query string for AJAX get requests
  *
  * @example <caption>With AJAX Datasource</caption>
+ *
+ * import { AjaxDatasource, QueryBuilder } from 'mitch-datasource';
+ *
  * let datasource = new AjaxDatasource({
  *   // ...
  *   queryBuilder: new QueryBuilder({
  *     // ...
  *   })
  * });
+ *
  * @example <caption>With Adding to Defaults</caption>
+ *
+ * import { AjaxDatasource, QueryBuilder } from 'mitch-datasource';
+ *
  * let datasource = new AjaxDatasource({
  *   // ...
  *   queryBuilder: new QueryBuilder({
@@ -31,12 +38,14 @@ function hasObjectInArray(arr) {
  *       let queryObject = QueryBuilder.prototype
  *                         .defaults.serialiseToQueryObject(datasource);
  *       // ... Do your additional operations
+ *       return queryObject;
  *     },
  *     serialiseToQueryString(objectToSerialise) {
  *       // Calls the original default serialiser
  *       let queryString = QueryBuilder.prototype
  *                         .defaults.serialiseToQueryString(objectToSerialise);
  *       // ... Do your additional operations
+ *       return queryString;
  *     },
  *     queryStringOptions: {
  *       // Keep the default options
@@ -46,7 +55,11 @@ function hasObjectInArray(arr) {
  *     }
  *   })
  * });
+ *
  * @example <caption>With Extra Parameter for GET/POST Request</caption>
+ *
+ * import { AjaxDatasource, QueryBuilder } from 'mitch-datasource';
+ *
  * let datasource = new AjaxDatasource({
  *   // ...
  *   queryBuilder: new QueryBuilder({

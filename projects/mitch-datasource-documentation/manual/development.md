@@ -2,8 +2,7 @@
 
 ## Overview
 
-This repository contains multiple projects. Each project has a specific set of responsibilities.
-The main project is `mitch-datasource`, which contains the base source code.
+This repository contains multiple projects. Each project has a specific set of responsibilities. The main project is `mitch-datasource`, which contains the base source code.
 
 Project Name | Description
 --- | ---
@@ -36,7 +35,7 @@ To assist making commits to the repository in that certain format, `commitizen` 
 
 1. Open up terminal
 2. Change the working directory to the root of the repo
-3. Enter the command `git add .` to add stage files. 
+3. Enter the command `git add .` to stage all files. 
 4. Enter the command `npm run commit`, and follow the prompts for it to construct a commit message for you.
 5. Enter the command `git push` to push to the remote.
 
@@ -50,7 +49,7 @@ Note that steps 3 & 5 can be substituted through a GIT GUI tool (e.g. SourceTree
 
 This package has a CI/CD pipeline with CircleCI configured. It has a workflow setup to use `semantic-release` so that if it detect any commits that requires a release (e.g. adding a new feature, breaking changes, fixes, etc), it'll perform various release related tasks including:
 
-* Tagging the commit with vX.X.X
+* Tagging the latest commit with vX.X.X
 * Create a GitHub release (auto-generating the documentation)
 * Publish to NPM package registry
 

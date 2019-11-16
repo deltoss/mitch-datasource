@@ -45,13 +45,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import AjaxDatasource from &apos;<span><a href="file/js/AjaxDatasource.js.html#lineNumber57">mitch-datasource-documentation/js/AjaxDatasource.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import AjaxDatasource from &apos;<span><a href="file/js/AjaxDatasource.js.html#lineNumber67">mitch-datasource-documentation/js/AjaxDatasource.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/AjaxDatasource.js.html#lineNumber57">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/AjaxDatasource.js.html#lineNumber67">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -83,7 +83,10 @@ data from a remote endpoint.</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Basic Usage</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">async function exampleAsyncFunction() {
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+
+async function exampleAsyncFunction() {
   let datasource = new AjaxDatasource({
     ajax: &apos;https://path/to/remote/endpoint&apos;
   });
@@ -94,7 +97,10 @@ exampleAsyncFunction();</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Basic Usage with Options Object</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">async function exampleAsyncFunction() {
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+
+async function exampleAsyncFunction() {
   let datasource = new AjaxDatasource({
     ajax: {
       // Note pagination/sorting/filtering doesn&apos;t
@@ -105,7 +111,8 @@ exampleAsyncFunction();</code></pre>
       url: &apos;https://jsonplaceholder.typicode.com/posts&apos;,
       method: &apos;get&apos;,
       // ... Other Axios options
-      // `mapper` is a custom option unique to this library
+      // `mapper` is a custom option unique to the datasource package,
+      // it&apos;s not actually part of Axios
       mapper: function(response) {
         return {
           data: response.data,
@@ -121,7 +128,10 @@ exampleAsyncFunction();</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       <div class="example-caption" data-ice="exampleCaption">Basic Usage with Function</div>
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">async function exampleAsyncFunction() {
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">
+import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+
+async function exampleAsyncFunction() {
   let datasource = new AjaxDatasource({
     ajax: async function() {
       return await mockAjaxCall();
@@ -947,7 +957,7 @@ pagination options.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber71">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber81">source</a></span></span>
     </span>
   </h3>
 
@@ -1018,7 +1028,7 @@ the AJAX call.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber133">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber143">source</a></span></span>
     </span>
   </h3>
 
@@ -1069,7 +1079,7 @@ the AJAX call.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber206">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber216">source</a></span></span>
     </span>
   </h3>
 
@@ -1114,7 +1124,7 @@ has, based on pagination, sorting, and filtering.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber115">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber125">source</a></span></span>
     </span>
   </h3>
 
@@ -1162,7 +1172,7 @@ requests.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber197">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/AjaxDatasource.js.html#lineNumber207">source</a></span></span>
     </span>
   </h3>
 
