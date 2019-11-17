@@ -2,7 +2,6 @@ import { AjaxDatasource } from 'mitch-datasource';
 import { stubDataArray, mockAjaxCall } from 'mitch-datasource-test-utilities';
 
 const dsOptions = {
-  size: 10,
   ajax: async function() {
     return await mockAjaxCall(this, stubDataArray);
   }
@@ -50,6 +49,6 @@ test("Page Count", async () => {
   let lastPage = Math.ceil(stubDataArray.length / datasource.size);
   await datasource.goToPage(lastPage);
   let pageTotal = datasource.pageTotal;
-  let truePageTotal = stubDataArray.length % dsOptions.size;
-  expect(pageTotal == truePageTotal).toBeTruthy();
+  let truePageTotal = stubDataArray.length % datasource.size;
+  expect(pageTotal).toEqual(truePageTotal);
 });

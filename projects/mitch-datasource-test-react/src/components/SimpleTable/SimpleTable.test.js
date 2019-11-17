@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MultipleColumnSortingAndFilteringDataGrid from './MultipleColumnSortingAndFilteringDataGrid';
+import SimpleTable from './SimpleTable';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<MultipleColumnSortingAndFilteringDataGrid />, div);
+  ReactDOM.render(<SimpleTable />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

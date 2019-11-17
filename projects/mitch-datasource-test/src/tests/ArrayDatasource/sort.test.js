@@ -2,7 +2,6 @@ import { ArrayDatasource } from 'mitch-datasource';
 import { stubDataArray, mockSortLogic } from 'mitch-datasource-test-utilities';
 
 const dsOptions = {
-  size: 10,
   data: stubDataArray,
   sort: (data, sortArguments = { 'firstName': 'asc' }) => {
     return mockSortLogic(data, sortArguments);

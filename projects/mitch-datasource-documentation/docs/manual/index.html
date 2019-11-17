@@ -304,25 +304,36 @@ let datasource = new AjaxDatasource({
   })
 });</code>
 </code></pre><h3>With Components</h3><p>It&apos;s not only primitives that can be passed onto client-side framework components.
-Objects can be passed, meaning we can pass in the datasource objects, and the components&apos; main responsibility is simply to wire up the UI to the datasource.</p><p>When a component needs to perform pagination, filtering, sorting, it&apos;ll use the datasoure methods and properties.</p><h4>Vue Example</h4><p>How we pass the datasource to the Vue component:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">var app = new Vue({
-  el: &apos;#app&apos;,
-  data: {
-    message: &apos;Hello Vue!&apos;
-  }
-});</code>
-</code></pre><p>Our example component <code>SimpleTable.vue</code>:</p><pre><code class="lang-html"><code class="source-code prettyprint">&lt;template&gt;
+Objects can be passed, meaning we can pass in the datasource objects, and the components&apos; main responsibility is simply to wire up the UI to the datasource.</p><p>When a component needs to perform pagination, filtering, sorting, it&apos;ll use the datasoure methods and properties.</p><h4>Vue Example</h4><p>This package has been tested to work with <code>Vue</code>. You can clone the repo and then take a look at the <code>mitch-datasource-test-vue</code> project folder. Alternatively, you can see below sandbox and code for a more simplified version which only has pagination.</p><p><a href="https://codesandbox.io/s/vue-template-jv16s?fontsize=14&amp;hidenavigation=1&amp;theme=dark"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit mitch-datasource with Vue"></a></p><p>Example component <code>MinimalTable</code>, which uses the datasource (which gets passed to the component as a property) to display data and perform pagination logic:</p><pre><code class="lang-html"><code class="source-code prettyprint">&lt;template&gt;
   &lt;div&gt;
-    &lt;table&gt;
+    &lt;div v-if=&quot;!datasource&quot; style=&quot;color: crimson;&quot;&gt;
+      No datasource supplied
+    &lt;/div&gt;
+    &lt;div v-else-if=&quot;componentData.loading&quot; style=&quot;color: crimson;&quot;&gt;
+      Loading...
+    &lt;/div&gt;
+    &lt;div v-else-if=&quot;!componentData.data || componentData.data.length &lt;= 0&quot; style=&quot;color: crimson;&quot;&gt;
+      No data...
+    &lt;/div&gt;
+    &lt;table v-else&gt;
       &lt;thead&gt;
         &lt;tr&gt;
+          &lt;th&gt;ID&lt;/th&gt;
           &lt;th&gt;First Name&lt;/th&gt;
           &lt;th&gt;Last Name&lt;/th&gt;
+          &lt;th&gt;Job&lt;/th&gt;
+          &lt;th&gt;Gender&lt;/th&gt;
+          &lt;th&gt;Has Citizenship?&lt;/th&gt;
         &lt;/tr&gt;
       &lt;/thead&gt;
       &lt;tbody&gt;
-        &lt;tr v-for=&quot;item in datasource.data&quot; :key=&quot;item.id&quot;&gt;
+        &lt;tr v-for=&quot;item in componentData.data&quot; :key=&quot;item.id&quot;&gt;
+          &lt;td&gt;{{ item.id }}&lt;/td&gt;
           &lt;td&gt;{{ item.firstName }}&lt;/td&gt;
           &lt;td&gt;{{ item.lastName }}&lt;/td&gt;
+          &lt;td&gt;{{ item.job }}&lt;/td&gt;
+          &lt;td&gt;{{ item.gender }}&lt;/td&gt;
+          &lt;td&gt;{{ item.hasCitizenship ? &apos;Yes&apos; : &apos;No&apos; }}&lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
@@ -331,22 +342,19 @@ Objects can be passed, meaning we can pass in the datasource objects, and the co
       &lt;tbody&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;div&gt;Page {{ datasource.page }} of {{ datasource.totalPages }}&lt;/div&gt;
-            &lt;div&gt;Total: {{ datasource.total }}&lt;/div&gt;
-            &lt;div&gt;Total Items on Page: {{ datasource.pageTotal }}&lt;/div&gt;
-            &lt;div&gt;Size: {{ datasource.size }}&lt;/div&gt;
-            &lt;div&gt;Offset: {{ datasource.offset }}&lt;/div&gt;
+            &lt;div&gt;Page {{ componentData.page }} of {{ componentData.totalPages }}&lt;/div&gt;
+            &lt;div&gt;Total: {{ componentData.total }}&lt;/div&gt;
+            &lt;div&gt;Total Items on Page: {{ componentData.pageTotal }}&lt;/div&gt;
+            &lt;div&gt;Size: {{ componentData.size }}&lt;/div&gt;
+            &lt;div&gt;Offset: {{ componentData.offset }}&lt;/div&gt;
           &lt;/td&gt;
           &lt;td&gt;
             &lt;h4&gt;Pagination&lt;/h4&gt;
-            &lt;button @click=&quot;firstPage()&quot;&gt;&amp;lt;&amp;lt;&lt;/button&gt;
-            &lt;button @click=&quot;prevPage()&quot;&gt;&amp;lt;&lt;/button&gt;
-            &amp;nbsp;&amp;nbsp;
-            &lt;input type=&quot;number&quot; v-model=&quot;pageToGoTo&quot;/&gt;
-            &lt;button @click=&quot;goToPage(pageToGoTo)&quot;&gt;Go&lt;/button&gt;
-            &amp;nbsp;&amp;nbsp;
-            &lt;button @click=&quot;nextPage()&quot;&gt;&amp;gt;&lt;/button&gt;
-            &lt;button @click=&quot;lastPage()&quot;&gt;&amp;gt;&amp;gt;&lt;/button&gt;
+            &lt;div&gt;
+              &lt;button v-for=&quot;value in componentData.totalPages&quot; :key=&quot;value&quot; @click=&quot;goToPage(value)&quot;&gt;
+                {{value}}
+              &lt;/button&gt;
+            &lt;/div&gt;
           &lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
@@ -356,56 +364,244 @@ Objects can be passed, meaning we can pass in the datasource objects, and the co
 
 &lt;script&gt;
 export default {
-  name: &apos;SimpleTable&apos;,
   props: {
     datasource: Object
   },
   data() {
     return {
-      loading: this.$props.datasource.loading,
-      size: this.$props.datasource ? this.$props.datasource.size : 0,
-      pageToGoTo: &apos;&apos;,
-      searchText: &apos;&apos;,
+      // Declare component states to sync up with the
+      // datasource properties and to display down the road
+      componentData: {
+        loading: false,
+        page: 0,
+        totalPages: 0,
+        total: 0,
+        pageTotal: 0,
+        size: 0,
+        offset: 0,
+        searchText: 0,
+        searchArguments: {},
+        sortArguments: {},
+        data: [],
+      }
     }
   },
   created: async function () {
-    this.loading = this.$props.datasource.loading;
-    this.$props.datasource.on(&apos;updatestart&apos;, this.updateStartCallback);
-    this.$props.datasource.on(&apos;updateend&apos;, this.updateEndCallback);
+    this.syncComponentWithDatasource();
+    this.$props.datasource.on(&apos;updatestart&apos;, this.syncComponentWithDatasource);
+    this.$props.datasource.on(&apos;updateend&apos;, this.syncComponentWithDatasource);
   },
   beforeDestroy: function() {
-    this.$props.datasource.off(&apos;updatestart&apos;, this.updateStartCallback);
-    this.$props.datasource.off(&apos;updateend&apos;, this.updateEndCallback);
+    this.$props.datasource.off(&apos;updatestart&apos;, this.syncComponentWithDatasource);
+    this.$props.datasource.off(&apos;updateend&apos;, this.syncComponentWithDatasource);
   },
   methods: {
-    async nextPage() {
-      let success = await this.datasource.nextPage();
-      if (!success) {
-        console.warn(&apos;Failed to go to next page...&apos;);
+    syncComponentWithDatasource() {
+      if (!this.$props.datasource) {
+        return;
       }
-    },
-    async prevPage() {
-      let success = await this.datasource.prevPage();
-      if (!success) {
-        console.warn(&apos;Failed to go to previous page...&apos;);
-      }
+      this.componentData = {
+        loading: this.$props.datasource.loading,
+        page: this.$props.datasource.page,
+        totalPages: this.$props.datasource.totalPages,
+        total: this.$props.datasource.total,
+        pageTotal: this.$props.datasource.pageTotal,
+        size: this.$props.datasource.size,
+        offset: this.$props.datasource.offset,
+        searchText: this.$props.datasource.searchText,
+        searchArguments: this.$props.datasource.searchArguments,
+        sortArguments: this.$props.datasource.sortArguments,
+        data: this.$props.datasource.data,
+      };
     },
     async goToPage(page) {
-      let success = await this.datasource.goToPage(page);
+      let success = await this.$props.datasource.goToPage(page);
       if (!success) {
-        console.warn(`Failed to go to page ${page}...`);
+        alert(`Failed to go to page ${page}...`);
       }
-    },
-    async lastPage() {
-      await this.goToPage(this.datasource.totalPages);
-    },
-    async firstPage() {
-      await this.goToPage(1);
     },
   }
 }
 &lt;/script&gt;</code>
-</code></pre><h4>React Example</h4><h2>Advanced Usage</h2><h3>Sorting</h3><h3>Multi-Column Sorting</h3><h3>Filtering</h3><h3>Multi-Column Filtering</h3><h3>Events</h3><h3>Making your own Custom Datasource</h3><h3>Modifying the Defaults</h3><h2>Additional Information</h2><p>For more information on the usage:</p><ul>
+</code></pre><p>The typical <code>App</code> component. It declares and initiates a datasource, and then pass it as a property to the <code>MinimalTable</code> component.</p><pre><code class="lang-html"><code class="source-code prettyprint">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;MinimalTable :datasource=&quot;datasource&quot;/&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  import { ArrayDatasource } from &apos;mitch-datasource&apos;
+  import MinimalTable from &apos;./components/MinimalTable.vue&apos;
+
+  export default {
+    name: &apos;app&apos;,
+    data() {
+      let datasource = new ArrayDatasource({
+        data: [
+          {
+            id: 1,
+            firstName: &apos;John&apos;,
+            lastName: &apos;Smith&apos;
+          },
+          {
+            id: 2,
+            firstName: &apos;Mary&apos;,
+            lastName: &apos;Jane&apos;
+          },
+          // ... More
+        ]
+      });
+      datasource.update();
+      return {
+        datasource
+      };
+    },
+    components: {
+      MinimalTable
+    }
+  }
+&lt;/script&gt;</code>
+</code></pre><h4>React Example</h4><p>This package has been tested to work with <code>React</code>. You can clone the repo and then take a look at the <code>mitch-datasource-test-react</code> project folder. Alternatively, you can see below sandbox and code for a more simplified version which only has pagination.</p><p><a href="https://codesandbox.io/s/heuristic-chandrasekhar-j9wrg?fontsize=14&amp;hidenavigation=1&amp;theme=dark"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit mitch-datasource-react"></a></p><p>Example component <code>MinimalTable</code>, which uses the datasource (which gets passed to the component as a property) to display data and perform pagination logic:</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React, { useState, useCallback, useEffect } from &quot;react&quot;;
+
+export default function(props) {
+  // Declare component states to sync up with the
+  // datasource properties and to display down the road
+  const [componentData, setComponentData] = useState({
+    loading: false,
+    page: 0,
+    totalPages: 0,
+    total: 0,
+    pageTotal: 0,
+    size: 0,
+    offset: 0,
+    searchText: 0,
+    searchArguments: {},
+    sortArguments: {},
+    data: [],
+  });
+
+  // Syncs the component&apos;s state with the datasource
+  let syncComponentWithDatasource = useCallback(() =&gt; {
+    if (!props.datasource) {
+      return;
+    }
+    setComponentData({
+      page: props.datasource.page,
+      totalPages: props.datasource.totalPages,
+      total: props.datasource.total,
+      pageTotal: props.datasource.pageTotal,
+      size: props.datasource.size,
+      offset: props.datasource.offset,
+      data: props.datasource.data,
+    });
+  }, [props.datasource]);
+
+  // Attach listeners to sync component state
+  // when datasource&apos;s data changes
+  useEffect(() =&gt; {
+    syncComponentWithDatasource();
+    props.datasource.addListener(&apos;updatestart&apos;, syncComponentWithDatasource);
+    props.datasource.addListener(&apos;updateend&apos;, syncComponentWithDatasource);
+
+    // Cleanup called on unmount event
+    return () =&gt; {
+      props.datasource.removeListener(&apos;updatestart&apos;, syncComponentWithDatasource);
+      props.datasource.removeListener(&apos;updateend&apos;, syncComponentWithDatasource);
+    }
+  }, [props.datasource, syncComponentWithDatasource]);
+
+  let goToPage = useCallback(async page =&gt; {
+    let success = await props.datasource.goToPage(page);
+    if (!success) {
+      alert(`Failed to go to page ${page}...`);
+    }
+  }, [props.datasource]);
+
+  if (!props.datasource) {
+    return &lt;div style={{ color: &quot;crimson&quot; }}&gt;No datasource supplied&lt;/div&gt;;
+  } else if (!componentData.data || componentData.data.length &lt;= 0) {
+    return &lt;div style={{ color: &apos;crimson&apos; }}&gt; No data... &lt;/div&gt;;
+  } else {
+    return (
+      &lt;div&gt;
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;ID&lt;/th&gt;
+              &lt;th&gt;First Name&lt;/th&gt;
+              &lt;th&gt;Last Name&lt;/th&gt;
+              &lt;th&gt;Job&lt;/th&gt;
+              &lt;th&gt;Gender&lt;/th&gt;
+              &lt;th&gt;Has Citizenship?&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            {componentData.data.map(function(value, index, arr) {
+              return (
+                &lt;tr key={value.id}&gt;
+                  &lt;td&gt;{value.id}&lt;/td&gt;
+                  &lt;td&gt;{value.firstName}&lt;/td&gt;
+                  &lt;td&gt;{value.lastName}&lt;/td&gt;
+                  &lt;td&gt;{value.job}&lt;/td&gt;
+                  &lt;td&gt;{value.gender}&lt;/td&gt;
+                  &lt;td&gt;{value.hasCitizenship ? &quot;Yes&quot; : &quot;No&quot;}&lt;/td&gt;
+                &lt;/tr&gt;
+              );
+            })}
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;br /&gt;
+        &lt;table border=&quot;1&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;
+                &lt;div&gt;
+                  Page {componentData.page} of {componentData.totalPages}
+                &lt;/div&gt;
+                &lt;div&gt;Total: {componentData.total}&lt;/div&gt;
+                &lt;div&gt;Total Items on Page: {componentData.pageTotal}&lt;/div&gt;
+                &lt;div&gt;Size: {componentData.size}&lt;/div&gt;
+                &lt;div&gt;Offset: {componentData.offset}&lt;/div&gt;
+              &lt;/td&gt;
+              &lt;td&gt;
+                &lt;h4&gt;Pagination&lt;/h4&gt;
+                &lt;div&gt;
+                  {
+                    [...Array(componentData.totalPages).keys()].map((value) =&gt; {
+                      const pageNumber = value + 1;
+                      return &lt;button key={pageNumber} onClick={() =&gt; { goToPage(pageNumber) }}&gt;{pageNumber}&lt;/button&gt;;
+                    })
+                  }
+                &lt;/div&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    );
+  }
+}</code>
+</code></pre><p>The typical <code>App</code> component. It declares and initiates a datasource, and then pass it as a property to the <code>MinimalTable</code> component.</p><pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &quot;react&quot;;
+import ReactDOM from &quot;react-dom&quot;;
+import MinimalTable from &quot;./components/MinimalTable/MinimalTable&quot;;
+import { ArrayDatasource } from &quot;mitch-datasource&quot;;
+import stubData from &quot;./stub-data&quot;;
+
+function App() {
+  let datasource = new ArrayDatasource({
+    data: stubData
+  });
+  datasource.update();
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;MinimalTable datasource={datasource} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+const rootElement = document.getElementById(&quot;root&quot;);
+ReactDOM.render(&lt;App /&gt;, rootElement);</code>
+</code></pre><h2>Advanced Usage</h2><h3>Sorting</h3><h3>Multi-Column Sorting</h3><h3>Filtering</h3><h3>Multi-Column Filtering</h3><h3>Events</h3><h3>Making your own Custom Datasource</h3><h3>Modifying the Defaults</h3><h2>Additional Information</h2><p>For more information on the usage:</p><ul>
 <li>Open up and view the example files inside the repository for:<ul>
 <li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test/src">Unit Tests</a></li>
 <li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test-react/src">React Example</a></li>

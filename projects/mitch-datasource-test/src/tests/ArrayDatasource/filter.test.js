@@ -2,7 +2,6 @@ import { ArrayDatasource } from 'mitch-datasource';
 import { stubDataArray, mockFilterLogic } from 'mitch-datasource-test-utilities';
 
 const dsOptions = {
-  size: 10,
   data: stubDataArray,
   search: mockFilterLogic
 };

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import SimpleDataGrid from '../components/SimpleDataGrid/SimpleDataGrid';
-import MultiColumnSortingAndFilteringDataGrid from '../components/MultiColumnSortingAndFilteringDataGrid/MultipleColumnSortingAndFilteringDataGrid';
+import SimpleTable from '../components/SimpleTable/SimpleTable';
+import MultiColumnSortingAndFilteringTable from '../components/MultiColumnSortingAndFilteringTable/MultipleColumnSortingAndFilteringTable';
 import { ArrayDatasource, AjaxDatasource } from 'mitch-datasource';
 import {
   stubDataArray,
@@ -11,9 +11,9 @@ import {
   mockFilterLogic,
   mockSortLogic
 } from 'mitch-datasource-test-utilities';
+import MinimalTable from '../components/MinimalTable/MinimalTable';
 
 const arrayDsOptions = {
-  size: 10,
   data: stubDataArray,
   sortDirection: 'asc',
   search: mockFilterLogic,
@@ -23,30 +23,37 @@ const arrayDsOptions = {
 };
 
 const ajaxDsOptions = {
-  size: 10,
   ajax: async function() {
     return await mockAjaxCall(this, stubDataArray);
   }
 };
 
 storiesOf('Array Datasource', module)
-  .add('Simple Data Grid', () => {
+  .add('Minimal Table', () => {
     let datasource = new ArrayDatasource(arrayDsOptions);
     datasource.update();
-    return <SimpleDataGrid datasource={ datasource } />;
-  }).add('Multi-Column Sort & Filtering Data Grid', () => {
+    return <MinimalTable datasource={ datasource } />;
+  }).add('Simple Table', () => {
     let datasource = new ArrayDatasource(arrayDsOptions);
     datasource.update();
-    return <MultiColumnSortingAndFilteringDataGrid datasource={ datasource } />;
+    return <SimpleTable datasource={ datasource } />;
+  }).add('Multi-Column Sort & Filtering Table', () => {
+    let datasource = new ArrayDatasource(arrayDsOptions);
+    datasource.update();
+    return <MultiColumnSortingAndFilteringTable datasource={ datasource } />;
   });
 
 storiesOf('Ajax Datasource', module)
-  .add('Simple Data Grid', () => {
+  .add('Minimal Table', () => {
     let datasource = new AjaxDatasource(ajaxDsOptions);
     datasource.update();
-    return <SimpleDataGrid datasource={ datasource } />;
+    return <MinimalTable datasource={ datasource } />;
+  }).add('Simple Data Grid', () => {
+    let datasource = new AjaxDatasource(ajaxDsOptions);
+    datasource.update();
+    return <SimpleTable datasource={ datasource } />;
   }).add('Multi-Column Sort & Filtering Data Grid', () => {
     let datasource = new AjaxDatasource(ajaxDsOptions);
     datasource.update();
-    return <MultiColumnSortingAndFilteringDataGrid datasource={ datasource } />;
+    return <MultiColumnSortingAndFilteringTable datasource={ datasource } />;
   });

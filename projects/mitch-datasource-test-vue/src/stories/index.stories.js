@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/vue';
-import SimpleDataGrid from '../components/SimpleDataGrid';
-import MultiColumnSortingAndFilteringDataGrid from '../components/MultiColumnSortingAndFilteringDataGrid';
+import MinimalTable from '../components/MinimalTable';
+import SimpleTable from '../components/SimpleTable';
+import MultiColumnSortingAndFilteringTable from '../components/MultiColumnSortingAndFilteringTable';
 import { ArrayDatasource, AjaxDatasource } from 'mitch-datasource';
 import { 
   stubDataArray,
@@ -27,8 +28,8 @@ const ajaxDsOptions = {
 };
 
 storiesOf('Array Datasource', module)
-  .add('Simple Data Grid', () => ({
-    components: { SimpleDataGrid },
+  .add('Minimal Table', () => ({
+    components: { MinimalTable },
     data() {
       let datasource = new ArrayDatasource(arrayDsOptions);
       datasource.update();
@@ -36,9 +37,9 @@ storiesOf('Array Datasource', module)
         datasource: datasource
       }
     },
-    template: '<SimpleDataGrid :datasource="datasource"></SimpleDataGrid>'
-  })).add('Multi-Column Sort & Filtering Data Grid', () => ({
-    components: { MultiColumnSortingAndFilteringDataGrid },
+    template: '<MinimalTable :datasource="datasource"></MinimalTable>'
+  })).add('Simple Table', () => ({
+    components: { SimpleTable },
     data() {
       let datasource = new ArrayDatasource(arrayDsOptions);
       datasource.update();
@@ -46,12 +47,22 @@ storiesOf('Array Datasource', module)
         datasource: datasource
       }
     },
-    template: '<MultiColumnSortingAndFilteringDataGrid :datasource="datasource"></MultiColumnSortingAndFilteringDataGrid>'
+    template: '<SimpleTable :datasource="datasource"></SimpleTable>'
+  })).add('Multi-Column Sort & Filtering Table', () => ({
+    components: { MultiColumnSortingAndFilteringTable },
+    data() {
+      let datasource = new ArrayDatasource(arrayDsOptions);
+      datasource.update();
+      return {
+        datasource: datasource
+      }
+    },
+    template: '<MultiColumnSortingAndFilteringTable :datasource="datasource"></MultiColumnSortingAndFilteringTable>'
   }));
 
 storiesOf('Ajax Datasource', module)
-  .add('Simple Data Grid', () => ({
-    components: { SimpleDataGrid },
+  .add('Minimal Table', () => ({
+    components: { MinimalTable },
     data() {
       let datasource = new AjaxDatasource(ajaxDsOptions);
       datasource.update();
@@ -59,9 +70,9 @@ storiesOf('Ajax Datasource', module)
         datasource: datasource
       }
     },
-    template: '<SimpleDataGrid :datasource="datasource"></SimpleDataGrid>'
-  })).add('Multi-Column Sort & Filtering Data Grid', () => ({
-    components: { MultiColumnSortingAndFilteringDataGrid },
+    template: '<MinimalTable :datasource="datasource"></MinimalTable>'
+  })).add('Simple Table', () => ({
+    components: { SimpleTable },
     data() {
       let datasource = new AjaxDatasource(ajaxDsOptions);
       datasource.update();
@@ -69,5 +80,15 @@ storiesOf('Ajax Datasource', module)
         datasource: datasource
       }
     },
-    template: '<MultiColumnSortingAndFilteringDataGrid :datasource="datasource"></MultiColumnSortingAndFilteringDataGrid>'
+    template: '<SimpleTable :datasource="datasource"></SimpleTable>'
+  })).add('Multi-Column Sort & Filtering Table', () => ({
+    components: { MultiColumnSortingAndFilteringTable },
+    data() {
+      let datasource = new AjaxDatasource(ajaxDsOptions);
+      datasource.update();
+      return {
+        datasource: datasource
+      }
+    },
+    template: '<MultiColumnSortingAndFilteringTable :datasource="datasource"></MultiColumnSortingAndFilteringTable>'
   }));

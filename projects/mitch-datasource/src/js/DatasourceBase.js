@@ -292,10 +292,11 @@ class DatasourceBase extends EventEmitter {
         return null;
       }
       const updatedResponse = await this._update();
+      this.loading = false;
       this.emit('updateend', {
         sender: this,
+        response: updatedResponse,
       });
-      this.loading = false;
       return updatedResponse;
     } catch (ex) {
       this.loading = false;
