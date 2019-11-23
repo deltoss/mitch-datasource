@@ -15,7 +15,6 @@ export default function(props) {
     pageTotal: 0,
     size: 0,
     offset: 0,
-    searchText: 0,
     searchArguments: {},
     sortArguments: {},
     data: [],
@@ -34,7 +33,6 @@ export default function(props) {
       pageTotal: props.datasource.pageTotal,
       size: props.datasource.size,
       offset: props.datasource.offset,
-      searchText: props.datasource.searchText,
       searchArguments: props.datasource.searchArguments,
       sortArguments: props.datasource.sortArguments,
       data: props.datasource.data,
@@ -158,7 +156,6 @@ export default function(props) {
                 <div>Size: { componentData.size }</div>
                 <div>Offset: { componentData.offset }</div>
                 <br/>
-                <div>Search Text: { componentData.searchText }</div>
                 <div>Search Arguments: { componentData.searchArguments ? JSON.stringify(componentData.searchArguments) : '' }</div>
                 <div>Sort Arguments: { componentData.sortArguments ? JSON.stringify(componentData.sortArguments) : '' }</div>
               </td>

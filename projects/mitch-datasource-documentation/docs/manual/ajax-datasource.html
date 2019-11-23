@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual | mitch-datasource-documentation</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Documentation for mitch-datasource"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="mitch-datasource-documentation"><meta property="twitter:description" content="Documentation for mitch-datasource"></head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/deltoss/mitch-datasource"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/installation.html"><a href="manual/installation.html" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/installation.html"><a href="manual/installation.html#local-files" data-ice="link">Local Files</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/installation.html"><a href="manual/installation.html#with-npm" data-ice="link">With NPM</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/usage.html"><a href="manual/usage.html" data-ice="link">Usage</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#array-datasource" data-ice="link">Array Datasource</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#ajax-datasource" data-ice="link">AJAX Datasource</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#with-components" data-ice="link">With Components</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#vue-example" data-ice="link">Vue Example</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage.html"><a href="manual/usage.html#react-example" data-ice="link">React Example</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#modifying-the-defaults" data-ice="link">Modifying the Defaults</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#making-your-own-custom-datasource" data-ice="link">Making your own Custom Datasource</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage.html"><a href="manual/usage.html#additional-information" data-ice="link">Additional Information</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html" data-ice="link">Array Datasource</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html#sorting" data-ice="link">Sorting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html#multi-column-sorting" data-ice="link">Multi-Column Sorting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html#filtering" data-ice="link">Filtering</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html#multi-column-filtering" data-ice="link">Multi-Column Filtering</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html#events" data-ice="link">Events</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html#update-start" data-ice="link">Update Start</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/array-datasource.html"><a href="manual/array-datasource.html#update-end" data-ice="link">Update End</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html" data-ice="link">Ajax Datasource</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#minimal-configuration-" data-ice="link">Minimal Configuration:</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#with-mapper" data-ice="link">With Mapper</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#sorting" data-ice="link">Sorting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#multi-column-sorting" data-ice="link">Multi-Column Sorting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#filtering" data-ice="link">Filtering</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#multi-column-filtering" data-ice="link">Multi-Column Filtering</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#overriding-ajax" data-ice="link">Overriding AJAX</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#querybuilder" data-ice="link">QueryBuilder</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#adjust-parameters-to-send" data-ice="link">Adjust Parameters to Send</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#full-options" data-ice="link">Full Options</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#events" data-ice="link">Events</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#update-start" data-ice="link">Update Start</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#update-end" data-ice="link">Update End</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#request-start" data-ice="link">Request Start</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/ajax-datasource.html"><a href="manual/ajax-datasource.html#request-end" data-ice="link">Request End</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/development.html"><a href="manual/development.html" data-ice="link">Development</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#overview" data-ice="link">Overview</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#commit-messages" data-ice="link">Commit Messages</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#needs-to-be-in-certain-format" data-ice="link">Needs to Be In Certain Format</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#easier-way-to-write-commit-messages" data-ice="link">Easier Way to Write Commit Messages</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#deployment" data-ice="link">Deployment</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#ci-cd" data-ice="link">CI/CD</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#monorepo" data-ice="link">Monorepo</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#services-used-when-developing-this-package" data-ice="link">Services Used when Developing this Package</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#dependencies" data-ice="link">Dependencies</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#development-dependencies" data-ice="link">Development Dependencies</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#repository-scripts" data-ice="link">Repository Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#installation-scripts" data-ice="link">Installation Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#other-scripts" data-ice="link">Other Scripts</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#projects" data-ice="link">Projects</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource" data-ice="link">mitch-datasource</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#other-scripts" data-ice="link">Other Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource-documentation" data-ice="link">mitch-datasource-documentation</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#other-scripts" data-ice="link">Other Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource-test" data-ice="link">mitch-datasource-test</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource-test-react" data-ice="link">mitch-datasource-test-react</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#other-scripts" data-ice="link">Other Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource-test-vue" data-ice="link">mitch-datasource-test-vue</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#other-scripts" data-ice="link">Other Scripts</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#mitch-datasource-test-utilities" data-ice="link">mitch-datasource-test-utilities</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#available-npm-scripts" data-ice="link">Available NPM Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#main-scripts" data-ice="link">Main Scripts</a></li>
+<li data-ice="manualNav" class="indent-h5" data-link="manual/development.html"><a href="manual/development.html#other-scripts" data-ice="link">Other Scripts</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="ajax-datasource">Ajax Datasource</h1><p>AJAX Datasource is configured to contact a remote endpoint.
+Given an endpoint, by default, it&apos;ll pass the below parameters either as query string, or as part of the request data:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>offset</code></td>
+<td><code>Number</code></td>
+<td>No</td>
+<td>The pagination offset. It skips the specified amount of items when querying.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td><code>Number</code></td>
+<td>No</td>
+<td>The page number for data pagination.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>Number</code></td>
+<td>No</td>
+<td>The pagination size, i.e. the number of records per page.</td>
+</tr>
+<tr>
+<td><code>searchText</code></td>
+<td><code>String</code></td>
+<td>Yes</td>
+<td>The text to search for. Used to filter the data items.</td>
+</tr>
+<tr>
+<td><code>sortArguments</code></td>
+<td><code>JSON</code></td>
+<td>Yes</td>
+<td>The sort arguments object, for specific or multi-column sorting purposes. Will be sent to the server as a JSON object.</td>
+</tr>
+<tr>
+<td><code>searchArguments</code></td>
+<td><code>JSON</code></td>
+<td>Yes</td>
+<td>The search arguments object, for specific or multi-column searching purposes. Will be sent to the server as a JSON object.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Optional</strong> with values of yes means it won&apos;t be included in the request if there&apos;s no value set for it.</p>
+<h2 id="minimal-configuration-">Minimal Configuration:</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  ajax: &apos;https://path/to/remote/endpoint&apos;
+});
+await datasource.update();
+console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<h2 id="with-mapper">With Mapper</h2><p>If your remote endpoint doesn&apos;t return data in an expected format for the datasource, then you can use the <code>mapper</code> option of the AJAX datasource:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  ajax: {
+    // Note pagination/sorting/filtering doesn&apos;t
+    // work with this fake endpoint, as even when
+    // we send the datasource parameters, the
+    // remote endpoint won&apos;t actually vary
+    // the returned dataset.
+    url: &apos;https://jsonplaceholder.typicode.com/posts&apos;,
+    method: &apos;get&apos;,
+    // ... Other Axios options
+    // `mapper` is a custom option unique to the datasource package,
+    // it&apos;s not actually part of Axios
+    mapper: function(response) {
+      return {
+        data: response.data,
+        total: response.data.length,
+      }
+    }
+  }
+});
+await datasource.update();
+console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<h2 id="sorting">Sorting</h2><p>AJAX datasource perform sortings operations through sending sort parameters to the remote endpoint so it can perform the actual sorting operations.</p>
+<p>For example, when you use below line of code:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  let datasource = new AjaxDatasource({ ajax: &apos;&lt;RemoteEndpoint&gt;&apos; });
+  await datasource.sort({ &apos;lastName&apos;: &apos;asc&apos; });
+  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<p>The datasource will make a AJAX request to the remote endpoint with the follwoing URL as follows, if the datasource is configured for GET requests:</p>
+<pre><code><code class="source-code prettyprint">&lt;RemoteEndpoint&gt;?&lt;PaginationParameters&gt;&amp;sortArguments=%7B%lastName%22%3A%22asc%22%7D</code>
+</code></pre><p>Essentially, the sort arguments gets converted to JSON so it can be sent to the remote endpoint. It&apos;s up to the remote endpoint to convert it to an object, or do whatever with it to perform the actual sort operations, returning the sorted data.</p>
+<h2 id="multi-column-sorting">Multi-Column Sorting</h2><p>To perform multiple column sorting, simply provide a complex object for sorting. The object can have any parameters as long as your remote endpoint handles it accordingly. For example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  let datasource = new AjaxDatasource({ ajax: &apos;&lt;RemoteEndpoint&gt;&apos; });
+  await datasource.sort({ &apos;firstName&apos;: &apos;desc&apos;, &apos;lastName&apos;: &apos;asc&apos; });
+  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<p>This would then make a request to the remote endpoint, passing the complex object as JSON. For example, if your datasource is configured for GET requests:</p>
+<pre><code><code class="source-code prettyprint">&lt;RemoteEndpoint&gt;?&lt;PaginationParameters&gt;&amp;
+sortArguments=%7B%22firstName%22%3A%22desc%22%2C%22lastName%22%3A%22asc%22%7D</code>
+</code></pre><h2 id="filtering">Filtering</h2><p>AJAX datasource perform filterings operations through sending search parameters to the remote endpoint so it can perform the actual filtering operations.</p>
+<p>For example, when you use below line of code:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  let datasource = new AjaxDatasource({ ajax: &apos;&lt;RemoteEndpoint&gt;&apos; });
+  await datasource.search(&apos;John&apos;);
+  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<p>The datasource will make a AJAX request to the remote endpoint with the follwoing URL as follows, if the datasource is configured for GET requests:</p>
+<pre><code><code class="source-code prettyprint">&lt;RemoteEndpoint&gt;?&lt;PaginationParameters&gt;&amp;searchArguments=john</code>
+</code></pre><p>Note that if you provide an object to the search method as a argument, it&apos;ll be converted to JSON so it can be sent to the remote endpoint.</p>
+<p>For example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  let datasource = new AjaxDatasource({ ajax: &apos;&lt;RemoteEndpoint&gt;&apos; });
+  await datasource.search({&apos;searchText&apos;:&apos;John&apos;});
+  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<p>The above would make a HTTP request in the below format:</p>
+<pre><code><code class="source-code prettyprint">&lt;RemoteEndpoint&gt;?&lt;PaginationParameters&gt;&amp;searchArguments=%7B%searchText%22%3A%22John%22%7D</code>
+</code></pre><h2 id="multi-column-filtering">Multi-Column Filtering</h2><p>To perform multiple column filtering, simply provide a complex object for filtering. The object can have any parameters as long as your remote endpoint handles it accordingly. For example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  let datasource = new AjaxDatasource({ ajax: &apos;&lt;RemoteEndpoint&gt;&apos; });
+  await datasource.search({ &apos;firstName&apos;: &apos;John&apos;, &apos;lastName&apos;: &apos;Smith&apos; });
+  console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
+</code></pre>
+<p>This would then make a request to the remote endpoint, passing the complex object as JSON. For example, if your datasource is configured for GET requests:</p>
+<pre><code><code class="source-code prettyprint">&lt;RemoteEndpoint&gt;?&lt;PaginationParameters&gt;&amp;
+searchArguments=%7B%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Smith%22%7D</code>
+</code></pre><h2 id="overriding-ajax">Overriding AJAX</h2><p>The <code>ajax</code> option can take in either a:</p>
+<ul>
+<li><code>String</code> representing the url of remote endpoint.</li>
+<li><code>Function</code> representing a callback function when data is requested.</li>
+<li><code>Object</code> with various AJAX options. See the <code>AjaxDatasource</code> API docs for more details.</li>
+</ul>
+<p>Take for example, if you want to perform sorting/filtering locally, you can do this by overriding the <code>ajax</code> option with your own function that performs AJAX operations, but performs sorting/filtering locally.</p>
+<p>For example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new AjaxDatasource({
+  ajax: async (queryBuilder) =&gt; {
+    // Perform remote AJAX
+    let data = await $.get(&quot;&lt;remoteEndpoint&gt;?&quot; + queryBuilder.getQueryString());
+    let sortArgs = this.sortArguments;
+    let filterArgs = this.filterArguments;
+    // ... Now perform local sorting/filtering operations against data
+    return data;
+  }
+});</code>
+</code></pre>
+<h2 id="querybuilder">QueryBuilder</h2><h3 id="adjust-parameters-to-send">Adjust Parameters to Send</h3><p>If you want to adjust the parameters passed to the remote endpoint, you can provide the QueryBuilder instance passed to the AJAX datasource, with the <code>serialiseToQueryObject</code> callback configured.</p>
+<p>Within that callback, you can rename your parameters, or adjust the values.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource, QueryBuilder } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  // ...
+  queryBuilder: new QueryBuilder({
+    // ...
+    serialiseToQueryObject(datasource) {
+      // Calls the original default serialiser
+      let queryObject = QueryBuilder.prototype
+                        .defaults.serialiseToQueryObject(datasource);
+      // E.g. We want to rename the parameter
+      // &apos;offset&apos;, to &apos;start&apos;.
+      queryObject.start = queryObject.offset;
+      delete queryObject.offset;
+
+      return queryObject;
+    }
+  })
+});</code>
+</code></pre>
+<h3 id="full-options">Full Options</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import { AjaxDatasource, QueryBuilder } from &apos;mitch-datasource&apos;;
+
+let datasource = new AjaxDatasource({
+  // ...
+  queryBuilder: new QueryBuilder({
+    // ...
+    serialiseToQueryObject(datasource) {
+      // Calls the original default serialiser
+      let queryObject = QueryBuilder.prototype
+                        .defaults.serialiseToQueryObject(datasource);
+      // ... Do your additional operations
+      return queryObject;
+    },
+    serialiseToQueryString(objectToSerialise) {
+      // Calls the original default serialiser
+      let queryString = QueryBuilder.prototype
+                        .defaults.serialiseToQueryString(objectToSerialise);
+      // ... Do your additional operations
+      return queryString;
+    },
+    queryStringOptions: {
+      // Keep the default options
+      ...QueryBuilder.prototype.defaults.queryStringOptions,
+      // ... Put additional options here. It&apos;ll override default options
+      // For available options, check the docs for QueryBuilder constructor
+    }
+  })
+});</code>
+</code></pre>
+<h2 id="events">Events</h2><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>updatestart</code></td>
+<td>Fired when the update has started, i.e. before the datasource has sent the request to the remote endpoint.</td>
+</tr>
+<tr>
+<td><code>updateend</code></td>
+<td>Fired when the update has completed, i.e. after the datasource has sent the request to the remote endpoint, and when the remote endpoint providede a response.</td>
+</tr>
+<tr>
+<td><code>requeststart</code></td>
+<td>Fired when the AJAX handler has been cosntructed, and request is about to be sent to the remote endpoint.</td>
+</tr>
+<tr>
+<td><code>requestend</code></td>
+<td>Fired when the AJAX request has been completed, and raw response has been received from the server.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="update-start">Update Start</h3><p>You can attach to the <code>updatestart</code> event with a callback function that accepts an objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sender</code></td>
+<td><code>Object</code></td>
+<td>The sender (i.e. the datasource) that triggered this event.</td>
+</tr>
+<tr>
+<td><code>preventDefault</code></td>
+<td><code>Function</code></td>
+<td>You can call this to prevent/cancel the request to the remote endpoint.</td>
+</tr>
+<tr>
+<td><code>prevented</code></td>
+<td><code>boolean</code></td>
+<td>You can set this to true to prevent/cancel the request to the remote endpoint. Note that using <code>preventDefault</code> is preferred, and is more similar to common DOM events.</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new AjaxDatasource(dsOptions);
+datasource.on(&apos;updatestart&apos;, function(e) {
+  e.preventDefault(); // This stops it from actually updating
+  console.log(e);
+});
+const updateResponse = await datasource.update();
+console.log(updateResponse); // null</code>
+</code></pre>
+<h3 id="update-end">Update End</h3><p>You can attach to the <code>updateend</code> event with a callback function that accepts an objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sender</code></td>
+<td><code>Object</code></td>
+<td>The sender (i.e. the datasource) that triggered this event.</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td><code>*</code></td>
+<td>The response from the remote endpoint.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new AjaxDatasource(dsOptions);
+datasource.on(&apos;updateend&apos;, function(e) {
+  console.log(e);
+});
+const updateResponse = await datasource.update();
+console.log(updateResponse); // updateResponse &amp;&amp; e.response is the same object</code>
+</code></pre>
+<h3 id="request-start">Request Start</h3><p>You can attach to the <code>requeststart</code> event with a callback function that accepts an objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sender</code></td>
+<td><code>Object</code></td>
+<td>The sender (i.e. the datasource) that triggered this event.</td>
+</tr>
+<tr>
+<td><code>preventDefault</code></td>
+<td><code>Function</code></td>
+<td>You can call this to prevent/cancel the request to the remote endpoint.</td>
+</tr>
+<tr>
+<td><code>prevented</code></td>
+<td><code>boolean</code></td>
+<td>You can set this to true to prevent/cancel the request to the remote endpoint. Note that using <code>preventDefault</code> is preferred, and is more similar to common DOM events.</td>
+</tr>
+<tr>
+<td><code>ajaxHandler</code></td>
+<td><code>Function</code></td>
+<td>The function to handle the AJAX call. This can be changed if you want to modify how the ajax call is handled.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new AjaxDatasource(dsOptions);
+datasource.on(&apos;requeststart&apos;, function(e) {
+  e.preventDefault(); // This stops it from actually sending AJAX request and updating the data
+  console.log(e);
+});
+const updateResponse = await datasource.update();
+console.log(updateResponse);</code>
+</code></pre>
+<h3 id="request-end">Request End</h3><p>datasource.on(&apos;requestend&apos;, function(e) {
+You can attach to the <code>requeststart</code> event with a callback function that accepts an objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sender</code></td>
+<td><code>Object</code></td>
+<td>The sender (i.e. the datasource) that triggered this event.</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td><code>*</code></td>
+<td>The response from the remote endpoint.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new AjaxDatasource(dsOptions);
+datasource.on(&apos;requestend&apos;, function(e) {
+  console.log(e);
+});
+const updateResponse = await datasource.update();
+console.log(updateResponse);</code>
+</code></pre>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

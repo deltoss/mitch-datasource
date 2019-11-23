@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
@@ -235,8 +233,6 @@ class ArrayDatasource extends DatasourceBase {
     let processedData = [...this._rawData];
     if (this.searchArguments) {
       processedData = this._search.call(this, processedData, this.searchArguments);
-    } else if (this.searchText) {
-      processedData = this._search.call(this, processedData, this.searchText);
     }
     if (this._sort &amp;&amp; this.sortArguments) {
       processedData = this._sort.call(this, processedData, this.sortArguments);

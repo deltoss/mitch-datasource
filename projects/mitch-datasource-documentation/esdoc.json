@@ -32,6 +32,8 @@
                   "files": [
                     "./manual/installation.md",
                     "./manual/usage.md",
+                    "./manual/array-datasource.md",
+                    "./manual/ajax-datasource.md",
                     "./manual/development.md"
                   ],
                   "asset": "./manual/asset/"

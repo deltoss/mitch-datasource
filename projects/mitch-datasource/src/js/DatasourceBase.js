@@ -10,46 +10,6 @@ import EventEmitter from 'events';
  */
 class DatasourceBase extends EventEmitter {
   /**
-   * The object used for multi-column or
-   * specific-column searching. It should be
-   * in the format of:
-   * ```
-   * {
-   *   '[fieldNameToSearch1]': '[textToSearch]',
-   *   // ...
-   *   '[fieldNameToSearchN]': '[textToSearch]'
-   * }
-   * ```
-   *
-   * @typedef {Object} MultiColumnSearchArgs
-   * @example
-   * {
-   *    'firstName': 'michael',
-   *    'lastName': 'jackson'
-   * }
-   */
-
-  /**
-   * The object used for multi-column or
-   * specific-column sorting. It should be
-   * in the format of:
-   * ```
-   * {
-   *   '[fieldNameToSort1]': '[desc|descend|descending|asc|ascend|ascending]',
-   *   // ...
-   *   '[fieldNameToSortN]': '[desc|descend|descending|asc|ascend|ascending]'
-   * }
-   * ```
-   *
-   * @typedef {Object} MultiColumnSortArgs
-   * @example
-   * {
-   *    'firstName': 'asc',
-   *    'lastName': 'desc'
-   * }
-   */
-
-  /**
    * Create a datasource.
    * @param {Object} [options]
    * The datasource options.
@@ -64,15 +24,28 @@ class DatasourceBase extends EventEmitter {
    * @param {Number} [options.size=10]
    * The pagination size, i.e. the number
    * of records per page.
-   * @param {String} [options.searchText=null]
-   * The text to search for. Used to filter
-   * the data items.
-   * @param {MultiColumnSearchArgs} [options.searchArguments=null]
-   * The search arguments object, for specific
-   * or multi-column searching purposes.
-   * @param {MultiColumnSortArgs} [options.sortArguments=null]
-   * The sort arguments object, for specific
-   * or multi-column sorting purposes.
+   * @param {*} [options.searchArguments=null]
+   * It can be anything. For example, it can be a
+   * simple text. Alternatively, it can be a more
+   * complex search arguments object for more
+   * advanced requirements such as multi-column filtering.
+   * If the datasource uses remote endpoints, it'll be
+   * sent to the remote endpoint as part of the searchArguments
+   * field. If it's an object, it'll get serialised to JSON.
+   * If the datasource is local data, the argument will
+   * just get passed to the configured search callback
+   * as-is as a parameter.
+   * @param {*} [options.sortArguments=null]
+   * It can be anything. For example, it can be a
+   * simple text. Alternatively, it can be a more
+   * complex sort arguments object for more
+   * advanced requirements such as multi-column sorting.
+   * If the datasource uses remote endpoints, it'll be
+   * sent to the remote endpoint as part of the sortArguments
+   * field. If it's an object, it'll get serialised to JSON.
+   * If the datasource is local data, the argument will
+   * just get passed to the configured sort callback
+   * as-is as a parameter.
    */
   constructor(options = {}) {
     super();
@@ -109,29 +82,18 @@ class DatasourceBase extends EventEmitter {
     this.size = mergedOptions.size;
 
     /**
-     * The text to search for. Used to filter
-     * the data items.
+     * The search arguments object, for searching purposes.
      *
      * @access public
-     * @type {String}
-     */
-    this.searchText = mergedOptions.searchText;
-
-    /**
-     * The search arguments object, for specific
-     * or multi-column searching purposes.
-     *
-     * @access public
-     * @type {MultiColumnSearchArgs}
+     * @type {*}
      */
     this.searchArguments = mergedOptions.searchArguments;
 
     /**
-     * The search arguments object, for specific
-     * or multi-column sorting purposes.
+     * The search arguments, for sorting purposes.
      *
      * @access public
-     * @type {MultiColumnSortArgs}
+     * @type {*}
      */
     this.sortArguments = mergedOptions.sortArguments;
 
@@ -345,19 +307,11 @@ class DatasourceBase extends EventEmitter {
   /**
    * Given a search text, filters the data accordingly.
    * @access public
-   * @param  {String} searchArguments - The search text to filter with, or
-   *                                    the search arguments object to filter
-   *                                    with specific column filtering.
+   * @param  {*} searchArguments - The search arguments for searching purposes.
    * @return {Promise} A promise object, resolved when the search is completed.
    */
   async search(searchArguments) {
-    this.searchText = null;
-    this.searchArguments = null;
-    if (typeof searchArguments === 'string') {
-      this.searchText = searchArguments;
-    } else {
-      this.searchArguments = searchArguments;
-    }
+    this.searchArguments = searchArguments;
     this.offset = 0;
     return this.update();
   }
@@ -365,10 +319,7 @@ class DatasourceBase extends EventEmitter {
   /**
    * Sort the data based on a field and direction.
    * @access public
-   * @param  {Object} sortArguments - Object with keys as the field names to sort.
-   *                                  The values of the object is the sort direction.
-   *                                  The sort direction can be 'asc', 'ascend', 'desc',
-   *                                  'descending'
+   * @param  {*} sortArguments - The sorting arguments, for sorting purposes.
    * @return {Promise} A promise object, resolved when the sorting is completed.
    */
   async sort(sortArguments = null) {
@@ -381,7 +332,6 @@ DatasourceBase.prototype.defaults = {
   loading: false,
   offset: 0,
   size: 10,
-  searchText: null,
   searchArguments: null,
   sortArguments: null,
 };

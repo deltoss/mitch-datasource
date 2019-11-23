@@ -24,3 +24,9 @@ test("AJAX GET", async () => {
   expect(response.config.url).toEqual(`${ajaxObjectDsOptions.ajax.url}?offset=0&page=1&size=10`);
   expect(datasource.data && datasource.data.length > 0).toBeTruthy();
 });
+
+test("AJAX GET with Object", async () => {
+  let datasource = new AjaxDatasource(ajaxObjectDsOptions);
+  let response = await datasource.sort({ "firstName": "desc", "lastName": "asc" });
+  expect(response.config.url).toEqual(`${ajaxObjectDsOptions.ajax.url}?offset=0&page=1&size=10&sortArguments=%7B%22firstName%22%3A%22desc%22%2C%22lastName%22%3A%22asc%22%7D`);
+});

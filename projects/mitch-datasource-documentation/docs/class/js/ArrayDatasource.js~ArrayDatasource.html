@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
@@ -585,43 +583,13 @@ loading or not.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchArguments">searchArguments</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchArguments">searchArguments</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The search arguments object, for specific
-or multi-column searching purposes.</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchText">searchText</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>The text to search for.</p>
+        <div data-ice="description"><p>The search arguments object, for searching purposes.</p>
 </div>
       </div>
     </td>
@@ -673,14 +641,13 @@ or multi-column searching purposes.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-sortArguments">sortArguments</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-member-sortArguments">sortArguments</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The search arguments object, for specific
-or multi-column sorting purposes.</p>
+        <div data-ice="description"><p>The search arguments, for sorting purposes.</p>
 </div>
       </div>
     </td>
@@ -790,7 +757,7 @@ or multi-column sorting purposes.</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-method-search">search</a></span></span><span class="code" data-ice="signature">(searchArguments: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-method-search">search</a></span></span><span class="code" data-ice="signature">(searchArguments: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -819,7 +786,7 @@ or multi-column sorting purposes.</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-method-sort">sort</a></span></span><span class="code" data-ice="signature">(sortArguments: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/js/DatasourceBase.js~DatasourceBase.html#instance-method-sort">sort</a></span></span><span class="code" data-ice="signature">(sortArguments: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -998,7 +965,7 @@ gets called when sorting is requested.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber224">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber222">source</a></span></span>
     </span>
   </h3>
 
@@ -1043,7 +1010,7 @@ has, based on pagination, sorting, and filtering.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber209">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/ArrayDatasource.js.html#lineNumber207">source</a></span></span>
     </span>
   </h3>
 

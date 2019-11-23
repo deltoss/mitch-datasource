@@ -8,7 +8,7 @@ const dsOptions = {
 test("UpdateStart Cancel", async () => {
   let datasource = new ArrayDatasource(dsOptions);
   datasource.on('updatestart', function(e) {
-    e.preventDefault(); // This should stop it from actually updating
+    e.preventDefault(); // This stops it from actually updating
   });
   const updateResponse = await datasource.update();
   expect(!updateResponse && !datasource.data).toBeTruthy();
@@ -22,5 +22,5 @@ test("UpdateEnd", async () => {
   });
   const updateResponse = await datasource.update();
   expect(eventObject && eventObject.sender === datasource
-    && updateResponse).toBeTruthy();
+    && updateResponse && eventObject.response === updateResponse).toBeTruthy();
 });

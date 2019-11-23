@@ -9,7 +9,7 @@ export default function (datasource, allData) {
         total: allData.length,
       };
       // Filter
-      const searchArgs = datasource.searchArguments || datasource.searchText;
+      const searchArgs = datasource.searchArguments;
       processedData.data = mockFilterLogic(
         processedData.data,
         searchArgs,

@@ -439,13 +439,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/datasourcebase.js~datasourcebase#page",
-    "class/js/DatasourceBase.js~DatasourceBase.html#instance-get-page",
+    "class/js/DatasourceBase.js~DatasourceBase.html#instance-set-page",
     "js/DatasourceBase.js~DatasourceBase#page",
     "member"
   ],
   [
     "js/datasourcebase.js~datasourcebase#page",
-    "class/js/DatasourceBase.js~DatasourceBase.html#instance-set-page",
+    "class/js/DatasourceBase.js~DatasourceBase.html#instance-get-page",
     "js/DatasourceBase.js~DatasourceBase#page",
     "member"
   ],
@@ -471,12 +471,6 @@ window.esdocSearchIndex = [
     "js/datasourcebase.js~datasourcebase#searcharguments",
     "class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchArguments",
     "js/DatasourceBase.js~DatasourceBase#searchArguments",
-    "member"
-  ],
-  [
-    "js/datasourcebase.js~datasourcebase#searchtext",
-    "class/js/DatasourceBase.js~DatasourceBase.html#instance-member-searchText",
-    "js/DatasourceBase.js~DatasourceBase#searchText",
     "member"
   ],
   [
@@ -514,18 +508,6 @@ window.esdocSearchIndex = [
     "class/js/DatasourceBase.js~DatasourceBase.html#instance-method-update",
     "js/DatasourceBase.js~DatasourceBase#update",
     "method"
-  ],
-  [
-    "js/datasourcebase.js~datasourcebase.multicolumnsearchargs",
-    "typedef/index.html#static-typedef-MultiColumnSearchArgs",
-    "js/DatasourceBase.js~DatasourceBase.MultiColumnSearchArgs",
-    "typedef"
-  ],
-  [
-    "js/datasourcebase.js~datasourcebase.multicolumnsortargs",
-    "typedef/index.html#static-typedef-MultiColumnSortArgs",
-    "js/DatasourceBase.js~DatasourceBase.MultiColumnSortArgs",
-    "typedef"
   ],
   [
     "js/querybuilder.js",

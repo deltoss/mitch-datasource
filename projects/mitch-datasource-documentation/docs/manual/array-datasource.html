@@ -131,354 +131,273 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="usage">Usage</h1><p>To find documentation on the possible options to pass, or methods &amp; properties provided by the datasources, refer to the api documentation. Otherwise, below are usage examples to demonstrate how you may the datasource.</p>
-<h2 id="array-datasource">Array Datasource</h2><p>See <a href="./manual/./array-datasource.html">Array Datasource</a>.</p>
-<h2 id="ajax-datasource">AJAX Datasource</h2><p>See <a href="./manual/./ajax-datasource.html">AJAX Datasource</a>.</p>
-<h2 id="with-components">With Components</h2><p>It&apos;s not only primitives that can be passed onto client-side framework components.
-Objects can be passed, meaning we can pass in the datasource objects, and the components&apos; main responsibility is simply to wire up the UI to the datasource.</p>
-<p>When a component needs to perform pagination, filtering, sorting, it&apos;ll use the datasoure methods and properties.</p>
-<h3 id="vue-example">Vue Example</h3><p>This package has been tested to work with <code>Vue</code>. You can clone the repo and then take a look at the <code>mitch-datasource-test-vue</code> project folder. Alternatively, you can see below sandbox and code for a more simplified version which only has pagination.</p>
-<p><a href="https://codesandbox.io/s/vue-template-jv16s?fontsize=14&amp;hidenavigation=1&amp;theme=dark"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit mitch-datasource with Vue"></a></p>
-<p>Example component <code>MinimalTable</code>, which uses the datasource (which gets passed to the component as a property) to display data and perform pagination logic:</p>
-<pre><code class="lang-html"><code class="source-code prettyprint">&lt;template&gt;
-  &lt;div&gt;
-    &lt;div v-if=&quot;!datasource&quot; style=&quot;color: crimson;&quot;&gt;
-      No datasource supplied
-    &lt;/div&gt;
-    &lt;div v-else-if=&quot;componentData.loading&quot; style=&quot;color: crimson;&quot;&gt;
-      Loading...
-    &lt;/div&gt;
-    &lt;div v-else-if=&quot;!componentData.data || componentData.data.length &lt;= 0&quot; style=&quot;color: crimson;&quot;&gt;
-      No data...
-    &lt;/div&gt;
-    &lt;table v-else&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th&gt;ID&lt;/th&gt;
-          &lt;th&gt;First Name&lt;/th&gt;
-          &lt;th&gt;Last Name&lt;/th&gt;
-          &lt;th&gt;Job&lt;/th&gt;
-          &lt;th&gt;Gender&lt;/th&gt;
-          &lt;th&gt;Has Citizenship?&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-        &lt;tr v-for=&quot;item in componentData.data&quot; :key=&quot;item.id&quot;&gt;
-          &lt;td&gt;{{ item.id }}&lt;/td&gt;
-          &lt;td&gt;{{ item.firstName }}&lt;/td&gt;
-          &lt;td&gt;{{ item.lastName }}&lt;/td&gt;
-          &lt;td&gt;{{ item.job }}&lt;/td&gt;
-          &lt;td&gt;{{ item.gender }}&lt;/td&gt;
-          &lt;td&gt;{{ item.hasCitizenship ? &apos;Yes&apos; : &apos;No&apos; }}&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-    &lt;br/&gt;
-    &lt;table border=&quot;1&quot;&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;
-            &lt;div&gt;Page {{ componentData.page }} of {{ componentData.totalPages }}&lt;/div&gt;
-            &lt;div&gt;Total: {{ componentData.total }}&lt;/div&gt;
-            &lt;div&gt;Total Items on Page: {{ componentData.pageTotal }}&lt;/div&gt;
-            &lt;div&gt;Size: {{ componentData.size }}&lt;/div&gt;
-            &lt;div&gt;Offset: {{ componentData.offset }}&lt;/div&gt;
-          &lt;/td&gt;
-          &lt;td&gt;
-            &lt;h4&gt;Pagination&lt;/h4&gt;
-            &lt;div&gt;
-              &lt;button v-for=&quot;value in componentData.totalPages&quot; :key=&quot;value&quot; @click=&quot;goToPage(value)&quot;&gt;
-                {{value}}
-              &lt;/button&gt;
-            &lt;/div&gt;
-          &lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default {
-  props: {
-    datasource: Object
-  },
-  data() {
-    return {
-      // Declare component states to sync up with the
-      // datasource properties and to display down the road
-      componentData: {
-        loading: false,
-        page: 0,
-        totalPages: 0,
-        total: 0,
-        pageTotal: 0,
-        size: 0,
-        offset: 0,
-        searchText: 0,
-        searchArguments: {},
-        sortArguments: {},
-        data: [],
-      }
-    }
-  },
-  created: async function () {
-    this.syncComponentWithDatasource();
-    this.$props.datasource.on(&apos;updatestart&apos;, this.syncComponentWithDatasource);
-    this.$props.datasource.on(&apos;updateend&apos;, this.syncComponentWithDatasource);
-  },
-  beforeDestroy: function() {
-    this.$props.datasource.off(&apos;updatestart&apos;, this.syncComponentWithDatasource);
-    this.$props.datasource.off(&apos;updateend&apos;, this.syncComponentWithDatasource);
-  },
-  methods: {
-    syncComponentWithDatasource() {
-      if (!this.$props.datasource) {
-        return;
-      }
-      this.componentData = {
-        loading: this.$props.datasource.loading,
-        page: this.$props.datasource.page,
-        totalPages: this.$props.datasource.totalPages,
-        total: this.$props.datasource.total,
-        pageTotal: this.$props.datasource.pageTotal,
-        size: this.$props.datasource.size,
-        offset: this.$props.datasource.offset,
-        searchText: this.$props.datasource.searchText,
-        searchArguments: this.$props.datasource.searchArguments,
-        sortArguments: this.$props.datasource.sortArguments,
-        data: this.$props.datasource.data,
-      };
-    },
-    async goToPage(page) {
-      let success = await this.$props.datasource.goToPage(page);
-      if (!success) {
-        alert(`Failed to go to page ${page}...`);
-      }
-    },
-  }
-}
-&lt;/script&gt;</code>
-</code></pre>
-<p>The typical <code>App</code> component. It declares and initiates a datasource, and then pass it as a property to the <code>MinimalTable</code> component.</p>
-<pre><code class="lang-html"><code class="source-code prettyprint">&lt;template&gt;
-  &lt;div id=&quot;app&quot;&gt;
-    &lt;MinimalTable :datasource=&quot;datasource&quot;/&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  import { ArrayDatasource } from &apos;mitch-datasource&apos;
-  import MinimalTable from &apos;./components/MinimalTable.vue&apos;
-
-  export default {
-    name: &apos;app&apos;,
-    data() {
-      let datasource = new ArrayDatasource({
-        data: [
-          {
-            id: 1,
-            firstName: &apos;John&apos;,
-            lastName: &apos;Smith&apos;
-          },
-          {
-            id: 2,
-            firstName: &apos;Mary&apos;,
-            lastName: &apos;Jane&apos;
-          },
-          // ... More
-        ]
-      });
-      datasource.update();
-      return {
-        datasource
-      };
-    },
-    components: {
-      MinimalTable
-    }
-  }
-&lt;/script&gt;</code>
-</code></pre>
-<h3 id="react-example">React Example</h3><p>This package has been tested to work with <code>React</code>. You can clone the repo and then take a look at the <code>mitch-datasource-test-react</code> project folder. Alternatively, you can see below sandbox and code for a more simplified version which only has pagination.</p>
-<p><a href="https://codesandbox.io/s/heuristic-chandrasekhar-j9wrg?fontsize=14&amp;hidenavigation=1&amp;theme=dark"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit mitch-datasource-react"></a></p>
-<p>Example component <code>MinimalTable</code>, which uses the datasource (which gets passed to the component as a property) to display data and perform pagination logic:</p>
-<pre><code class="lang-jsx"><code class="source-code prettyprint">import React, { useState, useCallback, useEffect } from &quot;react&quot;;
-
-export default function(props) {
-  // Declare component states to sync up with the
-  // datasource properties and to display down the road
-  const [componentData, setComponentData] = useState({
-    loading: false,
-    page: 0,
-    totalPages: 0,
-    total: 0,
-    pageTotal: 0,
-    size: 0,
-    offset: 0,
-    searchText: 0,
-    searchArguments: {},
-    sortArguments: {},
-    data: [],
-  });
-
-  // Syncs the component&apos;s state with the datasource
-  let syncComponentWithDatasource = useCallback(() =&gt; {
-    if (!props.datasource) {
-      return;
-    }
-    setComponentData({
-      page: props.datasource.page,
-      totalPages: props.datasource.totalPages,
-      total: props.datasource.total,
-      pageTotal: props.datasource.pageTotal,
-      size: props.datasource.size,
-      offset: props.datasource.offset,
-      data: props.datasource.data,
-    });
-  }, [props.datasource]);
-
-  // Attach listeners to sync component state
-  // when datasource&apos;s data changes
-  useEffect(() =&gt; {
-    syncComponentWithDatasource();
-    props.datasource.addListener(&apos;updatestart&apos;, syncComponentWithDatasource);
-    props.datasource.addListener(&apos;updateend&apos;, syncComponentWithDatasource);
-
-    // Cleanup called on unmount event
-    return () =&gt; {
-      props.datasource.removeListener(&apos;updatestart&apos;, syncComponentWithDatasource);
-      props.datasource.removeListener(&apos;updateend&apos;, syncComponentWithDatasource);
-    }
-  }, [props.datasource, syncComponentWithDatasource]);
-
-  let goToPage = useCallback(async page =&gt; {
-    let success = await props.datasource.goToPage(page);
-    if (!success) {
-      alert(`Failed to go to page ${page}...`);
-    }
-  }, [props.datasource]);
-
-  if (!props.datasource) {
-    return &lt;div style={{ color: &quot;crimson&quot; }}&gt;No datasource supplied&lt;/div&gt;;
-  } else if (!componentData.data || componentData.data.length &lt;= 0) {
-    return &lt;div style={{ color: &apos;crimson&apos; }}&gt; No data... &lt;/div&gt;;
-  } else {
-    return (
-      &lt;div&gt;
-        &lt;table&gt;
-          &lt;thead&gt;
-            &lt;tr&gt;
-              &lt;th&gt;ID&lt;/th&gt;
-              &lt;th&gt;First Name&lt;/th&gt;
-              &lt;th&gt;Last Name&lt;/th&gt;
-              &lt;th&gt;Job&lt;/th&gt;
-              &lt;th&gt;Gender&lt;/th&gt;
-              &lt;th&gt;Has Citizenship?&lt;/th&gt;
-            &lt;/tr&gt;
-          &lt;/thead&gt;
-          &lt;tbody&gt;
-            {componentData.data.map(function(value, index, arr) {
-              return (
-                &lt;tr key={value.id}&gt;
-                  &lt;td&gt;{value.id}&lt;/td&gt;
-                  &lt;td&gt;{value.firstName}&lt;/td&gt;
-                  &lt;td&gt;{value.lastName}&lt;/td&gt;
-                  &lt;td&gt;{value.job}&lt;/td&gt;
-                  &lt;td&gt;{value.gender}&lt;/td&gt;
-                  &lt;td&gt;{value.hasCitizenship ? &quot;Yes&quot; : &quot;No&quot;}&lt;/td&gt;
-                &lt;/tr&gt;
-              );
-            })}
-          &lt;/tbody&gt;
-        &lt;/table&gt;
-        &lt;br /&gt;
-        &lt;table border=&quot;1&quot;&gt;
-          &lt;tbody&gt;
-            &lt;tr&gt;
-              &lt;td&gt;
-                &lt;div&gt;
-                  Page {componentData.page} of {componentData.totalPages}
-                &lt;/div&gt;
-                &lt;div&gt;Total: {componentData.total}&lt;/div&gt;
-                &lt;div&gt;Total Items on Page: {componentData.pageTotal}&lt;/div&gt;
-                &lt;div&gt;Size: {componentData.size}&lt;/div&gt;
-                &lt;div&gt;Offset: {componentData.offset}&lt;/div&gt;
-              &lt;/td&gt;
-              &lt;td&gt;
-                &lt;h4&gt;Pagination&lt;/h4&gt;
-                &lt;div&gt;
-                  {
-                    [...Array(componentData.totalPages).keys()].map((value) =&gt; {
-                      const pageNumber = value + 1;
-                      return &lt;button key={pageNumber} onClick={() =&gt; { goToPage(pageNumber) }}&gt;{pageNumber}&lt;/button&gt;;
-                    })
-                  }
-                &lt;/div&gt;
-              &lt;/td&gt;
-            &lt;/tr&gt;
-          &lt;/tbody&gt;
-        &lt;/table&gt;
-      &lt;/div&gt;
-    );
-  }
-}</code>
-</code></pre>
-<p>The typical <code>App</code> component. It declares and initiates a datasource, and then pass it as a property to the <code>MinimalTable</code> component.</p>
-<pre><code class="lang-jsx"><code class="source-code prettyprint">import React from &quot;react&quot;;
-import ReactDOM from &quot;react-dom&quot;;
-import MinimalTable from &quot;./components/MinimalTable/MinimalTable&quot;;
-import { ArrayDatasource } from &quot;mitch-datasource&quot;;
-import stubData from &quot;./stub-data&quot;;
-
-function App() {
-  let datasource = new ArrayDatasource({
-    data: stubData
-  });
-  datasource.update();
-  return (
-    &lt;div className=&quot;App&quot;&gt;
-      &lt;MinimalTable datasource={datasource} /&gt;
-    &lt;/div&gt;
-  );
-}
-
-const rootElement = document.getElementById(&quot;root&quot;);
-ReactDOM.render(&lt;App /&gt;, rootElement);</code>
-</code></pre>
-<h2 id="modifying-the-defaults">Modifying the Defaults</h2><p>You can modify the default options for any datasource. For example, for <code>ArrayDatasource</code>, you can provide a default sorting logic.</p>
-<p>You can create a new file called <code>ArrayDatasource.js</code> in your project, which simply imports the original <code>ArrayDatasource</code> and override the defaults, then exports the redefined ArrayDatasource.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">  import { ArrayDatasource } from &apos;mitch-datasource&apos;;
-
-  ArrayDatasource.prototype.defaults.sort = function(data, sortArguments = { &apos;firstName&apos;: &apos;asc&apos; }) {
-    let sortedData = { ...data }; // Clone data, so sorting doesn&apos;t affect the original object
-    // Perform sorting operations here
-    return sortedData;
-  };
-
-  export default ArrayDatasource;</code>
-</code></pre>
-<p>Then, in another file, you can import the redefined <code>ArrayDatasource</code>
-from <code>ArrayDatasource.js</code> file, and use it as follows:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">
-import ArrayDatasource from &apos;./ArrayDatasource&apos;;
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="array-datasource">Array Datasource</h1><pre><code class="lang-javascript"><code class="source-code prettyprint">import { ArrayDatasource } from &apos;mitch-datasource&apos;;
 
 let datasource = new ArrayDatasource({
-  data: stubData
+  data: [
+    {
+      id: 1,
+      firstName: &apos;John&apos;,
+      lastName: &apos;Smith&apos;
+    },
+    {
+      id: 2,
+      firstName: &apos;Mary&apos;,
+      lastName: &apos;Jane&apos;
+    },
+    // ... More
+  ]
 });
-await datasource.sort();
+await datasource.update();
 console.log(`First page of data: ${JSON.stringify(datasource.data)}`);</code>
 </code></pre>
-<h2 id="making-your-own-custom-datasource">Making your own Custom Datasource</h2><h2 id="additional-information">Additional Information</h2><p>For more information on the usage:</p>
+<h2 id="sorting">Sorting</h2><p>To perform sorting, you&apos;ll need to perform the below adjustments to your datasource:</p>
 <ul>
-<li>Open up and view the example files inside the repository for:<ul>
-<li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test/src">Unit Tests</a></li>
-<li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test-react/src">React Example</a></li>
-<li><a href="https://github.com/deltoss/mitch-datasource/mitch-datasource-test-vue/src">Vue Example</a></li>
+<li>Provide a <code>sort</code> function to the datasource options, which performs sorting on your dataset. It contains the below parameters:
+Parameter Name | Type | Description
+--- | --- | ---
+<code>data</code> | <code>Array</code> | The data to sort
+<code>sortArguments</code> | <code>*</code> | The sort arguments. Can be any type. It depends on what gets passed when the datasource <code>sort</code> method gets called.</li>
+<li>Call the datasource <code>sort</code> method, or alternatively, set the <code>sortArguments</code> property of the datasource, and then call the datasource <code>update</code> method.</li>
 </ul>
-</li>
-<li>Refer to the API documentations.</li>
+<p>See below example on defining the <code>sort</code> function for the datasource options.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new ArrayDatasource({
+  data: [
+    {
+      id: 1,
+      firstName: &apos;John&apos;,
+      lastName: &apos;Smith&apos;
+    },
+    {
+      id: 2,
+      firstName: &apos;Mary&apos;,
+      lastName: &apos;Jane&apos;
+    },
+    // ... More
+  ],
+  sort: function(data, sortArguments = { &apos;firstName&apos;: &apos;asc&apos; }) {
+    // Clone data so you don&apos;t accidentally sort
+    // the original object
+    let sortedData = [ ...data ];
+    // Perform sorting operations on the array of data here
+    if (sortArguments[&apos;lastName&apos;] 
+      &amp;&amp; sortArguments[&apos;lastName&apos;].toLowerCase().indexOf(&apos;asc&apos;) &gt; 0) {
+      sortedData.sort((a, b) =&gt; {
+        if (a[&apos;lastName&apos;] &gt; b[&apos;lastName&apos;]) {
+          return 1;
+        }
+        if (a[&apos;lastName&apos;] &lt; b[&apos;lastName&apos;]) {
+          return -1;
+        }
+      });
+    } else if (sortArguments[&apos;lastName&apos;] 
+      &amp;&amp; sortArguments[&apos;lastName&apos;].toLowerCase().indexOf(&apos;desc&apos;) &gt; 0) {
+      sortedData.sort((a, b) =&gt; {
+        if (a[&apos;lastName&apos;] &lt;&gt; b[&apos;lastName&apos;]) {
+          return 1;
+        }
+        if (a[&apos;lastName&apos;] &gt; b[&apos;lastName&apos;]) {
+          return -1;
+        }
+      });
+    }
+    return sortedData;
+  }
+});</code>
+</code></pre>
+<p>Now with your datasource, simply call <code>sort</code>. Note that you can pass in anything to the <code>sort</code> call, and it&apos;ll get directly passed to the <code>sort</code> callback above as the <code>sortArguments</code> parameter.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">await datasource.sort({ &apos;lastName&apos;: &apos;asc&apos; });</code>
+</code></pre>
+<h2 id="multi-column-sorting">Multi-Column Sorting</h2><p>The datasource can be configured for multi-column sorting. Recall the above sorting example works by passing the argument you provided in the datasource <code>sort</code> method to the <code>sort</code> callback. You can pass in anything to the <code>sort</code> call, and it&apos;ll get directly passed to the <code>sort</code> callback above as the <code>sortArguments</code> parameter. This means you can pass in a complex object that specifies how to do your multi-column sorting.</p>
+<p>Take for example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">await datasource.sort({ &apos;firstName&apos;: &apos;desc&apos;, &apos;lastName&apos;: &apos;asc&apos; });</code>
+</code></pre>
+<p>And then you can specify in the <code>sort</code> callback as follows:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new ArrayDatasource({
+  // ...
+  sort: function(data, sortArguments = { &apos;firstName&apos;: &apos;asc&apos; }) {
+    // Clone data so you don&apos;t accidentally sort
+    // the original object
+    let sortedData = [ ...data ];
+
+    // This will output: { &apos;firstName&apos;: &apos;desc&apos;, &apos;lastName&apos;: &apos;asc&apos; }
+    console.log(sortArguments);
+    // ... Perform multi-column sorting
+
+    return sortedData;
+  }
+});</code>
+</code></pre>
+<p>For an in-depth example, see the below projects of the repository which has multi-column sorting:</p>
+<ul>
+<li><code>mitch-datasource-test</code></li>
+<li><code>mitch-datasource-test-react</code></li>
+<li><code>mitch-datasource-test-vue</code></li>
 </ul>
+<h2 id="filtering">Filtering</h2><p>To perform filtering, you&apos;ll need to perform the below adjustments to your datasource:</p>
+<ul>
+<li>Provide a <code>search</code> function to the datasource options, which performs filtering on your dataset. It contains the below parameters:
+Parameter Name | Type | Description
+--- | --- | ---
+<code>data</code> | <code>Array</code> | The data to sort
+<code>searchArguments</code> | <code>*</code> | The search arguments. Can be any type. It depends on what gets passed when the datasource <code>search</code> method gets called.</li>
+<li>Call the datasource <code>search</code> method, or alternatively, set the <code>searchArguments</code> property of the datasource, and then call the datasource <code>update</code> method.</li>
+</ul>
+<p>See below example on defining the <code>search</code> function for the datasource options.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new ArrayDatasource({
+  data: [
+    {
+      id: 1,
+      firstName: &apos;John&apos;,
+      lastName: &apos;Smith&apos;
+    },
+    {
+      id: 2,
+      firstName: &apos;Mary&apos;,
+      lastName: &apos;Jane&apos;
+    },
+    // ... More
+  ],
+  search: function(data, searchArguments) {
+    if (!searchArguments) {
+      return data;
+    }
+    return data.filter((value) =&gt; {
+      // Simple search logic by doing
+      // a text search on the concatenation
+      // of all the searchable fields
+      const searchableText = `${value.firstName
+      } ${value.lastName
+      } ${value.job
+      } ${value.gender}`;
+      return searchableText.indexOf(searchArguments) &gt; -1;
+    });
+  }
+});</code>
+</code></pre>
+<p>Now with your datasource, simply call <code>search</code>. Note that you can pass in anything to the <code>search</code> call, and it&apos;ll get directly passed to the <code>search</code> callback above as the <code>searchArguments</code> parameter.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// ...
+await datasource.search(&apos;John&apos;);
+// ...</code>
+</code></pre>
+<p>Alternatively, you can use:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">// ...
+datasource.searchArguments = &apos;John&apos;;
+await datasource.update();
+// ...</code>
+</code></pre>
+<h2 id="multi-column-filtering">Multi-Column Filtering</h2><p>The datasource can be configured for multi-column filtering. Recall the above filtering example works by passing the argument you provided in the datasource <code>search</code> method to the <code>search</code> callback. You can pass in anything to the <code>search</code> call, and it&apos;ll get directly passed to the <code>search</code> callback above as the <code>searchArguments</code> parameter. This means you can pass in a complex object that specifies how to do your multi-column sorting.</p>
+<p>Take for example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">await datasource.search({ &apos;firstName&apos;: &apos;John&apos;, &apos;lastName&apos;: &apos;Smith&apos; });</code>
+</code></pre>
+<p>And then you can specify in the <code>search</code> callback as follows:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new ArrayDatasource({
+  // ...
+  search: function(data, searchArguments) {
+    if (!searchArguments) {
+      return data;
+    }
+    // Clone data so you don&apos;t accidentally filter
+    // the original object
+    let filteredData = [ ...data ];
+
+    // This will output: { &apos;firstName&apos;: &apos;John&apos;, &apos;lastName&apos;: &apos;Smith&apos; }
+    console.log(searchArguments);
+    // ... Perform multi-column filtering
+
+    return filteredData;
+  }
+});</code>
+</code></pre>
+<p>For an in-depth example, see the below projects of the repository which has multi-column searching:</p>
+<ul>
+<li><code>mitch-datasource-test</code></li>
+<li><code>mitch-datasource-test-react</code></li>
+<li><code>mitch-datasource-test-vue</code></li>
+</ul>
+<h2 id="events">Events</h2><table>
+<thead>
+<tr>
+<th>Event Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>updatestart</code></td>
+<td>Fired when the update has started, i.e. before the datasource has completed all the data minipulation operations (e.g. sorting, filtering &amp; pagination).</td>
+</tr>
+<tr>
+<td><code>updateend</code></td>
+<td>Fired when the update has completed, i.e. after the datasource has completed all the data minipulation operations (e.g. sorting, filtering &amp; pagination).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="update-start">Update Start</h3><p>You can attach to the <code>updatestart</code> event with a callback function that accepts an objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sender</code></td>
+<td><code>Object</code></td>
+<td>The sender (i.e. the datasource) that triggered this event.</td>
+</tr>
+<tr>
+<td><code>preventDefault</code></td>
+<td><code>Function</code></td>
+<td>You can call this to prevent/cancel the data minipulation (e.g. sorting, filtering &amp; pagination) operations.</td>
+</tr>
+<tr>
+<td><code>prevented</code></td>
+<td><code>boolean</code></td>
+<td>You can set this to true to prevent/cancel the data minipulation (e.g. sorting, filtering &amp; pagination) operations. Note that using <code>preventDefault</code> is preferred, and is more similar to common DOM events.</td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">let datasource = new ArrayDatasource(dsOptions);
+datasource.on(&apos;updatestart&apos;, function(e) {
+  e.preventDefault(); // This stops it from actually updating
+  console.log(e);
+});
+const updateResponse = await datasource.update();
+console.log(updateResponse); // null</code>
+</code></pre>
+<h3 id="update-end">Update End</h3><p>You can attach to the <code>updateend</code> event with a callback function that accepts an objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sender</code></td>
+<td><code>Object</code></td>
+<td>The sender (i.e. the datasource) that triggered this event.</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td><code>Array</code></td>
+<td>The array of data after the data manipulation operations (e.g. sorting, filtering &amp; pagination).</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">  let datasource = new ArrayDatasource(dsOptions);
+  datasource.on(&apos;updateend&apos;, function(e) {
+    console.log(e);
+  });
+  const updateResponse = await datasource.update();
+  console.log(updateResponse); // updateResponse &amp;&amp; e.response is the same object</code>
+</code></pre>
 </div>
 </div>
 

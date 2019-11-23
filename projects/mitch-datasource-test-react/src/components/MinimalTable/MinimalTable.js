@@ -11,7 +11,6 @@ export default function(props) {
     pageTotal: 0,
     size: 0,
     offset: 0,
-    searchText: 0,
     searchArguments: {},
     sortArguments: {},
     data: [],

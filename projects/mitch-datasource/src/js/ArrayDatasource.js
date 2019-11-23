@@ -188,8 +188,6 @@ class ArrayDatasource extends DatasourceBase {
     let processedData = [...this._rawData];
     if (this.searchArguments) {
       processedData = this._search.call(this, processedData, this.searchArguments);
-    } else if (this.searchText) {
-      processedData = this._search.call(this, processedData, this.searchText);
     }
     if (this._sort && this.sortArguments) {
       processedData = this._sort.call(this, processedData, this.sortArguments);

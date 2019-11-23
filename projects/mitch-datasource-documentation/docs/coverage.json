@@ -1,7 +1,7 @@
 {
-  "coverage": "98.11%",
-  "expectCount": 53,
-  "actualCount": 52,
+  "coverage": "98.07%",
+  "expectCount": 52,
+  "actualCount": 51,
   "files": {
     "js/AjaxDatasource.js": {
       "expectCount": 11,
@@ -14,8 +14,8 @@
       "undocumentLines": []
     },
     "js/DatasourceBase.js": {
-      "expectCount": 23,
-      "actualCount": 23,
+      "expectCount": 22,
+      "actualCount": 22,
       "undocumentLines": []
     },
     "js/QueryBuilder.js": {

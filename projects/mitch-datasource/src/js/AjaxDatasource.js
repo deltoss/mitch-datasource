@@ -55,8 +55,8 @@ import QueryBuilder from './QueryBuilder';
  *
  * async function exampleAsyncFunction() {
  *   let datasource = new AjaxDatasource({
- *     ajax: async function() {
- *       return await mockAjaxCall();
+ *     ajax: async function(queryBuilder) {
+ *       return await mockAjaxCall(queryBuilder);
  *     }
  *   });
  *   await datasource.update();
@@ -222,19 +222,20 @@ class AjaxDatasource extends DatasourceBase {
    * @override
    */
   async _update() {
+    const ajaxHandler = this._buildAjaxHandler();
     const requestStartArgs = {
       sender: this,
       prevented: false,
       preventDefault() {
         requestStartArgs.prevented = true;
       },
+      ajaxHandler,
     };
     this.emit('requeststart', requestStartArgs);
     if (requestStartArgs.prevented) {
       return null;
     }
-    const ajaxHandler = this._buildAjaxHandler();
-    const response = await ajaxHandler.call(this);
+    const response = await requestStartArgs.ajaxHandler.call(this);
     this.emit('requestend', {
       sender: this,
       response,

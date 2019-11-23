@@ -1,161 +1,23 @@
 # Usage
 
-## Basic Usage
-
 To find documentation on the possible options to pass, or methods & properties provided by the datasources, refer to the api documentation. Otherwise, below are usage examples to demonstrate how you may the datasource.
 
-### Array
+## Array Datasource
 
-```javascript
-import { ArrayDatasource } from 'mitch-datasource';
+See [Array Datasource](./array-datasource.html).
 
-let datasource = new ArrayDatasource({
-  data: [
-    {
-      id: 1,
-      firstName: 'John',
-      lastName: 'Smith'
-    },
-    {
-      id: 2,
-      firstName: 'Mary',
-      lastName: 'Jane'
-    },
-    // ... More
-  ]
-});
-await datasource.update();
-console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
-```
+## AJAX Datasource
 
-### Ajax
+See [AJAX Datasource](./ajax-datasource.html).
 
-AJAX Datasource is configured to contact a remote endpoint.
-Given an endpoint, by default, it'll pass the below parameters either as query string, or as part of the request data:
-
-Parameter Name | Description
---- | ---
-offset | The pagination offset. It skips the specified amount of items when querying.
-page | The page number for data pagination.
-size | The pagination size, i.e. the number of records per page.
-searchText | May not be included (i.e. it's optional). The text to search for. Used to filter the data items.
-sortArguments | May not be included (i.e. it's optional). The sort arguments object, for specific or multi-column sorting purposes.
-searchArguments | May not be included (i.e. it's optional). The search arguments object, for specific or multi-column searching purposes.
-
-#### Minimal Configuration:
-
-```javascript
-import { AjaxDatasource } from 'mitch-datasource';
-
-let datasource = new AjaxDatasource({
-  ajax: 'https://path/to/remote/endpoint'
-});
-await datasource.update();
-console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
-```
-
-#### With Mapper
-
-If your remote endpoint doesn't return data in an expected format for the datasource, then you can use the `mapper` option of the AJAX datasource:
-
-```javascript
-import { AjaxDatasource } from 'mitch-datasource';
-
-let datasource = new AjaxDatasource({
-  ajax: {
-    // Note pagination/sorting/filtering doesn't
-    // work with this fake endpoint, as even when
-    // we send the datasource parameters, the
-    // remote endpoint won't actually vary
-    // the returned dataset.
-    url: 'https://jsonplaceholder.typicode.com/posts',
-    method: 'get',
-    // ... Other Axios options
-    // `mapper` is a custom option unique to the datasource package,
-    // it's not actually part of Axios
-    mapper: function(response) {
-      return {
-        data: response.data,
-        total: response.data.length,
-      }
-    }
-  }
-});
-await datasource.update();
-console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
-```
-
-#### QueryBuilder
-
-##### Adjust Parameters to Send
-
-If you want to adjust the parameters passed to the remote endpoint, you can provide the QueryBuilder instance passed to the AJAX datasource, with the `serialiseToQueryObject` callback configured.
-
-Within that callback, you can rename your parameters, or adjust the values.
-
-```javascript
-import { AjaxDatasource, QueryBuilder } from 'mitch-datasource';
-
-let datasource = new AjaxDatasource({
-  // ...
-  queryBuilder: new QueryBuilder({
-    // ...
-    serialiseToQueryObject(datasource) {
-      // Calls the original default serialiser
-      let queryObject = QueryBuilder.prototype
-                        .defaults.serialiseToQueryObject(datasource);
-      // E.g. We want to rename the parameter
-      // 'offset', to 'start'.
-      queryObject.start = queryObject.offset;
-      delete queryObject.offset;
-
-      return queryObject;
-    }
-  })
-});
-```
-
-##### Full Options
-
-```javascript
-import { AjaxDatasource, QueryBuilder } from 'mitch-datasource';
-
-let datasource = new AjaxDatasource({
-  // ...
-  queryBuilder: new QueryBuilder({
-    // ...
-    serialiseToQueryObject(datasource) {
-      // Calls the original default serialiser
-      let queryObject = QueryBuilder.prototype
-                        .defaults.serialiseToQueryObject(datasource);
-      // ... Do your additional operations
-      return queryObject;
-    },
-    serialiseToQueryString(objectToSerialise) {
-      // Calls the original default serialiser
-      let queryString = QueryBuilder.prototype
-                        .defaults.serialiseToQueryString(objectToSerialise);
-      // ... Do your additional operations
-      return queryString;
-    },
-    queryStringOptions: {
-      // Keep the default options
-      ...QueryBuilder.prototype.defaults.queryStringOptions,
-      // ... Put additional options here. It'll override default options
-      // For available options, check the docs for QueryBuilder constructor
-    }
-  })
-});
-```
-
-### With Components
+## With Components
 
 It's not only primitives that can be passed onto client-side framework components.
 Objects can be passed, meaning we can pass in the datasource objects, and the components' main responsibility is simply to wire up the UI to the datasource.
 
 When a component needs to perform pagination, filtering, sorting, it'll use the datasoure methods and properties.
 
-#### Vue Example
+### Vue Example
 
 This package has been tested to work with `Vue`. You can clone the repo and then take a look at the `mitch-datasource-test-vue` project folder. Alternatively, you can see below sandbox and code for a more simplified version which only has pagination.
 
@@ -328,7 +190,7 @@ The typical `App` component. It declares and initiates a datasource, and then pa
 </script>
 ```
 
-#### React Example
+### React Example
 
 This package has been tested to work with `React`. You can clone the repo and then take a look at the `mitch-datasource-test-react` project folder. Alternatively, you can see below sandbox and code for a more simplified version which only has pagination.
 
@@ -484,21 +346,40 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
 
-## Advanced Usage
+## Modifying the Defaults
 
-### Sorting
+You can modify the default options for any datasource. For example, for `ArrayDatasource`, you can provide a default sorting logic.
 
-### Multi-Column Sorting
+You can create a new file called `ArrayDatasource.js` in your project, which simply imports the original `ArrayDatasource` and override the defaults, then exports the redefined ArrayDatasource.
 
-### Filtering
+```javascript
+  import { ArrayDatasource } from 'mitch-datasource';
 
-### Multi-Column Filtering
+  ArrayDatasource.prototype.defaults.sort = function(data, sortArguments = { 'firstName': 'asc' }) {
+    let sortedData = { ...data }; // Clone data, so sorting doesn't affect the original object
+    // Perform sorting operations here
+    return sortedData;
+  };
+  
+  export default ArrayDatasource;
+```
 
-### Events
+Then, in another file, you can import the redefined `ArrayDatasource`
+from `ArrayDatasource.js` file, and use it as follows:
 
-### Making your own Custom Datasource
+```javascript
 
-### Modifying the Defaults
+import ArrayDatasource from './ArrayDatasource';
+
+let datasource = new ArrayDatasource({
+  data: stubData
+});
+await datasource.sort();
+console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
+```
+
+## Making your own Custom Datasource
+
 
 ## Additional Information
 

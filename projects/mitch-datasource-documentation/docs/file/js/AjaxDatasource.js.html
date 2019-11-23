@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/QueryBuilder.js~QueryBuilder.html">QueryBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SortCallback">SortCallback</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSearchArgs">MultiColumnSearchArgs</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-MultiColumnSortArgs">MultiColumnSortArgs</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-QueryStringOptions">QueryStringOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryObjectCallback">SerialiseToQueryObjectCallback</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SerialiseToQueryStringCallback">SerialiseToQueryStringCallback</a></span></span></li>
@@ -102,8 +100,8 @@ import QueryBuilder from &apos;./QueryBuilder&apos;;
  *
  * async function exampleAsyncFunction() {
  *   let datasource = new AjaxDatasource({
- *     ajax: async function() {
- *       return await mockAjaxCall();
+ *     ajax: async function(queryBuilder) {
+ *       return await mockAjaxCall(queryBuilder);
  *     }
  *   });
  *   await datasource.update();
@@ -269,19 +267,20 @@ class AjaxDatasource extends DatasourceBase {
    * @override
    */
   async _update() {
+    const ajaxHandler = this._buildAjaxHandler();
     const requestStartArgs = {
       sender: this,
       prevented: false,
       preventDefault() {
         requestStartArgs.prevented = true;
       },
+      ajaxHandler,
     };
     this.emit(&apos;requeststart&apos;, requestStartArgs);
     if (requestStartArgs.prevented) {
       return null;
     }
-    const ajaxHandler = this._buildAjaxHandler();
-    const response = await ajaxHandler.call(this);
+    const response = await requestStartArgs.ajaxHandler.call(this);
     this.emit(&apos;requestend&apos;, {
       sender: this,
       response,

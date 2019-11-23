@@ -45,7 +45,7 @@ Note that steps 3 & 5 can be substituted through a GIT GUI tool (e.g. SourceTree
 
 ### CI/CD
 
-![mitch-datasource CI/CD flow diagram](asset/CirlceCI%20Workflow.png)
+![mitch-datasource CI/CD flow diagram](asset/CircleCI%20Workflow.png)
 
 This package has a CI/CD pipeline with CircleCI configured. It has a workflow setup to use `semantic-release` so that if it detect any commits that requires a release (e.g. adding a new feature, breaking changes, fixes, etc), it'll perform various release related tasks including:
 

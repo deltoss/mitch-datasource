@@ -10,7 +10,7 @@ const dsOptions = {
 test("RequestStart Cancel", async () => {
   let datasource = new AjaxDatasource(dsOptions);
   datasource.on('requeststart', function(e) {
-    e.preventDefault(); // This should stop it from actually sending AJAX request and updating the data
+    e.preventDefault(); // This stops it from actually sending AJAX request and updating the data
   });
   const updateResponse = await datasource.update();
   expect(!updateResponse && !datasource.data).toBeTruthy();
@@ -24,13 +24,13 @@ test("RequestEnd", async () => {
   });
   const updateResponse = await datasource.update();
   expect(eventObject && eventObject.sender === datasource
-         && eventObject.response && updateResponse).toBeTruthy();
+         && updateResponse && eventObject.response === updateResponse).toBeTruthy();
 });
 
 test("UpdateStart Cancel", async () => {
   let datasource = new AjaxDatasource(dsOptions);
   datasource.on('updatestart', function(e) {
-    e.preventDefault(); // This should stop it from actually updating
+    e.preventDefault(); // This stops it from actually updating
   });
   const updateResponse = await datasource.update();
   expect(!updateResponse && !datasource.data).toBeTruthy();
@@ -44,5 +44,5 @@ test("UpdateEnd", async () => {
   });
   const updateResponse = await datasource.update();
   expect(eventObject && eventObject.sender === datasource
-    && updateResponse).toBeTruthy();
+    && updateResponse && eventObject.response === updateResponse).toBeTruthy();
 });
