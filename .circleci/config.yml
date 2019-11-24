@@ -103,7 +103,7 @@ jobs:
       #   https://discuss.circleci.com/t/unable-to-change-present-directory-or-cd-cmd-ignored/12537/4
       - run:
           name: Release package
-          command: cd "./projects/mitch-datasource" && npx semantic-release^15.13.31 -r 'https://github.com/deltoss/mitch-datasource.git'
+          command: cd "./projects/mitch-datasource" && npx semantic-release@^15.13.31 -r 'https://github.com/deltoss/mitch-datasource.git'
   deploy-docs:
     <<: *defaults
     steps:
