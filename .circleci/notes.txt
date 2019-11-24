@@ -44,3 +44,12 @@ For more information, see:
 - https://docs.netlify.com/cli/get-started/#obtain-a-token-in-the-netlify-ui
 - https://github.com/netlify/cli/blob/master/docs/commands/deploy.md
 - https://docs.netlify.com/cli/get-started/#link-with-an-environment-variable
+
+Consider disabling Netlify's default functionality of automatically
+deploying when changes gets detected in the GIT repository. The
+reasoning is because CircleCI manually manages Netlify deployment
+through `Netlify CLI`. This provides more flexibility, and only
+deploys to Netlify if the test & build steps succeeds.
+
+To turn it off, see below resources:
+- https://stackoverflow.com/questions/58161547/disable-continuous-deployment-on-netlify
