@@ -90,7 +90,7 @@ jobs:
       - run:
           name: Run Tests
           command: npm run test
-  deploy:
+  deploy-package:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -103,7 +103,15 @@ jobs:
       #   https://discuss.circleci.com/t/unable-to-change-present-directory-or-cd-cmd-ignored/12537/4
       - run:
           name: Release package
-          command: cd "./projects/mitch-datasource" && npx semantic-release -r 'https://github.com/deltoss/mitch-datasource.git'
+          command: cd "./projects/mitch-datasource" && npx semantic-release^15.13.31 -r 'https://github.com/deltoss/mitch-datasource.git'
+  deploy-docs:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Deploy Documentation
+          command: npx netlify-cli@^2.21.0 deploy --dir projects/mitch-datasource-documentation/docs/ --prod --message "Automated Deployment by CircleCI"
 
 workflows:
   version: 2
@@ -113,7 +121,14 @@ workflows:
       - test:
           requires:
             - build
-      - deploy:
+      - deploy-package:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
+      - deploy-docs:
           requires:
             - test
           filters:
