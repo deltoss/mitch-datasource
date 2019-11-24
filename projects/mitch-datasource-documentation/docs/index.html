@@ -89,7 +89,7 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/development.html"><a href="manual/development.html" data-ice="link">Development</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#overview" data-ice="link">Overview</a></li>
-<li data-ice="manualNav" class="indent-h3" data-link="manual/development.html"><a href="manual/development.html#commit-messages" data-ice="link">Commit Messages</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#commit-messages" data-ice="link">Commit Messages</a></li>
 <li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#needs-to-be-in-certain-format" data-ice="link">Needs to Be In Certain Format</a></li>
 <li data-ice="manualNav" class="indent-h4" data-link="manual/development.html"><a href="manual/development.html#easier-way-to-write-commit-messages" data-ice="link">Easier Way to Write Commit Messages</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/development.html"><a href="manual/development.html#deployment" data-ice="link">Deployment</a></li>
@@ -135,7 +135,8 @@
   <div class="manual-user-index" data-ice="manualUserIndex"><p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 <a href="https://esdoc.org/"><img src="https://img.shields.io/badge/Made%20with-ESDocs-green.svg" alt="made-with-esdocs"></a>
 <a href="https://circleci.com/gh/deltoss/mitch-datasource"><img src="https://circleci.com/gh/deltoss/mitch-datasource.svg?style=svg" alt="CircleCI"></a>
-<a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a></p>
+<a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>
+<a href="https://app.netlify.com/sites/mitch-datasource/deploys"><img src="https://api.netlify.com/api/v1/badges/caf9565a-9cd5-47c2-a6d8-e52333d17376/deploy-status" alt="Netlify Status"></a></p>
 <h1 id="introduction">Introduction</h1><p>Modern applications are usually data-oriented, and it can have many ways to present data. There can be many different components, plugins, and so on. Between all of these, the approach to perform data operations is mostly the same. Why would you want to write the same pagination/search/sorting logic per component?</p>
 <p>That&apos;s where this package shines. <code>mitch-datasource</code> was developed to resolve the issue by having a core entity which manage those data operations whilst being flexible to cater to different requirements. It&apos;s framework-agnostic, so you can feed it into plugins, components, or whatever.</p>
 <h1 id="features">Features</h1><ul>
@@ -1110,7 +1111,7 @@ console.log(updateResponse);</code>
 </tbody>
 </table><p>The relationship between all the above projects can be illustrated as per below:</p><p><img src="./manual/asset/Architecture.png" alt="mitch-datasource architecture diagram"></p><p>Each project has their own set of scripts which you can run. However, for general use,
 you can simply just use the scripts located at the root of this repository in <code>package.json</code>.
-These scripts run convenient tasks when developing the application, and saves you the trouble of switching directories/terminals to execute individual scripts for each project.</p><h3>Commit Messages</h3><h4>Needs to Be In Certain Format</h4><p>When making any GIT commits to this repository or a branch, it needs to be in a certain format (i.e. <strong>Angular Commit Message Conventions</strong>). This is because the <code>semantic-release</code> tool which this package uses relies on having a specific format of commit messages for it to evaluate whether to create a release, or not.</p><p>For more information, see the <a href="https://github.com/semantic-release/semantic-release#commit-message-format">semantic-release docs</a>.</p><h4>Easier Way to Write Commit Messages</h4><p>To assist making commits to the repository in that certain format, <code>commitizen</code> is installed at the root of the repo. To use it after you downloaded the repository:</p><ol>
+These scripts run convenient tasks when developing the application, and saves you the trouble of switching directories/terminals to execute individual scripts for each project.</p><h2>Commit Messages</h2><h4>Needs to Be In Certain Format</h4><p>When making any GIT commits to this repository or a branch, it needs to be in a certain format (i.e. <strong>Angular Commit Message Conventions</strong>). This is because the <code>semantic-release</code> tool which this package uses relies on having a specific format of commit messages for it to evaluate whether to create a release, or not.</p><p>For more information, see the <a href="https://github.com/semantic-release/semantic-release#commit-message-format">semantic-release docs</a>.</p><h4>Easier Way to Write Commit Messages</h4><p>To assist making commits to the repository in that certain format, <code>commitizen</code> is installed at the root of the repo. To use it after you downloaded the repository:</p><ol>
 <li>Open up terminal</li>
 <li>Change the working directory to the root of the repo</li>
 <li>Enter the command <code>git add .</code> to stage all files. </li>
@@ -1124,7 +1125,7 @@ These scripts run convenient tasks when developing the application, and saves yo
 <li><code>CircleCI</code> For CI/CD pipeline to publish to NPM.</li>
 <li><code>GitHub</code> To host the source code</li>
 <li><code>NPM Registry</code> To upload the node package and make it available as a node package</li>
-<li><code>Netlify</code> To host the static HTML documentation</li>
+<li><code>Netlify</code> To host the static HTML documentation generated by <code>esdoc</code></li>
 </ul><h3>Dependencies</h3><ul>
 <li><a href="https://www.axios.com">axios</a><ul>
 <li>Used to perform default AJAX operations</li>
@@ -1135,7 +1136,8 @@ These scripts run convenient tasks when developing the application, and saves yo
 </ul>
 </li>
 </ul><h3>Development Dependencies</h3><p>This package was created using:</p><ul>
-<li><code>semantic-release</code> to automate the release process to NPM, and creating git releases. Isn&apos;t actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through npx). See the root <code>.circleci/config.yml</code> &amp; <code>.circleci/notes.txt</code> for more details</li>
+<li><code>semantic-release</code> to automate the release process to NPM, and creating git releases. Isn&apos;t actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through node <code>npx</code> command). See the root <code>.circleci/config.yml</code> &amp; <code>.circleci/notes.txt</code> for more details</li>
+<li><code>netlify-cli</code> to automate the release process for the static HTML documentation generated by <code>esdoc</code> to <code>netlify</code> static website hosting service. Isn&apos;t actually an installed package, but used as part of the CI/CD CircleCI configuration as a CLI tool (called through node <code>npx</code> command). See the root <code>.circleci/config.yml</code> &amp; <code>.circleci/notes.txt</code> for more details</li>
 <li><code>commitizen</code> which ensures commits is in a nice format. See <code>commit</code> script of the main repository scripts</li>
 <li><code>webpack</code> as the bundler</li>
 <li><code>npm</code> scripts to run common tasks (e.g. build and sass compilation), instead of gulp, grunt</li>

@@ -8,12 +8,17 @@ graph RL;
     subgraph Circle CI
         CICDService[CircleCI Service] ==> Build
         Build ==> Test
-        Test ==> CommitAnalysis{Analyse Commits}
-        CommitAnalysis ==>|Should Release| SemanticRelease[Semantic Release]
+        Test ==> NetlifyCli[Netlify CLI]
+        Test ==> CommitAnalysis{Any Release Commits?}
+        CommitAnalysis ==>|Yes| SemanticRelease[Semantic Release]
     end
+    NetlifyCli == Deploys Docs ==> NetlifySite
     SemanticRelease -. Publishes To .-> npmpackage[mitch-datasource Package];
     SemanticRelease -. Tag Commit .-> Repo;
     SemanticRelease -. Create GitHub Release .-> Repo;
+    subgraph Netlify
+        NetlifySite[Netlify Site]
+    end
     subgraph NPM Registry
         npmpackage
     end
