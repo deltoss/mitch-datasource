@@ -1,7 +1,7 @@
 {
   "name": "mitch-datasource",
   "version": "0.0.0-development",
-  "description": "Datasource component to generalise the way to perform data-related operations such as paging, filtering, sorting, etc.",
+  "description": "Datasource module to generalise the way to perform data-related operations such as paging, filtering, sorting, etc.",
   "main": "./lib/index.js",
   "scripts": {
     "dev": "npm-run-all \"lint\" \"webpack-build-dev\"",
