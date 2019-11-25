@@ -47,8 +47,11 @@ jobs:
             - v1-mitch-datasource-test-utilities-dependencies-{{ checksum "projects/mitch-datasource-test-utilities/package.json" }}
             - v1-mitch-datasource-test-utilities-dependencies-
 
-      - run: npm install
+      - run: Install dependencies
       - run: npm run install
+
+      - run: Build & Compile
+      - run: npm run prd
 
       - save_cache:
           paths:
