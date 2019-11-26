@@ -115,9 +115,11 @@ Script Name | Description
 
 Script Name | Description
 --- | ---
-`dev` | Lint, test, build/compile the code and docs using development settings.
-`prd` | Lint, test, build/compile the code and docs using production settings.
-`watch` | Lint, test, build/compile the code and docs using development settings when a relevant file has been changed.
+`dev` | Lint, build/compile the code and docs using development settings. Does not include tests, as it takes time. Thus, tests are run separately.
+`prd` | Lint, build/compile the code and docs using production settings. Does not include tests, as it takes time. Thus, tests are run separately.
+`test` | Run tests.
+`test-watch` | Run tests when a relevant file has been changed.
+`watch` | Lint, build/compile the code and docs using development settings when a relevant file has been changed.
 `storybook` | Runs the storybook applications for Vue & React. For manual integration tests with client-side frameworks (e.g. React, Vue).
 
 ### Other Scripts
@@ -132,8 +134,6 @@ Script Name | Description
 `test-utilities-dev` | Lint and build the test utilities project with development settings.
 `test-utilities-prd` | Lint and build the test utilities project with production settings.
 `test-utilities-watch` | Lint and build the test utilities project with development settings when a relevant file has been changed.
-`test` | Run tests.
-`test-watch` | Run tests when a relevant file has been changed.
 `react-storybook` | Runs the storybook application for React. For manual integration tests with client-side frameworks (e.g. React, Vue).
 `vue-storybook` | Runs the storybook application for Vue. For manual integration tests with client-side frameworks (e.g. React, Vue).
 `commit` | Uses `commitizen` to create a angular styled commit message. Useful for `semantic-release`.
