@@ -16,6 +16,7 @@ let [
 
 export default {
   codePath,
+  documentationPath,
   testPath,
   testReactStorybookPath,
   testUtilitiesPath,
