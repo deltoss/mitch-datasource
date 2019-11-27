@@ -153,7 +153,7 @@ class AjaxDatasource extends DatasourceBase {
    * @return {Promise} Returns the axios promise object, containing
    *                   the response from remote endpoint.
    */
-  _ajaxCall({ url, method }) {
+  async _ajaxCall({ url, method }) {
     const actualAxiosOptions = { url, method };
     actualAxiosOptions.method = actualAxiosOptions.method
       ? actualAxiosOptions.method.toLowerCase()
@@ -174,15 +174,15 @@ class AjaxDatasource extends DatasourceBase {
    */
   _buildAjaxHandler() {
     const ajaxHandler = {
-      function: () => this.ajax.call(this, this.queryBuilder),
-      string: () => {
+      function: async () => this.ajax.call(this, this.queryBuilder),
+      string: async () => {
         const url = this.ajax;
         return this._ajaxCall({
           url,
           method: 'get',
         });
       },
-      object: () => {
+      object: async () => {
         this.ajax.method = this.ajax.method || 'get';
         return this._ajaxCall(this.ajax);
       },
