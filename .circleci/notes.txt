@@ -23,7 +23,6 @@ utilises these environment variables if set.
 
 - `GH_TOKEN` - an access token for GitHub. Used to create GitHub releases and tag commits with releases.
 - `NPM_TOKEN` - an access token for npm registry. Used to deploy package to npm registry.
-- `DEBUG` - optional. Through setting this to `semantic-release:*`, it displays debug logs.
 
 ::Documentation Release::
 
