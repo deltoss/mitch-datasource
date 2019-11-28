@@ -108,9 +108,12 @@ jobs:
       # due to the way CircleCI works.
       # For more information, see:
       #   https://discuss.circleci.com/t/unable-to-change-present-directory-or-cd-cmd-ignored/12537/4
+      # Also note the additional configurations for
+      # semantic-release is in the folder itself,
+      # inside `release.config.js` file.
       - run:
           name: Release package
-          command: cd "./projects/mitch-datasource" && npx semantic-release@^15.13.31 -r 'https://github.com/deltoss/mitch-datasource.git'
+          command: cd "./projects/mitch-datasource" && npx semantic-release
   deploy-docs:
     <<: *defaults
     steps:
@@ -118,7 +121,7 @@ jobs:
           at: ~/repo
       - run:
           name: Deploy Documentation
-          command: npx netlify-cli@^2.21.0 deploy --dir projects/mitch-datasource-documentation/docs/ --prod --message "Automated Deployment by CircleCI"
+          command: npx netlify-cli deploy --dir projects/mitch-datasource-documentation/docs/ --prod --message "Automated Deployment by CircleCI"
 
 workflows:
   version: 2
