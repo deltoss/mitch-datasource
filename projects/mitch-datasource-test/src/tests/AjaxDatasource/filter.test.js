@@ -12,7 +12,7 @@ test("Filter Using Filter Options", async () => {
   await datasource.search("John Smith");
   let data = datasource.data;
   let item = data[0];
-  expect(data.length == 1 && item.id == 1).toBeTruthy();
+  expect(data.length === 1 && item.id === 1).toBeTruthy();
 });
 
 test("Multi Column Filter", async () => {
@@ -24,5 +24,5 @@ test("Multi Column Filter", async () => {
   });
   let data = datasource.data;
   let item = data[0];
-  expect(data.length == 1 && item.id == 20).toBeTruthy();
+  expect(data.length === 1 && item.id === 20).toBeTruthy();
 });

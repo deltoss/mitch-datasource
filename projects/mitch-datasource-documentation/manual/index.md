@@ -5,31 +5,40 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/caf9565a-9cd5-47c2-a6d8-e52333d17376/deploy-status)](https://app.netlify.com/sites/mitch-datasource/deploys)
 [![Dependabot Enabled](https://img.shields.io/badge/Dependabot-Enabled-lightgrey.svg?logo=dependabot&labelColor=blue)](https://dependabot.com/)
 
-# Introduction
+# mitch-datasource
+
+## Introduction
 
 Modern applications are usually data-oriented, and it can have many ways to present data. There can be many different components, plugins, and so on. Between all of these, the approach to perform data operations is mostly the same. Why would you want to write the same pagination/search/sorting logic per component?
 
 That's where this package shines. `mitch-datasource` was developed to resolve the issue by having a core entity which manage those data operations whilst being flexible to cater to different requirements. It's framework-agnostic, so you can feed it into plugins, components, or whatever.
 
-# Features
+## Features
 
-- Client-Side Framework Agnostic
-- Highly Customisable & Extensible
-- Works and tested with React & Vue (See `mitch-datasource-test-vue` & `mitch-datasourve-test-react` projects)
-- Pagination
-- Sorting (Single & Multi Column Support)
-- Search (Single & Multi Column Support)
-- Datasources for:
-  - AJAX
-  - Array
-- Events
+-   Client-Side Framework Agnostic
 
-# Requested/Future Improvements
+-   Highly Customisable & Extensible
 
-- Support Hierarchical Datasets
-- CRUD operations
-- Grouping Data
+-   Works and tested with React & Vue (See `mitch-datasource-test-vue` & `mitch-datasourve-test-react` projects)
 
-# License
+-   Pagination
+
+-   Sorting (Single & Multi Column Support)
+
+-   Search (Single & Multi Column Support)
+
+-   Datasources for:
+    -   AJAX
+    -   Array
+
+-   Events
+
+## Requested/Future Improvements
+
+-   Support Hierarchical Datasets
+-   CRUD operations
+-   Grouping Data
+
+## License
 
 MIT © Michael Tran

@@ -3,18 +3,18 @@
 AJAX Datasource is configured to contact a remote endpoint.
 Given an endpoint, by default, it'll pass the below parameters either as query string, or as part of the request data:
 
-Parameter Name | Type | Optional | Description
---- | --- | --- | ---
-`offset` | `Number` | No | The pagination offset. It skips the specified amount of items when querying.
-`page` | `Number` | No | The page number for data pagination.
-`size` | `Number` | No | The pagination size, i.e. the number of records per page.
-`searchText` | `String` | Yes | The text to search for. Used to filter the data items.
-`sortArguments` | `JSON` | Yes | The sort arguments object, for specific or multi-column sorting purposes. Will be sent to the server as a JSON object.
-`searchArguments` | `JSON` | Yes | The search arguments object, for specific or multi-column searching purposes. Will be sent to the server as a JSON object.
+| Parameter Name    | Type     | Optional | Description                                                                                                                |
+| ----------------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `offset`          | `Number` | No       | The pagination offset. It skips the specified amount of items when querying.                                               |
+| `page`            | `Number` | No       | The page number for data pagination.                                                                                       |
+| `size`            | `Number` | No       | The pagination size, i.e. the number of records per page.                                                                  |
+| `searchText`      | `String` | Yes      | The text to search for. Used to filter the data items.                                                                     |
+| `sortArguments`   | `JSON`   | Yes      | The sort arguments object, for specific or multi-column sorting purposes. Will be sent to the server as a JSON object.     |
+| `searchArguments` | `JSON`   | Yes      | The search arguments object, for specific or multi-column searching purposes. Will be sent to the server as a JSON object. |
 
-__Optional__ with values of yes means it won't be included in the request if there's no value set for it.
+**Optional** with values of yes means it won't be included in the request if there's no value set for it.
 
-## Minimal Configuration:
+## Minimal Configuration
 
 ```javascript
 import { AjaxDatasource } from 'mitch-datasource';
@@ -71,9 +71,7 @@ For example, when you use below line of code:
 
 The datasource will make a AJAX request to the remote endpoint with the follwoing URL as follows, if the datasource is configured for GET requests:
 
-```
-<RemoteEndpoint>?<PaginationParameters>&sortArguments=%7B%lastName%22%3A%22asc%22%7D
-```
+`<RemoteEndpoint>?<PaginationParameters>&sortArguments=%7B%lastName%22%3A%22asc%22%7D`
 
 Essentially, the sort arguments gets converted to JSON so it can be sent to the remote endpoint. It's up to the remote endpoint to convert it to an object, or do whatever with it to perform the actual sort operations, returning the sorted data.
 
@@ -89,10 +87,7 @@ To perform multiple column sorting, simply provide a complex object for sorting.
 
 This would then make a request to the remote endpoint, passing the complex object as JSON. For example, if your datasource is configured for GET requests:
 
-```
-<RemoteEndpoint>?<PaginationParameters>&
-sortArguments=%7B%22firstName%22%3A%22desc%22%2C%22lastName%22%3A%22asc%22%7D
-```
+`<RemoteEndpoint>?<PaginationParameters>&sortArguments=%7B%22firstName%22%3A%22desc%22%2C%22lastName%22%3A%22asc%22%7D`
 
 ## Filtering
 
@@ -108,9 +103,7 @@ For example, when you use below line of code:
 
 The datasource will make a AJAX request to the remote endpoint with the follwoing URL as follows, if the datasource is configured for GET requests:
 
-```
-<RemoteEndpoint>?<PaginationParameters>&searchArguments=john
-```
+`<RemoteEndpoint>?<PaginationParameters>&searchArguments=john`
 
 Note that if you provide an object to the search method as a argument, it'll be converted to JSON so it can be sent to the remote endpoint.
 
@@ -124,9 +117,7 @@ For example:
 
 The above would make a HTTP request in the below format:
 
-```
-<RemoteEndpoint>?<PaginationParameters>&searchArguments=%7B%searchText%22%3A%22John%22%7D
-```
+`<RemoteEndpoint>?<PaginationParameters>&searchArguments=%7B%searchText%22%3A%22John%22%7D`
 
 ## Multi-Column Filtering
 
@@ -140,17 +131,15 @@ To perform multiple column filtering, simply provide a complex object for filter
 
 This would then make a request to the remote endpoint, passing the complex object as JSON. For example, if your datasource is configured for GET requests:
 
-```
-<RemoteEndpoint>?<PaginationParameters>&
-searchArguments=%7B%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Smith%22%7D
-```
+`<RemoteEndpoint>?<PaginationParameters>&searchArguments=%7B%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Smith%22%7D`
 
 ## Overriding AJAX
 
 The `ajax` option can take in either a:
-- `String` representing the url of remote endpoint.
-- `Function` representing a callback function when data is requested.
-- `Object` with various AJAX options. See the `AjaxDatasource` API docs for more details.
+
+-   `String` representing the url of remote endpoint.
+-   `Function` representing a callback function when data is requested.
+-   `Object` with various AJAX options. See the `AjaxDatasource` API docs for more details.
 
 Take for example, if you want to perform sorting/filtering locally, you can do this by overriding the `ajax` option with your own function that performs AJAX operations, but performs sorting/filtering locally.
 
@@ -234,22 +223,22 @@ let datasource = new AjaxDatasource({
 
 ## Events
 
-Event Name | Description
---- | ---
-`updatestart` | Fired when the update has started, i.e. before the datasource has sent the request to the remote endpoint.
-`updateend` | Fired when the update has completed, i.e. after the datasource has sent the request to the remote endpoint, and when the remote endpoint providede a response.
-`requeststart` | Fired when the AJAX handler has been cosntructed, and request is about to be sent to the remote endpoint.
-`requestend` | Fired when the AJAX request has been completed, and raw response has been received from the server.
+| Event Name     | Description                                                                                                                                                    |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatestart`  | Fired when the update has started, i.e. before the datasource has sent the request to the remote endpoint.                                                     |
+| `updateend`    | Fired when the update has completed, i.e. after the datasource has sent the request to the remote endpoint, and when the remote endpoint providede a response. |
+| `requeststart` | Fired when the AJAX handler has been cosntructed, and request is about to be sent to the remote endpoint.                                                      |
+| `requestend`   | Fired when the AJAX request has been completed, and raw response has been received from the server.                                                            |
 
 ### Update Start
 
 You can attach to the `updatestart` event with a callback function that accepts an objects with the following fields:
 
-Parameter Name | Type | Description
---- | --- |---
-`sender` | `Object` | The sender (i.e. the datasource) that triggered this event.
-`preventDefault` | `Function` | You can call this to prevent/cancel the request to the remote endpoint.
-`prevented` | `boolean` | You can set this to true to prevent/cancel the request to the remote endpoint. Note that using `preventDefault` is preferred, and is more similar to common DOM events.
+| Parameter Name   | Type       | Description                                                                                                                                                             |
+| ---------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sender`         | `Object`   | The sender (i.e. the datasource) that triggered this event.                                                                                                             |
+| `preventDefault` | `Function` | You can call this to prevent/cancel the request to the remote endpoint.                                                                                                 |
+| `prevented`      | `boolean`  | You can set this to true to prevent/cancel the request to the remote endpoint. Note that using `preventDefault` is preferred, and is more similar to common DOM events. |
 
 For example:
 
@@ -267,11 +256,10 @@ console.log(updateResponse); // null
 
 You can attach to the `updateend` event with a callback function that accepts an objects with the following fields:
 
-Parameter Name | Type | Description
---- | --- |---
-`sender` | `Object` | The sender (i.e. the datasource) that triggered this event.
-`response` | `*` | The response from the remote endpoint.
-
+| Parameter Name | Type     | Description                                                 |
+| -------------- | -------- | ----------------------------------------------------------- |
+| `sender`       | `Object` | The sender (i.e. the datasource) that triggered this event. |
+| `response`     | `*`      | The response from the remote endpoint.                      |
 
 ```javascript
 let datasource = new AjaxDatasource(dsOptions);
@@ -286,12 +274,12 @@ console.log(updateResponse); // updateResponse && e.response is the same object
 
 You can attach to the `requeststart` event with a callback function that accepts an objects with the following fields:
 
-Parameter Name | Type | Description
---- | --- |---
-`sender` | `Object` | The sender (i.e. the datasource) that triggered this event.
-`preventDefault` | `Function` | You can call this to prevent/cancel the request to the remote endpoint.
-`prevented` | `boolean` | You can set this to true to prevent/cancel the request to the remote endpoint. Note that using `preventDefault` is preferred, and is more similar to common DOM events.
-`ajaxHandler` | `Function` | The function to handle the AJAX call. This can be changed if you want to modify how the ajax call is handled.
+| Parameter Name   | Type       | Description                                                                                                                                                             |
+| ---------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sender`         | `Object`   | The sender (i.e. the datasource) that triggered this event.                                                                                                             |
+| `preventDefault` | `Function` | You can call this to prevent/cancel the request to the remote endpoint.                                                                                                 |
+| `prevented`      | `boolean`  | You can set this to true to prevent/cancel the request to the remote endpoint. Note that using `preventDefault` is preferred, and is more similar to common DOM events. |
+| `ajaxHandler`    | `Function` | The function to handle the AJAX call. This can be changed if you want to modify how the ajax call is handled.                                                           |
 
 ```javascript
 let datasource = new AjaxDatasource(dsOptions);
@@ -308,10 +296,10 @@ console.log(updateResponse);
 datasource.on('requestend', function(e) {
 You can attach to the `requeststart` event with a callback function that accepts an objects with the following fields:
 
-Parameter Name | Type | Description
---- | --- |---
-`sender` | `Object` | The sender (i.e. the datasource) that triggered this event.
-`response` | `*` | The response from the remote endpoint.
+| Parameter Name | Type     | Description                                                 |
+| -------------- | -------- | ----------------------------------------------------------- |
+| `sender`       | `Object` | The sender (i.e. the datasource) that triggered this event. |
+| `response`     | `*`      | The response from the remote endpoint.                      |
 
 ```javascript
 let datasource = new AjaxDatasource(dsOptions);

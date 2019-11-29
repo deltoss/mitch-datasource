@@ -25,12 +25,15 @@ console.log(`First page of data: ${JSON.stringify(datasource.data)}`);
 ## Sorting
 
 To perform sorting, you'll need to perform the below adjustments to your datasource:
-- Provide a `sort` function to the datasource options, which performs sorting on your dataset. It contains the below parameters:
-  Parameter Name | Type | Description
-  --- | --- | ---
-  `data` | `Array` | The data to sort
-  `sortArguments` | `*` | The sort arguments. Can be any type. It depends on what gets passed when the datasource `sort` method gets called.
-- Call the datasource `sort` method, or alternatively, set the `sortArguments` property of the datasource, and then call the datasource `update` method.
+
+-   Provide a `sort` function to the datasource options, which performs sorting on your dataset. It contains the below parameters:
+
+    | Parameter Name  | Type    | Description                                                                                                        |
+    | --------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
+    | `data`          | `Array` | The data to sort                                                                                                   |
+    | `sortArguments` | `*`     | The sort arguments. Can be any type. It depends on what gets passed when the datasource `sort` method gets called. |
+
+-   Call the datasource `sort` method, or alternatively, set the `sortArguments` property of the datasource, and then call the datasource `update` method.
 
 See below example on defining the `sort` function for the datasource options.
 
@@ -116,19 +119,23 @@ let datasource = new ArrayDatasource({
 ```
 
 For an in-depth example, see the below projects of the repository which has multi-column sorting:
-* `mitch-datasource-test`
-* `mitch-datasource-test-react`
-* `mitch-datasource-test-vue`
+
+-   `mitch-datasource-test`
+-   `mitch-datasource-test-react`
+-   `mitch-datasource-test-vue`
 
 ## Filtering
 
 To perform filtering, you'll need to perform the below adjustments to your datasource:
-- Provide a `search` function to the datasource options, which performs filtering on your dataset. It contains the below parameters:
-  Parameter Name | Type | Description
-  --- | --- | ---
-  `data` | `Array` | The data to sort
-  `searchArguments` | `*` | The search arguments. Can be any type. It depends on what gets passed when the datasource `search` method gets called.
-- Call the datasource `search` method, or alternatively, set the `searchArguments` property of the datasource, and then call the datasource `update` method.
+
+-   Provide a `search` function to the datasource options, which performs filtering on your dataset. It contains the below parameters:
+
+    | Parameter Name    | Type    | Description                                                                                                            |
+    | ----------------- | ------- | ---------------------------------------------------------------------------------------------------------------------- |
+    | `data`            | `Array` | The data to sort                                                                                                       |
+    | `searchArguments` | `*`     | The search arguments. Can be any type. It depends on what gets passed when the datasource `search` method gets called. |
+
+-   Call the datasource `search` method, or alternatively, set the `searchArguments` property of the datasource, and then call the datasource `update` method.
 
 See below example on defining the `search` function for the datasource options.
 
@@ -174,6 +181,7 @@ await datasource.search('John');
 ```
 
 Alternatively, you can use:
+
 ```javascript
 // ...
 datasource.searchArguments = 'John';
@@ -214,26 +222,27 @@ let datasource = new ArrayDatasource({
 ```
 
 For an in-depth example, see the below projects of the repository which has multi-column searching:
-* `mitch-datasource-test`
-* `mitch-datasource-test-react`
-* `mitch-datasource-test-vue`
+
+-   `mitch-datasource-test`
+-   `mitch-datasource-test-react`
+-   `mitch-datasource-test-vue`
 
 ## Events
 
-Event Name | Description
---- | ---
-`updatestart` | Fired when the update has started, i.e. before the datasource has completed all the data minipulation operations (e.g. sorting, filtering & pagination).
-`updateend` | Fired when the update has completed, i.e. after the datasource has completed all the data minipulation operations (e.g. sorting, filtering & pagination).
+| Event Name    | Description                                                                                                                                               |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updatestart` | Fired when the update has started, i.e. before the datasource has completed all the data minipulation operations (e.g. sorting, filtering & pagination).  |
+| `updateend`   | Fired when the update has completed, i.e. after the datasource has completed all the data minipulation operations (e.g. sorting, filtering & pagination). |
 
 ### Update Start
 
 You can attach to the `updatestart` event with a callback function that accepts an objects with the following fields:
 
-Parameter Name | Type | Description
---- | --- |---
-`sender` | `Object` | The sender (i.e. the datasource) that triggered this event.
-`preventDefault` | `Function` | You can call this to prevent/cancel the data minipulation (e.g. sorting, filtering & pagination) operations.
-`prevented` | `boolean` | You can set this to true to prevent/cancel the data minipulation (e.g. sorting, filtering & pagination) operations. Note that using `preventDefault` is preferred, and is more similar to common DOM events.
+| Parameter Name   | Type       | Description                                                                                                                                                                                                  |
+| ---------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `sender`         | `Object`   | The sender (i.e. the datasource) that triggered this event.                                                                                                                                                  |
+| `preventDefault` | `Function` | You can call this to prevent/cancel the data minipulation (e.g. sorting, filtering & pagination) operations.                                                                                                 |
+| `prevented`      | `boolean`  | You can set this to true to prevent/cancel the data minipulation (e.g. sorting, filtering & pagination) operations. Note that using `preventDefault` is preferred, and is more similar to common DOM events. |
 
 For example:
 
@@ -251,17 +260,16 @@ console.log(updateResponse); // null
 
 You can attach to the `updateend` event with a callback function that accepts an objects with the following fields:
 
-Parameter Name | Type | Description
---- | --- |---
-`sender` | `Object` | The sender (i.e. the datasource) that triggered this event.
-`response` | `Array` | The array of data after the data manipulation operations (e.g. sorting, filtering & pagination).
-
+| Parameter Name | Type     | Description                                                                                      |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------ |
+| `sender`       | `Object` | The sender (i.e. the datasource) that triggered this event.                                      |
+| `response`     | `Array`  | The array of data after the data manipulation operations (e.g. sorting, filtering & pagination). |
 
 ```javascript
-  let datasource = new ArrayDatasource(dsOptions);
-  datasource.on('updateend', function(e) {
-    console.log(e);
-  });
-  const updateResponse = await datasource.update();
-  console.log(updateResponse); // updateResponse && e.response is the same object
+let datasource = new ArrayDatasource(dsOptions);
+datasource.on('updateend', function(e) {
+  console.log(e);
+});
+const updateResponse = await datasource.update();
+console.log(updateResponse); // updateResponse && e.response is the same object
 ```
