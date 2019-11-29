@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   repositoryUrl: 'https://github.com/deltoss/mitch-datasource.git',
   plugins: [
     // Default plugins
