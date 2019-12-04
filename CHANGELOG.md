@@ -1,3 +1,11 @@
+## [1.4.4](https://github.com/deltoss/mitch-datasource/compare/v1.4.3...v1.4.4) (2019-12-04)
+
+
+### Bug Fixes
+
+* 🐛 Added missing dependency @semantic-release/exec ([999b5c2](https://github.com/deltoss/mitch-datasource/commit/999b5c280c82afb1d9b8f6d4a24275f461f8bfc5))
+* 🐛 Lint error fixes for the release.config.js ([1a1ac18](https://github.com/deltoss/mitch-datasource/commit/1a1ac18a9561519d23aa9095cd94cb0b41c3846b))
+
 ## [1.4.3](https://github.com/deltoss/mitch-datasource/compare/v1.4.2...v1.4.3) (2019-12-04)
 
 
