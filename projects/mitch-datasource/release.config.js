@@ -21,7 +21,6 @@ module.exports = {
     ['@semantic-release/git', {
       'assets': ['../../CHANGELOG.md'], 
     }],
-    '@semantic-release/git'
   ],
   debug: true,
 };
