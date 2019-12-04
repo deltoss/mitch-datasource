@@ -15,7 +15,7 @@ This repository contains multiple projects. Each project has a specific set of r
 
 The relationship between all the above projects can be illustrated as per below:
 
-![mitch-datasource architecture diagram](asset/Architecture.png)
+![mitch-datasource architecture diagram](generated-files/Architecture.png)
 
 Each project has their own set of scripts which you can run. However, for general use,
 you can simply just use the scripts located at the root of this repository in `package.json`.
@@ -45,7 +45,7 @@ Note that steps 3 & 5 can be substituted through a GIT GUI tool (e.g. SourceTree
 
 ### CI/CD
 
-![mitch-datasource CI/CD flow diagram](asset/CircleCI%20Workflow.png)
+![mitch-datasource CI/CD flow diagram](generated-files/CircleCI%20Workflow.png)
 
 This package has a CI/CD pipeline with CircleCI configured. It has a workflow setup to use `semantic-release` so that if it detect any commits that requires a release (e.g. adding a new feature, breaking changes, fixes, etc), it'll perform various release related tasks including:
 

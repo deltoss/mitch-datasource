@@ -15,3 +15,7 @@ package-lock.json
 # built and deployed, so no need to
 # check it into source control.
 docs
+
+# Ignore built generated files.
+# For example, by mermaid JS.
+manual/generated-files/
