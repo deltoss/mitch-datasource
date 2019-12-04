@@ -8,6 +8,9 @@ module.exports = {
         type: 'chore',
         scope: 'deps-dev',
         release: 'patch',
+      }, {
+        type: 'docs',
+        release: 'patch',
       }],
     }],
     '@semantic-release/release-notes-generator',
