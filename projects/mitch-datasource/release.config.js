@@ -13,13 +13,13 @@ module.exports = {
     '@semantic-release/release-notes-generator',
     // Generates Changelogs
     ['@semantic-release/changelog', {
-      'changelogFile': '../../CHANGELOG.md',
+      changelogFile: '../../CHANGELOG.md',
     }],
     '@semantic-release/npm',
     '@semantic-release/github',
     // Makes commits to GIT for changed files (i.e. changelog)
     ['@semantic-release/git', {
-      'assets': ['../../CHANGELOG.md'], 
+      assets: ['../../CHANGELOG.md'],
     }],
   ],
   debug: true,
