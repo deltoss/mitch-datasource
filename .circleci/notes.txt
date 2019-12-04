@@ -31,6 +31,12 @@ it to actually be hosted, the `netlify-cli` package is
 used to manually deploy to netlify after the build &
 tests steps are completed.
 
+The `netlify-cli` package is executed as part of the
+semantic-release when deploying, using the
+`@semantic-release/exec` plugin. For more information,
+see the relevant `release.config.js` file which performs
+configuration for semantic-release.
+
 Note that for the CI/CD script to actually work, it'll
 require the below environment variables to be set for
 Circle CI. The Netlify CLI automatically
@@ -40,6 +46,7 @@ utilises these environment variables if set.
 - `NETLIFY_SITE_ID` - links the repository to an existing created Netlify site.
 
 For more information, see:
+- https://semantic-release.gitbook.io/semantic-release/support/faq#can-i-use-semantic-release-to-publish-non-javascript-packages
 - https://docs.netlify.com/cli/get-started/#obtain-a-token-in-the-netlify-ui
 - https://github.com/netlify/cli/blob/master/docs/commands/deploy.md
 - https://docs.netlify.com/cli/get-started/#link-with-an-environment-variable

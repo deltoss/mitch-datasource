@@ -18,9 +18,15 @@ module.exports = {
     '@semantic-release/npm',
     '@semantic-release/github',
     // Makes commits to GIT for changed files (i.e. changelog)
+    // done during the release process (e.g. from semantic-release)
     ['@semantic-release/git', {
       assets: ['../../CHANGELOG.md'],
     }],
+    // Execute additional command to deploy docs to netlify,
+    // using the netlify-cli
+    ["@semantic-release/exec", {
+      "publishCmd" : "npx netlify-cli deploy --dir docs/ --prod --message \"Automated Deployment by CircleCI\""
+    }]
   ],
   debug: true,
 };
