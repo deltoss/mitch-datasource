@@ -25,7 +25,7 @@ module.exports = {
     // Execute additional command to deploy docs to netlify,
     // using the netlify-cli
     ['@semantic-release/exec', {
-      publishCmd: 'npx netlify-cli deploy --dir docs/ --prod --message "Automated Deployment by semantic-release in Circle CI"',
+      publishCmd: 'npx netlify-cli deploy --dir ../mitch-datasource-documentation/docs/ --prod --message "Automated Deployment by semantic-release in Circle CI"',
     }],
   ],
   debug: true,
