@@ -1,3 +1,5 @@
+## [1.4.5](https://github.com/deltoss/mitch-datasource/compare/v1.4.4...v1.4.5) (2019-12-04)
+
 ## [1.4.4](https://github.com/deltoss/mitch-datasource/compare/v1.4.3...v1.4.4) (2019-12-04)
 
 
