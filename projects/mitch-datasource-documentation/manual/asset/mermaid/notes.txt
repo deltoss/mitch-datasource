@@ -1,0 +1,3 @@
+This folder contains files generated through MermaidJS,
+a diagram generator which generates diagram from markdownish
+syntax (i.e.`.mmd` files).

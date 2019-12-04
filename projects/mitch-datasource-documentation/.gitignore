@@ -18,4 +18,8 @@ docs
 
 # Ignore built generated files.
 # For example, by mermaid JS.
-manual/generated-files/
+manual/asset/mermaid/**/*.jpg
+manual/asset/mermaid/**/*.png
+manual/asset/mermaid/**/*.svg
+manual/asset/mermaid/**/*.pdf
+manual/asset/mermaid/**/*.gif

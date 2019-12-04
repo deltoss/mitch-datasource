@@ -15,7 +15,7 @@ This repository contains multiple projects. Each project has a specific set of r
 
 The relationship between all the above projects can be illustrated as per below:
 
-![mitch-datasource architecture diagram](generated-files/Architecture.png)
+![mitch-datasource architecture diagram](asset/mermaid/Architecture.png)
 
 Each project has their own set of scripts which you can run. However, for general use,
 you can simply just use the scripts located at the root of this repository in `package.json`.
@@ -45,7 +45,7 @@ Note that steps 3 & 5 can be substituted through a GIT GUI tool (e.g. SourceTree
 
 ### CI/CD
 
-![mitch-datasource CI/CD flow diagram](generated-files/CircleCI%20Workflow.png)
+![mitch-datasource CI/CD flow diagram](asset/mermaid/CircleCI%20Workflow.png)
 
 This package has a CI/CD pipeline with CircleCI configured. It has a workflow setup to use `semantic-release` so that if it detect any commits that requires a release (e.g. adding a new feature, breaking changes, fixes, etc), it'll perform various release related tasks including:
 
@@ -191,12 +191,12 @@ The built HTML documentation files will reside in the `docs` folder.
 
 **Other Scripts**
 
-| Script Name     | Description                                                                                     |
-| --------------- | ----------------------------------------------------------------------------------------------- |
-| `build-mermaid` | Generate diagrams to the `docs` folder.                                                         |
-| `watch-mermaid` | Generate diagrams when a relevant file has been changed (i.e. `.mmd` files in `manual/asset/`). |
-| `build-esdoc`   | Build the HTML documentation to the `docs` folder.                                              |
-| `watch-esdoc`   | Build the HTML documentation when a relevant file has been changed.                             |
+| Script Name     | Description                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------- |
+| `build-mermaid` | Generate diagrams to the `manual/asset` folder.                                                   |
+| `watch-mermaid` | Generate diagrams when a relevant file has been changed (i.e. `.mmd` files in `manual/mermaid/`). |
+| `build-esdoc`   | Build the HTML documentation to the `docs` folder.                                                |
+| `watch-esdoc`   | Build the HTML documentation when a relevant file has been changed.                               |
 
 ### mitch-datasource-test
 

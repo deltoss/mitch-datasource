@@ -1,5 +1,5 @@
-graph RL;
-    DeveloperMachine((Developer Machine))
+graph BT;
+    DeveloperMachine((Developer Machine));
     subgraph GitHub
         Repo[mitch-datasource Repository];
     end
@@ -7,10 +7,10 @@ graph RL;
     Repo == Triggers Workflow ==> CICDService;
     subgraph Circle CI
         CICDService[CircleCI Service] ==> Build
-        Build ==> Test
-        Test ==> CommitAnalysis{Any Release Commits?}
-        CommitAnalysis ==>|Yes| SemanticRelease[Semantic Release]
-        NetlifyCli
+        Build ==> Test;
+        Test ==> CommitAnalysis{Any Release Commits?};
+        CommitAnalysis ==>|Yes| SemanticRelease[Semantic Release];
+        NetlifyCli;
     end
     NetlifyCli -. Deploys Docs .-> NetlifySite;
     SemanticRelease -. Uses .-> NetlifyCli[Netlify CLI];
@@ -19,8 +19,8 @@ graph RL;
     SemanticRelease -. Create GitHub Release .-> Repo;
     SemanticRelease -. CHANGELOG.md Update .-> Repo;
     subgraph Netlify
-        NetlifySite[Netlify Site]
+        NetlifySite[Netlify Site];
     end
     subgraph NPM Registry
-        npmpackage
+        npmpackage;
     end

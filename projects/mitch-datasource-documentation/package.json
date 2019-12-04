@@ -8,8 +8,8 @@
     "lint-md-fix": "remark . -o",
     "build": "npm-run-all \"build-mermaid\" \"build-esdoc\"",
     "watch": "nodemon --watch ./scripts --watch ../mitch-datasource/src/js --watch ./manual --ext js,mmd,md --exec \"npm run build\"",
-    "build-mermaid": "node -r esm ./scripts/build-mermaid.js -- ./manual/asset",
-    "watch-mermaid": "nodemon --watch ./manual/asset --ext mmd --exec \"npm run build-mermaid\"",
+    "build-mermaid": "node -r esm ./scripts/build-mermaid.js -- ./manual/mermaid",
+    "watch-mermaid": "nodemon --watch ./manual/mermaid --ext mmd --exec \"npm run build-mermaid\"",
     "build-esdoc": "esdoc -c esdoc.json",
     "watch-esdoc": "nodemon --watch ../mitch-datasource/src/js --watch ./manual --ext * --exec \"npm run build-esdoc\""
   },
