@@ -17,7 +17,8 @@ module.exports = {
     }],
     '@semantic-release/npm',
     '@semantic-release/github',
-    // Makes commits to GIT for changed files (i.e. changelog)
+    // Makes commits to GIT for changed files (e.g. changelog)
+    // done during the release process (e.g. from @semantic-release/changelog)
     ['@semantic-release/git', {
       assets: ['../../CHANGELOG.md'],
     }],
