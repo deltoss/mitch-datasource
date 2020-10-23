@@ -5,7 +5,7 @@
   "dependencies": {
     "mitch-datasource": "file:../mitch-datasource",
     "mitch-datasource-test-utilities": "file:../mitch-datasource-test-utilities",
-    "react": "^16.11.0",
+    "react": "^17.0.1",
     "react-dom": "^16.11.0",
     "react-scripts": "^3.2.0"
   },
