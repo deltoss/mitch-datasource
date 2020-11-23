@@ -7,7 +7,7 @@
     "mitch-datasource-test-utilities": "file:../mitch-datasource-test-utilities",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "^3.2.0"
+    "react-scripts": "^4.0.1"
   },
   "scripts": {
     "test": "react-scripts test",
