@@ -15,7 +15,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@storybook/addon-actions": "^5.2.4",
-    "@storybook/addon-links": "^5.2.4",
+    "@storybook/addon-links": "^6.1.17",
     "@storybook/addons": "^5.2.4",
     "@storybook/vue": "^5.2.4",
     "@vue/cli-plugin-babel": "^4.0.5",
