@@ -1,0 +1,304 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: husky
+    versions:
+    - 5.0.9
+    - 5.1.0
+    - 5.1.1
+    - 5.1.2
+    - 5.1.3
+    - 5.2.0
+  - dependency-name: "@commitlint/config-conventional"
+    versions:
+    - 11.0.0
+    - 12.0.0
+    - 12.0.1
+  - dependency-name: "@commitlint/cli"
+    versions:
+    - 11.0.0
+    - 12.0.0
+    - 12.0.1
+- package-ecosystem: npm
+  directory: "/projects/mitch-datasource"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.18.0
+    - 7.19.0
+    - 7.20.0
+    - 7.21.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+  - dependency-name: semantic-release
+    versions:
+    - 17.3.7
+    - 17.3.8
+    - 17.3.9
+    - 17.4.0
+    - 17.4.1
+  - dependency-name: webpack-cli
+    versions:
+    - 4.4.0
+    - 4.5.0
+- package-ecosystem: npm
+  directory: "/projects/mitch-datasource-documentation"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: netlify-cli
+    versions:
+    - 3.10.0
+    - 3.10.11
+    - 3.10.12
+    - 3.10.2
+    - 3.10.3
+    - 3.10.4
+    - 3.10.6
+    - 3.10.7
+    - 3.10.9
+    - 3.13.0
+    - 3.13.1
+    - 3.13.10
+    - 3.13.3
+    - 3.13.5
+    - 3.13.6
+    - 3.13.7
+    - 3.13.8
+    - 3.14.0
+    - 3.15.0
+    - 3.15.1
+    - 3.16.0
+    - 3.16.2
+    - 3.17.0
+    - 3.17.1
+    - 3.17.2
+    - 3.18.0
+    - 3.18.2
+    - 3.18.3
+    - 3.19.0
+    - 3.21.10
+    - 3.21.12
+    - 3.21.2
+    - 3.21.6
+    - 3.22.0
+    - 3.4.5
+    - 3.4.6
+    - 3.4.7
+    - 3.5.0
+    - 3.6.0
+    - 3.7.1
+    - 3.8.0
+    - 3.8.1
+    - 3.8.3
+    - 3.8.4
+    - 3.8.5
+    - 3.8.6
+- package-ecosystem: npm
+  directory: "/projects/mitch-datasource-test"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint-plugin-jest
+    versions:
+    - 24.1.3
+    - 24.1.5
+    - 24.1.8
+    - 24.1.9
+    - 24.2.0
+    - 24.2.1
+    - 24.3.1
+    - 24.3.2
+    - 24.3.4
+    - 24.3.5
+  - dependency-name: eslint
+    versions:
+    - 7.18.0
+    - 7.19.0
+    - 7.20.0
+    - 7.21.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+- package-ecosystem: npm
+  directory: "/projects/mitch-datasource-test-react"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@storybook/react"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: "@storybook/addon-actions"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: "@storybook/addon-links"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: "@storybook/addons"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: react-scripts
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: react
+    versions:
+    - 17.0.1
+- package-ecosystem: npm
+  directory: "/projects/mitch-datasource-test-utilities"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.18.0
+    - 7.19.0
+    - 7.20.0
+    - 7.21.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+  - dependency-name: webpack-cli
+    versions:
+    - 4.4.0
+    - 4.5.0
+- package-ecosystem: npm
+  directory: "/projects/mitch-datasource-test-vue"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@storybook/vue"
+    versions:
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: "@storybook/addons"
+    versions:
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: "@storybook/addon-actions"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: "@storybook/addon-links"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.4
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: eslint
+    versions:
+    - 7.20.0
+    - 7.21.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+  - dependency-name: eslint-plugin-vue
+    versions:
+    - 7.5.0
+    - 7.6.0
+    - 7.7.0
+    - 7.8.0
