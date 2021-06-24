@@ -16,7 +16,7 @@
     "@babel/core": "^7.6.4",
     "@storybook/addon-actions": "^5.2.4",
     "@storybook/addon-links": "^5.2.4",
-    "@storybook/addons": "^5.2.4",
+    "@storybook/addons": "^6.3.0",
     "@storybook/vue": "^5.2.4",
     "@vue/cli-plugin-babel": "^4.0.5",
     "@vue/cli-plugin-eslint": "^4.0.5",
